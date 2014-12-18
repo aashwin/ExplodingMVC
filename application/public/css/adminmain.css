@@ -125,7 +125,7 @@ label{
 #container nav li a:hover, input[type='submit']:hover, .button:hover{
     border:2px solid #d9d9d9;
 }
-input,select{
+input[type='text'],input[type='password'],input[type='file'],select, .inputfield{
     padding: 10px 1% !important;
     outline:none;
     border:1px solid #ccc;
@@ -141,6 +141,7 @@ input,select{
     overflow: hidden;
 
 }
+.clear{clear:both}
 select{
 
     background:#fff url('../images/admin/dropdown_arrow.png') 99% no-repeat;

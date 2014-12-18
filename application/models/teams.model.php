@@ -47,22 +47,25 @@ class teams extends Model {
         return false;
 
     }
-    public function dataValidation($name){
+    public function dataValidation($name,$flagFile){
         if(empty($name))
             $this->addErrors('Team Name cannot be empty');
         if(strlen($name)>40)
             $this->addErrors('Team Name cannot be more than 40 characters');
+        if(!file_exists(TEAM_FLAG_DIR.$flagFile) && $flagFile!='')
+            $this->addErrors('Team Flag File Not FOUND!');
         if($this->numErrors()>0)
             return false;
         return true;
     }
-    public function add($name){
+    public function add($name, $flagFile){
 
         $name=trim($name);
-        if($this->dataValidation($name)===false)
+        if($this->dataValidation($name,$flagFile)===false)
             return false;
-        $queryInsert=$this->getDB()->prepare('INSERT INTO teams (teamName) VALUES (:name)');
+        $queryInsert=$this->getDB()->prepare('INSERT INTO teams (teamName,teamFlag) VALUES (:name,:flag)');
         $queryInsert->bindValue(':name',$name);
+        $queryInsert->bindValue(':flag',$flagFile);
         $queryInsert->execute();
         if($queryInsert->rowCount()>0){
             return true;
@@ -70,18 +73,19 @@ class teams extends Model {
         $this->addErrors('Could not add team to database');
         return false;
     }
-    public function update($id, $name){
+    public function update($id, $name,$flagFile){
         if($this->getTeam($id)===false)
         {
             $this->addErrors('Invalid Team ID');
             return false;
         }
         $name=trim($name);
-        if($this->dataValidation($name)===false)
+        if($this->dataValidation($name,$flagFile)===false)
             return false;
-        $queryInsert=$this->getDB()->prepare('UPDATE teams SET teamName=:name WHERE teamId=:id LIMIT 1');
+        $queryInsert=$this->getDB()->prepare('UPDATE teams SET teamName=:name, teamFlag=:flag WHERE teamId=:id LIMIT 1');
         $queryInsert->bindValue(':name',$name);
         $queryInsert->bindValue(':id',$id, PDO::PARAM_INT);
+        $queryInsert->bindValue(':flag',$flagFile);
         $queryInsert->execute();
         if($queryInsert->rowCount()>0){
             return true;

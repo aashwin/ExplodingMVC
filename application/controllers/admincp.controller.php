@@ -244,20 +244,27 @@ class admincpController extends BaseController {
         $this->addViewArray('SportsModel', $this->loadModel('sports'));
 
         if(isset($_POST['teamName'])){
-            $File=new FileUpload(APP_DIR.'/public/uploads/team_flags/');
-            $File->setMaxSize(0.1); //Max 100kb
-            $File->setBasicType('image'); //Images only.
-            $File->setMaxDimension(200,200);
-            $File->setOptimize(true);
-            $File->keepOriginal(true, APP_DIR.'/public/uploads/team_flags/originals/');
-            $File->setFile($_FILES['teamFlag']);
+            if(isset($_FILES['teamFlag'])) {
+                $File = new FileUpload(TEAM_FLAG_DIR);
+                $File->setMaxSize(0.1); //Max 100kb
+                $File->setBasicType('image'); //Images only.
+                $File->setMaxDimension(200, 200);
+                $File->setOptimize(true);
+                $File->keepOriginal(true, TEAM_FLAG_DIR.'originals/');
+                $File->setFile($_FILES['teamFlag']);
 
-            $teamFlag=$File->uploadFile();
-            print_r( $teamFlag);
-            exit;
-            $teamsModel->add($_POST['teamName']);
+                $uploadFlag = $File->uploadFile();
+            }else{
+                $uploadFlag=array('error'=>false, 'filename'=>'');
+            }
+            if($uploadFlag['error']===false){
+                $teamsModel->add($_POST['teamName'], $uploadFlag['filename']);
+            }else{
+                $teamsModel->addErrors('Upload Failed. Response: '.$uploadFlag['type']);
+            }
             if($teamsModel->numErrors()>0){
                 $_SESSION['ErrorMessages']=$teamsModel->getErrors();
+
                 $_SESSION['FormData']=$_POST;
                 header('Location: '.Functions::pageLink($this->getController(), $this->getAction()));
                 exit;
@@ -407,12 +414,40 @@ class admincpController extends BaseController {
         $this->loadView('Admin', 'events_edit');
     }
     public function editTeam($id){
-        $this->addViewArray('page', 'events');
+        $this->addViewArray('page', 'teams');
         $this->addViewArray('TeamsModel', $this->loadModel('teams'));
 
         if(isset($_POST['teamName'])){
+            if(isset($_FILES['teamFlag'])) {
+                if($_POST['flagFile']!='') {
+                    unlink(TEAM_FLAG_DIR . $_POST['flagFile']);
+                    unlink(TEAM_FLAG_DIR . 'originals/' . $_POST['flagFile']);
+                }
+                $File = new FileUpload(TEAM_FLAG_DIR);
+                $File->setMaxSize(0.1); //Max 100kb
+                $File->setBasicType('image'); //Images only.
+                $File->setMaxDimension(240, 240);
+                $File->setOptimize(true);
+                $File->keepOriginal(true, TEAM_FLAG_DIR.'originals/');
+                $File->setFile($_FILES['teamFlag']);
 
-            $this->getViewArray('TeamsModel')->update($id, $_POST['teamName']);
+                $uploadFlag = $File->uploadFile();
+                if($uploadFlag['error']===false) {
+                    $teamFlag=$uploadFlag['filename'];
+                }else {
+                    $teamFlag = '';
+                }
+            }elseif($_POST['removeFlag']==1){
+                if($_POST['flagFile']!='') {
+                    unlink(TEAM_FLAG_DIR . $_POST['flagFile']);
+                    unlink(TEAM_FLAG_DIR . 'originals/' . $_POST['flagFile']);
+                }
+                    $teamFlag='';
+
+            }else {
+                $teamFlag=$_POST['flagFile'];
+            }
+            $this->getViewArray('TeamsModel')->update($id, $_POST['teamName'], $teamFlag);
             if($this->getViewArray('TeamsModel')->numErrors()>0){
                 $_SESSION['ErrorMessages']= $this->getViewArray('TeamsModel')->getErrors();
                 header('Location: '.Functions::pageLink($this->getController(), 'editTeam', $id));

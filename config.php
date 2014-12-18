@@ -22,4 +22,6 @@ define('DB_DATE_FORMAT','Y-m-d');
 define('DB_DATETIME_FORMAT','Y-m-d H:i:s');
 define('DISPLAY_DATETIME','Y-m-d H:i');
 
+define('TEAM_FLAG_DIR', APP_DIR.'/public/uploads/team_flags/');
+define('WWW_TEAM_FLAG', WWW_PUBLIC.'/uploads/team_flags/');
 ?>

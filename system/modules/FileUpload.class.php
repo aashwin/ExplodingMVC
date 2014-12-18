@@ -63,7 +63,7 @@ class FileUpload {
         if($this->uploadFile['error']!=0){
             return array('error'=>true, 'type'=>'upload_error', 'number'=>$this->uploadFile['error']);
         }
-
+        $ext=$this->getExtension($this->uploadFile['name']);
         if($this->basicType=='image'){
             if($this->uploadFile['type'] != 'image/png' && $this->uploadFile['type'] != 'image/jpeg'  && $this->uploadFile['type'] != 'image/jpg' && $this->uploadFile['type'] != 'image/gif') {
                 return array('error'=>true, 'type'=>'invalid_type');
@@ -72,9 +72,8 @@ class FileUpload {
             if($imgWidth<=0 || $imgHeight<=0){
                 return array('error'=>true, 'type'=>'invalid_dimension');
             }
-            $ext=substr($this->uploadFile['name'], -3);
             if($ext!='png'&&$ext!='gif'&&$ext!='jpg'){
-                return array('error'=>true, 'type'=>'invalid_extension');
+                return array('error'=>true, 'type'=>'invalid_extension['.$ext.']');
             }
 
 
@@ -113,9 +112,14 @@ class FileUpload {
                             break;
                         case 'png';
                             $img = imagecreatefrompng($tmpFileName);
+
                              break;
                     }
                     $img_base = imagecreatetruecolor($this->maxWidth, $this->maxHeight);
+                    if($ext=='png'){
+                        imagealphablending($img_base, false);
+                        imagesavealpha($img_base, true);
+                    }
                     imagecopyresized($img_base, $img, 0, 0, 0, 0, $this->maxWidth, $this->maxHeight, $imgWidth, $imgHeight);
                     switch($ext)
                     {
@@ -126,20 +130,28 @@ class FileUpload {
                             imagejpeg($img_base, $tmpFileName);
                             break;
                         case 'png';
+
                             imagepng($img_base, $tmpFileName);
                             break;
                     }
-
+                    imagedestroy($img);
+                    imagedestroy($img_base);
 
                 }
             }
             if($this->optimize && $this->basicType=='image'){
 
+
             }
+            return array('error'=>false, 'filename'=>basename($tmpFileName), 'fullpath'=>$tmpFileName);
+
         }else if($this->renamable){
             unlink($tmpFileName);
         }
-        return basename($tmpFileName);
+        return array('error'=>true, 'type'=>'cannot_upload');
+    }
+    function getExtension($filename){
+        return strtolower(pathinfo($filename, PATHINFO_EXTENSION));
     }
 
 
