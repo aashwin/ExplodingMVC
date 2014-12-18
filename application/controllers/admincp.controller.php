@@ -244,6 +244,17 @@ class admincpController extends BaseController {
         $this->addViewArray('SportsModel', $this->loadModel('sports'));
 
         if(isset($_POST['teamName'])){
+            $File=new FileUpload(APP_DIR.'/public/uploads/team_flags/');
+            $File->setMaxSize(0.1); //Max 100kb
+            $File->setBasicType('image'); //Images only.
+            $File->setMaxDimension(200,200);
+            $File->setOptimize(true);
+            $File->keepOriginal(true, APP_DIR.'/public/uploads/team_flags/originals/');
+            $File->setFile($_FILES['teamFlag']);
+
+            $teamFlag=$File->uploadFile();
+            print_r( $teamFlag);
+            exit;
             $teamsModel->add($_POST['teamName']);
             if($teamsModel->numErrors()>0){
                 $_SESSION['ErrorMessages']=$teamsModel->getErrors();
@@ -398,6 +409,7 @@ class admincpController extends BaseController {
     public function editTeam($id){
         $this->addViewArray('page', 'events');
         $this->addViewArray('TeamsModel', $this->loadModel('teams'));
+
         if(isset($_POST['teamName'])){
 
             $this->getViewArray('TeamsModel')->update($id, $_POST['teamName']);

@@ -35,6 +35,7 @@ $(document).ready(function(){
         var deleteMessage=admin_settings.deleteMessage+'<br /> <strong>Name: </strong> '+name+' - <strong>ID: </strong> '+id;
         return showConfirmation(deleteMessage, ajax_Delete, id);
     });
+
 });
 function buildOverlay(){
 
