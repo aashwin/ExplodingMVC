@@ -119,7 +119,7 @@ $(document).ready(function(){
     'callback=mapInit&key=AIzaSyCAGSNhf6PGc5_NrmwGOyYirJeh71l8-0k';
     document.body.appendChild(script);
 });
-$("#startTime").datetimepicker();
+$("#startTime").datetimepicker({});
 $("#AddNewAddress").click(function(){
     $("#ExistingAddress").slideUp(500,function(){
         $("#NewAddressForm").slideDown(500);
