@@ -25,6 +25,11 @@ class events extends Model {
         }
         return false;
     }
+    public function buildName($name, $teamOne, $teamTwo){
+        $teamModel=$this->loadModel('teams');
+
+        return str_replace(array('[%team1%]','[%team2%]'), array($teamModel->getTeam($teamOne,'teamName'),$teamModel->getTeam($teamTwo,'teamName')), $name);
+    }
     public function getEvent($id,$field='*'){
         $query=$this->getDB()->prepare("SELECT $field FROM events WHERE eventId=:id LIMIT 1");
 
@@ -38,9 +43,10 @@ class events extends Model {
         }
         return false;
     }
-    public function dataValidation($eventName, $tournamentId, $addressId, $startTime){
+    public function dataValidation($eventName, $tournamentId,$teamOne, $teamTwo, $addressId, $startTime){
         $addressModel=$this->loadModel('address');
         $tournamentModel=$this->loadModel('tournaments');
+        $teamModel=$this->loadModel('teams');
 
         if(empty($eventName))
             $this->addErrors('Event Name cannot be empty');
@@ -54,22 +60,37 @@ class events extends Model {
             $this->addErrors('Please select a tournament');
         else if($tournamentModel->getTournament($tournamentId)===false)
             $this->addErrors('Tournament Invalid');
+        if($teamOne==0)
+            $this->addErrors('Please select a team #1');
+        else if($teamModel->getTeam($teamOne)===false)
+            $this->addErrors('Team #1 Invalid');
+        if($teamTwo==0)
+            $this->addErrors('Please select a team #2');
+        else if($teamModel->getTeam($teamTwo)===false)
+            $this->addErrors('Team #2 Invalid');
+        if($teamOne==$teamTwo)
+            $this->addErrors("Both Teams cannot be the same!");
 
         if($this->numErrors()>0)
             return false;
         return true;
     }
-    public function add($eventName, $tournamentId, $addressId, $startTime){
+    public function add($eventName, $tournamentId,$teamOne, $teamTwo, $addressId, $startTime){
         $eventName=trim($eventName);
+        $tournamentId=intval($tournamentId);
+        $teamOne=intval($teamOne);
+        $teamTwo=intval($teamTwo);
         $tournamentId=intval($tournamentId);
         $addressId=intval($addressId);
         $startTime=date(DB_DATETIME_FORMAT , strtotime($startTime));
-        if(!$this->dataValidation($eventName, $tournamentId, $addressId, $startTime))
+        if(!$this->dataValidation($eventName, $tournamentId,$teamOne, $teamTwo, $addressId, $startTime))
             return false;
-        $queryInsert=$this->getDB()->prepare('INSERT INTO events (eventName, tournamentId, addressId, startTime) VALUES (:name, :tournament, :address, :startTime)');
+        $queryInsert=$this->getDB()->prepare('INSERT INTO events (eventName, tournamentId, addressId, startTime, teamOne, teamTwo) VALUES (:name, :tournament, :address, :startTime,:teamOne, :teamTwo)');
         $queryInsert->bindValue(':name',$eventName);
         $queryInsert->bindValue(':tournament',$tournamentId, PDO::PARAM_INT);
         $queryInsert->bindValue(':address',$addressId, PDO::PARAM_INT);
+        $queryInsert->bindValue(':teamOne',$teamOne, PDO::PARAM_INT);
+        $queryInsert->bindValue(':teamTwo',$teamTwo, PDO::PARAM_INT);
         $queryInsert->bindValue(':startTime',$startTime);
         $queryInsert->execute();
         if($queryInsert->rowCount()>0){
@@ -78,24 +99,29 @@ class events extends Model {
         $this->addErrors('Could not add events to database');
         return false;
     }
-    public function update($id,$eventName, $tournamentId, $addressId, $startTime){
+    public function update($id,$eventName, $tournamentId,$teamOne, $teamTwo, $addressId, $startTime){
         $eventName=trim($eventName);
         $tournamentId=intval($tournamentId);
         $addressId=intval($addressId);
+        $teamOne=intval($teamOne);
+        $teamTwo=intval($teamTwo);
         $startTime=date(DB_DATETIME_FORMAT , strtotime($startTime));
-        if(!$this->dataValidation($eventName, $tournamentId, $addressId, $startTime))
+        if(!$this->dataValidation($eventName, $tournamentId,$teamOne, $teamTwo, $addressId, $startTime))
             return false;
-        $queryInsert=$this->getDB()->prepare('UPDATE events SET eventName=:name, tournamentId=:tournament, addressId=:address, startTime=:startTime WHERE tournamentId=:id LIMIT 1');
+        $queryInsert=$this->getDB()->prepare('UPDATE events SET eventName=:name, tournamentId=:tournament, addressId=:address, startTime=:startTime, teamOne=:teamOne, teamTwo=:teamTwo WHERE eventId=:id LIMIT 1');
 		$queryInsert->bindValue(':name',$eventName);
         $queryInsert->bindValue(':tournament',$tournamentId, PDO::PARAM_INT);
         $queryInsert->bindValue(':address',$addressId, PDO::PARAM_INT);
 	 	$queryInsert->bindValue(':id',$id, PDO::PARAM_INT);
         $queryInsert->bindValue(':startTime',$startTime);
+        $queryInsert->bindValue(':teamOne',$teamOne, PDO::PARAM_INT);
+        $queryInsert->bindValue(':teamTwo',$teamTwo, PDO::PARAM_INT);
         $queryInsert->execute();
         if($queryInsert->rowCount()>0){
             return true;
         }
         $this->addErrors('Could not update events in database');
+
         return false;
     }
     public function delete($id){

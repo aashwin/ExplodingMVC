@@ -10,22 +10,59 @@
 <form action="<?php echo Functions::pageLink($this->getController(), $this->getAction());?>" method="POST">
     <fieldset>
         <legend>Add New Event</legend>
-        <label for="eventName">Event Name </label>
-        <div class="required">Required*</div>
-        <input type="text" name="eventName" id="eventName" required <?php if(!empty($_SESSION['FormData']['eventName'])){echo 'value="'.$_SESSION['FormData']['eventName'].'"';}?> placeholder="Enter a name for the event...">
-        <label for="tournamentId">Tournament</label>
-        <div class="required">Required*</div>
-        <select name="tournamentId">
-            <option value="0">--Select Tournament--</option>
-            <?php
-            $query=$this->getViewArray('TournamentsModel')->getTournaments();
-            if($query!==false){
-                while($row=$query->fetch()){
-                    echo '<option value="'.$row['tournamentId'].'" '.((intval($_SESSION['FormData']['tournamentId'])==$row['tournamentId'])?'selected':'').' required>'.$row['tournamentName'].'</option>';
+        <div class="hint">HINT: use [%team1%] OR [%team2%] variables for event name.</div>
+
+        <div class="HalfWidthInput">
+            <label for="eventName">Event Name</label>
+            <div class="required">Required*</div>
+            <input type="text" name="eventName" id="eventName" required <?php if(!empty($_SESSION['FormData']['eventName'])){echo 'value="'.$_SESSION['FormData']['eventName'].'"';}?> placeholder="Enter a name for the event...">
+        </div>
+        <div class="HalfWidthInput" style="margin-left:1.7%">
+            <label for="tournamentId">Tournament</label>
+            <div class="required">Required*</div>
+            <select name="tournamentId" required>
+                <option value="0">--Select Tournament--</option>
+                <?php
+                $query=$this->getViewArray('TournamentsModel')->getTournaments();
+                if($query!==false){
+                    while($row=$query->fetch()){
+                        echo '<option value="'.$row['tournamentId'].'" '.((intval($_SESSION['FormData']['tournamentId'])==$row['tournamentId'])?'selected':'').' >'.$row['tournamentName'].'</option>';
+                    }
                 }
-            }
-            ?>
-        </select>
+                ?>
+            </select>
+        </div>
+        <div class="HalfWidthInput">
+            <label for="eventName">Team #1</label>
+            <div class="required">Required*</div>
+            <select name="team1" required>
+                <option value="0">--Select Team--</option>
+                <?php
+                $query=$this->getViewArray('TeamsModel')->getTeams();
+                if($query!==false){
+                    while($row=$query->fetch()){
+                        echo '<option value="'.$row['teamId'].'" '.((intval($_SESSION['FormData']['team1'])==$row['teamId'])?'selected':'').' >'.$row['teamName'].'</option>';
+                    }
+                }
+                ?>
+            </select>
+        </div>
+        <div class="HalfWidthInput" style="margin-left:1.7%">
+            <label for="tournamentId">Team #2</label>
+            <div class="required">Required*</div>
+            <select name="team2" required>
+                <option value="0">--Select Team--</option>
+                <?php
+                $query=$this->getViewArray('TeamsModel')->getTeams();
+                if($query!==false){
+                    while($row=$query->fetch()){
+                        echo '<option value="'.$row['teamId'].'" '.((intval($_SESSION['FormData']['team2'])==$row['teamId'])?'selected':'').' >'.$row['teamName'].'</option>';
+                    }
+                }
+                ?>
+            </select>
+
+        </div>
         <div id="ExistingAddress">
             <div class="HalfWidthInput">
                 <label for="addressId">Ground Address</label>

@@ -244,11 +244,12 @@ class admincpController extends BaseController {
         $this->addViewArray('SportsModel', $this->loadModel('sports'));
 
         if(isset($_POST['teamName'])){
-            if(isset($_FILES['teamFlag'])) {
+
+            if(($_FILES['teamFlag']['error']==0)) {
                 $File = new FileUpload(TEAM_FLAG_DIR);
                 $File->setMaxSize(0.1); //Max 100kb
                 $File->setBasicType('image'); //Images only.
-                $File->setMaxDimension(200, 200);
+                $File->setMaxDimension(240, 240);
                 $File->setOptimize(true);
                 $File->keepOriginal(true, TEAM_FLAG_DIR.'originals/');
                 $File->setFile($_FILES['teamFlag']);
@@ -302,6 +303,7 @@ class admincpController extends BaseController {
         $this->addViewArray('AddressModel', $this->loadModel('address'));
         $this->addViewArray('TournamentsModel', $this->loadModel('tournaments'));
         $this->addViewArray('CountriesModel', $this->loadModel('countries'));
+        $this->addViewArray('TeamsModel', $this->loadModel('teams'));
 
         if(isset($_POST['eventName'])){
             $addressId=intval($_POST['addressId']);
@@ -310,7 +312,7 @@ class admincpController extends BaseController {
                     $addressId=$this->getDb()->lastInsertId();
                 }
             }
-            $eventsModel->add($_POST['eventName'],$_POST['tournamentId'],$addressId,$_POST['startTime']);
+            $eventsModel->add($_POST['eventName'],$_POST['tournamentId'],$_POST['team1'],$_POST['team2'],$addressId,$_POST['startTime']);
             if($eventsModel->numErrors()>0){
                 $_SESSION['ErrorMessages']=$eventsModel->getErrors();
                 $_SESSION['FormData']=$_POST;
@@ -318,7 +320,7 @@ class admincpController extends BaseController {
                 exit;
             }
             $_SESSION['FormData']=array();
-            $_SESSION['SuccessMessages'][]=$_POST['eventName'].' has been added to the events database.';
+            $_SESSION['SuccessMessages'][]=$eventsModel->buildName($_POST['eventName'], intval($_POST['team1']),intval($_POST['team2'])).' has been added to the events database.';
             header('Location: '.Functions::pageLink($this->getController(), 'events'));
             exit;
         }
@@ -385,6 +387,7 @@ class admincpController extends BaseController {
         $this->addViewArray('AddressModel', $this->loadModel('address'));
         $this->addViewArray('TournamentsModel', $this->loadModel('tournaments'));
         $this->addViewArray('CountriesModel', $this->loadModel('countries'));
+        $this->addViewArray('TeamsModel', $this->loadModel('teams'));
 
         if(isset($_POST['eventName'])){
             $addressId=intval($_POST['addressId']);
@@ -393,14 +396,14 @@ class admincpController extends BaseController {
                     $addressId=$this->getDb()->lastInsertId();
                 }
             }
-            $this->getViewArray('EventsModel')->update($id, $_POST['eventName'],$_POST['tournamentId'],$addressId,$_POST['startTime']);
+            $this->getViewArray('EventsModel')->update($id, $_POST['eventName'],$_POST['tournamentId'],$_POST['team1'],$_POST['team2'],$addressId,$_POST['startTime']);
             if($this->getViewArray('EventsModel')->numErrors()>0){
                 $_SESSION['ErrorMessages']= $this->getViewArray('EventsModel')->getErrors();
                 header('Location: '.Functions::pageLink($this->getController(), 'editEvent', $id));
                 exit;
             }
             $_SESSION['FormData']=array();
-            $_SESSION['SuccessMessages'][]=$_POST['eventName'].'[#ID='.$id.'] has been updated to the events database.';
+            $_SESSION['SuccessMessages'][]=$this->getViewArray('EventsModel')->buildName($_POST['eventName'], intval($_POST['team1']),intval($_POST['team2'])).'[#ID='.$id.'] has been updated to the events database.';
             header('Location: '.Functions::pageLink($this->getController(), 'events'));
             exit;
         }
@@ -418,7 +421,7 @@ class admincpController extends BaseController {
         $this->addViewArray('TeamsModel', $this->loadModel('teams'));
 
         if(isset($_POST['teamName'])){
-            if(isset($_FILES['teamFlag'])) {
+            if($_FILES['teamFlag']['error']==0) {
                 if($_POST['flagFile']!='') {
                     unlink(TEAM_FLAG_DIR . $_POST['flagFile']);
                     unlink(TEAM_FLAG_DIR . 'originals/' . $_POST['flagFile']);

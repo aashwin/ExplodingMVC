@@ -18,7 +18,7 @@ class BaseController {
              if(DB_TYPE=='mysql')
                 $this->db=new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
              if(DEBUG_MODE)
-                 $this->db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                 $this->db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
              else
                  $this->db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 

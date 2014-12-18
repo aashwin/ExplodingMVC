@@ -33,7 +33,7 @@ if($query!==false){
     while($row=$query->fetch()){
         echo '<tr>
                         <td>'.$row['eventId'].'</td>
-                        <td>'.$row['eventName'].'</td>
+                        <td>'.$this->getViewArray('EventsModel')->buildName($row['eventName'], $row['teamOne'],$row['teamTwo']).'</td>
                         <td>'.$tournamentsModel->getTournament($row['tournamentId'],'tournamentName').'</td>
                         <td>'.$addressModel->getAddress($row['addressId'],'addressLine1').'</td>
                         <td>'.date(DB_DATETIME_FORMAT, strtotime($row['startTime'])).'</td>

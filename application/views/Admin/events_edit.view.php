@@ -10,23 +10,60 @@
 ?>
 <form action="<?php echo Functions::pageLink($this->getController(), $this->getAction(), $data['eventId']);?>" method="POST">
     <fieldset>
-        <legend>Edit Event: <?php echo $data['eventName'];?></legend>
-        <label for="eventName">Event Name </label>
-        <div class="required">Required*</div>
-        <input type="text" name="eventName" id="eventName" required value="<?php echo $data['eventName'];?>" placeholder="Enter a name for the event...">
-        <label for="tournamentId">Tournament</label>
-        <div class="required">Required*</div>
-        <select name="tournamentId">
-            <option value="0">--Select Tournament--</option>
-            <?php
-            $query=$this->getViewArray('TournamentsModel')->getTournaments();
-            if($query!==false){
-                while($row=$query->fetch()){
-                    echo '<option value="'.$row['tournamentId'].'" '.(($data['tournamentId']==$row['tournamentId'])?'selected':'').' required>'.$row['tournamentName'].'</option>';
+        <legend>Edit Event: <?php echo $this->getViewArray('EventsModel')->buildName($data['eventName'], $data['teamOne'], $data['teamTwo']);?></legend>
+        <div class="hint">HINT: use [%team1%] OR [%team2%] variables for event name.</div>
+
+        <div class="HalfWidthInput">
+            <label for="eventName">Event Name </label>
+            <div class="required">Required*</div>
+             <input type="text" name="eventName" id="eventName" required value="<?php echo $data['eventName'];?>" placeholder="Enter a name for the event...">
+       </div>
+        <div class="HalfWidthInput" style="margin-left:1.7%">
+            <label for="tournamentId">Tournament</label>
+            <div class="required">Required*</div>
+            <select name="tournamentId">
+                <option value="0">--Select Tournament--</option>
+                <?php
+                $query=$this->getViewArray('TournamentsModel')->getTournaments();
+                if($query!==false){
+                    while($row=$query->fetch()){
+                        echo '<option value="'.$row['tournamentId'].'" '.(($data['tournamentId']==$row['tournamentId'])?'selected':'').' required>'.$row['tournamentName'].'</option>';
+                    }
                 }
-            }
-            ?>
-        </select>
+                ?>
+            </select>
+        </div>
+        <div class="HalfWidthInput">
+            <label for="eventName">Team #1</label>
+            <div class="required">Required*</div>
+            <select name="team1" required>
+                <option value="0">--Select Team--</option>
+                <?php
+                $query=$this->getViewArray('TeamsModel')->getTeams();
+                if($query!==false){
+                    while($row=$query->fetch()){
+                        echo '<option value="'.$row['teamId'].'" '.(($data['teamOne']==$row['teamId'])?'selected':'').' >'.$row['teamName'].'</option>';
+                    }
+                }
+                ?>
+            </select>
+        </div>
+        <div class="HalfWidthInput" style="margin-left:1.7%">
+            <label for="tournamentId">Team #2</label>
+            <div class="required">Required*</div>
+            <select name="team2" required>
+                <option value="0">--Select Team--</option>
+                <?php
+                $query=$this->getViewArray('TeamsModel')->getTeams();
+                if($query!==false){
+                    while($row=$query->fetch()){
+                        echo '<option value="'.$row['teamId'].'" '.(($data['teamTwo']==$row['teamId'])?'selected':'').' >'.$row['teamName'].'</option>';
+                    }
+                }
+                ?>
+            </select>
+
+        </div>
         <div id="ExistingAddress">
             <div class="HalfWidthInput">
                 <label for="addressId">Address</label>

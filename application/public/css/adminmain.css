@@ -125,7 +125,12 @@ label{
 #container nav li a:hover, input[type='submit']:hover, .button:hover{
     border:2px solid #d9d9d9;
 }
-input[type='text'],input[type='password'],input[type='file'],select, .inputfield{
+.hint{background:#fffdef;
+    padding:10px;
+    margin:5px;
+    color:#77766f
+}
+input[type='text'],input[type='button'],input[type='password'],input[type='file'],select, .inputfield{
     padding: 10px 1% !important;
     outline:none;
     border:1px solid #ccc;
