@@ -80,16 +80,25 @@ class FileUpload {
 
         }
         $tmpFileName=$this->destination.$this->uploadFile['name'];
+        if($this->makeDirs){
+            if(!is_dir($this->destination)){
+                mkdir($this->destination, 0777, true);
+            }
+            if(!is_dir($this->originalDir) && $this->keepOriginal){
+                mkdir($this->originalDir, 0777, true);
+            }
+        }
         if($this->renamable){
            $tmpFileName=tempnam($this->destination, '');
         }
-        if($this->makeDirs){
-            
-        }
+
         if(move_uploaded_file($this->uploadFile['tmp_name'], $tmpFileName)){
             if($this->renamable){
                 rename($tmpFileName, $tmpFileName .'.'. $ext);
                 $tmpFileName.='.'.$ext;
+            }
+            if($this->keepOriginal){
+                copy($tmpFileName.'.'.$ext, $this->originalDir.'/'.basename($tmpFileName).'.'.$ext);
             }
             if($this->maxHeight!=-1 && $this->maxWidth!=-1 && $this->basicType=='image'){
                 //resize
