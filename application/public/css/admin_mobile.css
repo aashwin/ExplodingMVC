@@ -1,0 +1,39 @@
+.sorticons{
+    border:none;
+    padding:5px 0px;
+    background:none;
+    width:20px;
+    height:20px;
+
+}
+.sorticons img{
+   width:100%;
+    display:none;
+}
+#container{
+    margin:10px 0;
+}
+table{
+    font-size:11px;
+
+}
+
+.button{
+    padding:10px;
+    font-size:11px;
+    border:none;
+}
+td{
+    padding:5px;
+}
+.notMobile{
+    display:none;
+}
+.HalfWidthInput{
+    width:100%;
+    display:inline-block;
+    margin-left:0px !important;
+}
+#container nav li a:hover, input[type='submit']:hover, .button:hover{
+    border:none;
+}

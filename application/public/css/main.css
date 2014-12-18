@@ -1,0 +1,106 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,900);
+*{margin:0;padding:0;outline:0;}
+body{
+    margin:0;
+    padding:0;
+    background: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size:90%;
+}
+header {
+    height:60px;
+    background:#181818;
+    width:90%;
+    padding:20px 5%;
+    border-bottom:1px solid #000;
+}
+nav{
+    height:45px;
+    background:#0568c6;
+    width:90%;
+    padding:0 5%;
+    overflow:auto;
+    border-bottom:1px solid #0357a7;
+    border-top:1px solid #1e91fe;
+}
+nav ul{list-style:none}
+nav li{float:left}
+nav li a{
+    display:block;
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:16px;
+    padding:13px 20px;
+    text-shadow:1px 1px #033d74;
+}
+.small{font-size:80%;}
+
+#searchEvent{
+    background:#d8d8d8;
+    width:90%;
+    margin:0px 5%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow:auto;
+    height:auto;
+}
+
+
+#searchEvent h3{
+    margin-bottom:5px;
+}
+#searchEvent .highlight{color:#767676;}
+.searchButton{
+    background:#0568c6 url('../images/searchbutton.png') no-repeat 3%;
+    padding:3%;
+    width:100%;
+    border:none;
+    border-radius:10px;
+    font-size:14px;
+    color:#fff;
+    cursor:pointer;
+    text-shadow:1px 1px #033d74;
+}
+.searchButton:hover{
+    background-color:#034f97;
+}
+#searchEvent .advancedOption{
+    color:#4f4d4d;
+    text-decoration:none;
+    padding:3px;
+    display:inline-block;
+}
+#searchEvent input[type="text"]{
+    width:94%;
+    border:none;
+    background:#fff;
+    border-radius:10px;
+    padding:3%;
+}
+#container{
+    margin:10px 5%;
+    padding:0px 13px;
+}
+nav li a:hover{
+   background:#033d74;
+    text-shadow:1px 1px #000;
+}
+#logo{
+    width:115px;
+    display:block;
+    height:58px;
+    margin-left:13px;
+    background:transparent url('../images/headerlogo.png') no-repeat;
+    text-indent:-99999px;
+    float:left;
+}
+#searchEvent .section{
+    color:#4f4d4d;
+    text-shadow:1px 1px #fff;
+    text-align:center;
+    float:left;
+}
+.showMenu{
+    display:none;
+}
