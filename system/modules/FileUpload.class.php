@@ -98,7 +98,7 @@ class FileUpload {
                 $tmpFileName.='.'.$ext;
             }
             if($this->keepOriginal){
-                copy($tmpFileName.'.'.$ext, $this->originalDir.'/'.basename($tmpFileName).'.'.$ext);
+                copy($tmpFileName, $this->originalDir.'/'.basename($tmpFileName));
             }
             if($this->maxHeight!=-1 && $this->maxWidth!=-1 && $this->basicType=='image'){
                 //resize
