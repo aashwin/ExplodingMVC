@@ -282,7 +282,7 @@ class admincpController extends BaseController {
         $this->addViewArray('page', 'tournaments');
 
         if(isset($_POST['tournamentName'])){
-            $tournamentsModel->add($_POST['tournamentName'],$_POST['tournamentSport'],$_POST['tournamentStart'],$_POST['tournamentEnd']);
+            $tournamentsModel->add($_POST['tournamentName'],$_POST['tournamentStart'],$_POST['tournamentEnd']);
             if($tournamentsModel->numErrors()>0){
                 $_SESSION['ErrorMessages']=$tournamentsModel->getErrors();
                 $_SESSION['FormData']=$_POST;
@@ -308,7 +308,7 @@ class admincpController extends BaseController {
         if(isset($_POST['eventName'])){
             $addressId=intval($_POST['addressId']);
             if($addressId===0){
-                if($this->getViewArray('AddressModel')->add($_POST['addressLine1'],$_POST['addressLine2'],$_POST['postCode'],$_POST['countryId'])){
+                if($this->getViewArray('AddressModel')->add($_POST['groundName'],$_POST['addressLine1'],$_POST['addressLine2'],$_POST['postCode'],$_POST['countryId'])){
                     $addressId=$this->getDb()->lastInsertId();
                 }
             }
@@ -358,10 +358,9 @@ class admincpController extends BaseController {
     public function editTournament($id){
         $tournamentsModel=$this->loadModel('tournaments');
         $this->addViewArray('page', 'tournaments');
-        $this->addViewArray('SportsModel', $this->loadModel('sports'));
 
         if(isset($_POST['tournamentName'])){
-            $tournamentsModel->update($id, $_POST['tournamentName'],$_POST['tournamentSport'],$_POST['tournamentStart'],$_POST['tournamentEnd']);
+            $tournamentsModel->update($id, $_POST['tournamentName'],$_POST['tournamentStart'],$_POST['tournamentEnd']);
             if($tournamentsModel->numErrors()>0){
                 $_SESSION['ErrorMessages']=$tournamentsModel->getErrors();
                 header('Location: '.Functions::pageLink($this->getController(), 'editTournament', $id));
@@ -392,7 +391,7 @@ class admincpController extends BaseController {
         if(isset($_POST['eventName'])){
             $addressId=intval($_POST['addressId']);
             if($addressId===0){
-                if($this->getViewArray('AddressModel')->add($_POST['addressLine1'],$_POST['addressLine2'],$_POST['postCode'],$_POST['countryId'])){
+                if($this->getViewArray('AddressModel')->add($_POST['groundName'], $_POST['addressLine1'],$_POST['addressLine2'],$_POST['postCode'],$_POST['countryId'])){
                     $addressId=$this->getDb()->lastInsertId();
                 }
             }

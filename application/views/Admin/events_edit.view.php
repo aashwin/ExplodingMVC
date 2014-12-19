@@ -75,7 +75,7 @@
                     $locations=array();
                     if($query!==false){
                         while($row=$query->fetch()){
-                            $locations[]=$row['addressLine1'].', '.$row['postCode'].', '.$this->getViewArray('CountriesModel')->getCountry($row['countryId'],'countryName');
+                            $locations[]=$row['groundName'].','.$row['addressLine1'].', '.$row['postCode'].', '.$this->getViewArray('CountriesModel')->getCountry($row['countryId'],'countryName');
                             echo '<option value="'.$row['addressId'].'" '.(($data['addressId']==$row['addressId'])?'selected':'').'>'.$locations[count($locations)-1].'</option>';
                         }
                     }
@@ -89,6 +89,9 @@
         </div>
         <div id="NewAddressForm" style="display:none">
             <input type="button" class="button" id="ShowExistingAddress" value="Existing Address">
+            <label for="addressLine1">Ground Name</label>
+            <div class="required">Required*</div>
+            <input type="text" name="groundName" id="groundName"   placeholder="">
             <div class="HalfWidthInput">
                 <label for="addressLine1">Address Line 1</label>
                 <div class="required">Required*</div>

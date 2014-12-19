@@ -38,14 +38,13 @@ class tournaments extends Model {
         }
         return false;
     }
-    public function dataValidation($tournamentName, $sport, $start, $end){
+    public function dataValidation($tournamentName, $start, $end){
 
         if(empty($tournamentName))
             $this->addErrors('Tournament Name cannot be empty');
         if(strlen($tournamentName)>50)
             $this->addErrors('Tournament Name cannot be more than 50 characters');
-        if($sport==0)
-            $this->addErrors('Please select a sport');
+
         if(strtotime($start)>strtotime($end))
             $this->addErrors('Tournament cannot end before it starts');
 
@@ -53,18 +52,16 @@ class tournaments extends Model {
             return false;
         return true;
     }
-    public function add($tournamentName, $sport, $start, $end){
+    public function add($tournamentName , $start, $end){
         $tournamentName=trim($tournamentName);
-        $sport=intval($sport);
         $start=date('Y-m-d' , strtotime($start));
         $end=date('Y-m-d' , strtotime($end));
-        if(!$this->dataValidation($tournamentName, $sport, $start, $end))
+        if(!$this->dataValidation($tournamentName, $start, $end))
             return false;
-        $queryInsert=$this->getDB()->prepare('INSERT INTO tournaments (tournamentName, tournamentSport, tournamentStart, tournamentEnd) VALUES (:name, :sport, :start, :endTime)');
+        $queryInsert=$this->getDB()->prepare('INSERT INTO tournaments (tournamentName, tournamentStart, tournamentEnd) VALUES (:name, :start, :endTime)');
         $queryInsert->bindValue(':name',$tournamentName);
         $queryInsert->bindValue(':start',$start);
         $queryInsert->bindValue(':endTime',$end);
-        $queryInsert->bindValue(':sport',$sport, PDO::PARAM_INT);
         $queryInsert->execute();
         if($queryInsert->rowCount()>0){
             return true;
@@ -72,9 +69,8 @@ class tournaments extends Model {
         $this->addErrors('Could not add tournament to database');
         return false;
     }
-    public function update($id, $tournamentName, $sport, $start, $end){
+    public function update($id, $tournamentName, $start, $end){
         $tournamentName=trim($tournamentName);
-        $sport=intval($sport);
         $start=date('Y-m-d' , strtotime($start));
         $end=date('Y-m-d' , strtotime($end));
         if($this->getTournament($id)===false)
@@ -82,13 +78,12 @@ class tournaments extends Model {
             $this->addErrors('Invalid Tournament ID');
             return false;
         }
-        if(!$this->dataValidation($tournamentName, $sport, $start, $end))
+        if(!$this->dataValidation($tournamentName, $start, $end))
             return false;
-        $queryInsert=$this->getDB()->prepare('UPDATE tournaments SET tournamentName=:name, tournamentSport=:sport, tournamentStart=:start, tournamentEnd=:endTime WHERE tournamentId=:id LIMIT 1');
+        $queryInsert=$this->getDB()->prepare('UPDATE tournaments SET tournamentName=:name, tournamentStart=:start, tournamentEnd=:endTime WHERE tournamentId=:id LIMIT 1');
         $queryInsert->bindValue(':name',$tournamentName);
         $queryInsert->bindValue(':start',$start);
         $queryInsert->bindValue(':endTime',$end);
-        $queryInsert->bindValue(':sport',$sport, PDO::PARAM_INT);
         $queryInsert->bindValue(':id',$id, PDO::PARAM_INT);
         $queryInsert->execute();
         if($queryInsert->rowCount()>0){

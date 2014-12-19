@@ -20,7 +20,7 @@ if($this->getViewArray('ajax')===false){
     </nav>
     <table width="100%" data-sorturl="<?php echo Functions::pageLink($this->getController(),$this->getAction(),$this->getViewArray('currentPage'),$this->getViewArray('perPage'), '-order-','-by-');?>">
     <thead>
-    <tr><th width="10%" data-order="eventId">ID</th><th width="20%" data-order="eventName">Name</th><th width="20%" data-order="tournamentId">Tournament</th><th width="15%" data-order="addressId">Address</th><th width="15%" data-order="startTime">Start</th><th width="30%">Action</th></tr>
+    <tr><th width="10%" data-order="eventId">ID</th><th width="20%" data-order="eventName">Name</th><th width="20%" data-order="tournamentId">Tournament</th><th width="15%" data-order="addressId">groundName</th><th width="15%" data-order="startTime">Start</th><th width="30%">Action</th></tr>
 
     </thead>
     <tbody id="pagination-content">
@@ -35,7 +35,7 @@ if($query!==false){
                         <td>'.$row['eventId'].'</td>
                         <td>'.$this->getViewArray('EventsModel')->buildName($row['eventName'], $row['teamOne'],$row['teamTwo']).'</td>
                         <td>'.$tournamentsModel->getTournament($row['tournamentId'],'tournamentName').'</td>
-                        <td>'.$addressModel->getAddress($row['addressId'],'addressLine1').'</td>
+                        <td>'.$addressModel->getAddress($row['addressId'],'groundName').'</td>
                         <td>'.date(DB_DATETIME_FORMAT, strtotime($row['startTime'])).'</td>
                         <td><a href="'.Functions::pageLink($this->getController(),'editEvent', $row['eventId']).'" class="button">Edit</a>
                         <a class="Delete button" data-name="'.addslashes($row['eventName']).'" data-id="'.($row['eventId']).'" href="'.Functions::pageLink($this->getController(),'DeleteEvent', $row['eventId']).'">Delete</a></td>

@@ -38,10 +38,14 @@ class address extends Model {
         }
         return false;
     }
-    public function dataValidation($addressLine1, $addressLine2, $postCode, $countryId){
+    public function dataValidation($groundName, $addressLine1, $addressLine2, $postCode, $countryId){
 
         if(empty($addressLine1))
             $this->addErrors('Address Line 1 cannot be empty');
+        if(empty($groundName))
+            $this->addErrors('Address Line 1 cannot be empty');
+        if(strlen($groundName)>35)
+            $this->addErrors('Ground name cannot be more than 35 characters');
         if(strlen($addressLine1)>100)
             $this->addErrors('Address Line 1 cannot be more than 100 characters');
         if(strlen($addressLine2)>100)
@@ -54,15 +58,17 @@ class address extends Model {
             return false;
         return true;
     }
-    public function add($addressLine1, $addressLine2, $postCode, $countryId){
+    public function add($groundName, $addressLine1, $addressLine2, $postCode, $countryId){
         $addressLine1=trim($addressLine1);
         $addressLine2=trim($addressLine2);
+        $groundName=trim($groundName);
         $postCode=trim($postCode);
         $countryId=intval($countryId);
 
-        if(!$this->dataValidation($addressLine1, $addressLine2, $postCode, $countryId))
+        if(!$this->dataValidation($groundName, $addressLine1, $addressLine2, $postCode, $countryId))
             return false;
-        $queryInsert=$this->getDB()->prepare('INSERT INTO address (addressLine1, addressLine2, postCode, countryId) VALUES (:addressLine1, :addressLine2, :postCode, :country)');
+        $queryInsert=$this->getDB()->prepare('INSERT INTO address (groundName, addressLine1, addressLine2, postCode, countryId) VALUES (:groundName, :addressLine1, :addressLine2, :postCode, :country)');
+        $queryInsert->bindValue(':groundName',$groundName);
         $queryInsert->bindValue(':addressLine1',$addressLine1);
         $queryInsert->bindValue(':addressLine2',$addressLine2);
         $queryInsert->bindValue(':postCode',$postCode);
