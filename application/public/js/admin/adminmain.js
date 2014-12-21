@@ -190,7 +190,15 @@ function ajax_Delete(id){
     var url=$('.Delete[data-id="'+id+'"]').attr("href")+'/ajax/';
     $.get(url, function(data){
         if(data.return=='success'){
-            $('.Delete[data-id="'+id+'"]').parent().parent().slideUp(1000);
+            $('.Delete[data-id="'+id+'"]').parent().parent().addClass('error').find('td')
+
+                .wrapInner('<div style="display: block;" />')
+                .parent()
+                .find('td > div')
+
+                .slideUp(1000,function(){
+                    $('.Delete[data-id="'+id+'"]').parent().parent().parent().remove();
+                });
         }
         addMessage((data.return), data.msg);
 
