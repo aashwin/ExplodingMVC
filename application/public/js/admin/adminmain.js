@@ -123,9 +123,13 @@ function buildPagination(id,contentId, itemsPerPage, totalItems, linkSample){
             url: $this.attr("href")+'/ajax',
             data: {},
             success: function(data){
-                $(contentId).html(data);
+                $("html, body").animate({ scrollTop: "0px" },600);
                 history.pushState("contentLoaded", document.title, $this.attr("href"));
-                $("html, body").animate({ scrollTop: "0" },600);
+
+                $("#table-div_"+contentId.replace("#",'').replace('.','')).slideUp(600, function(){
+                    $(contentId).html(data);
+                    $("#table-div_"+contentId.replace("#",'').replace('.','')).slideDown(400);
+                });
                 currentPage=pageToGo;
                 hideLoading();
                //
@@ -136,6 +140,7 @@ function buildPagination(id,contentId, itemsPerPage, totalItems, linkSample){
     });
 }
 function pagination(id, contentId, itemsPerPage, totalItems, linkSample){
+    $(contentId).parent().wrap('<div id="table-div_'+contentId.replace("#",'').replace('.','')+'" />');
     buildPagination(id,contentId, itemsPerPage, totalItems, linkSample);
 }
 function pageSort(s){
