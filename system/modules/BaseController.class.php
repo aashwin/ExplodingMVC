@@ -13,6 +13,7 @@ class BaseController {
     private $title='',$description='';
     private $viewArray=array();
     private $action='', $request=array();
+    private $breadcrumbs=array();
     public function __construct(){
         try{
              if(DB_TYPE=='mysql')
@@ -88,5 +89,12 @@ class BaseController {
     }
     public function setRequest($s){
         $this->request=$s;
+    }
+    public function addCrumbs($k, $v){
+        $this->breadcrumbs[$k]=$v;
+        return $this;
+    }
+    public function getCrumbs(){
+        return $this->breadcrumbs;
     }
 } 

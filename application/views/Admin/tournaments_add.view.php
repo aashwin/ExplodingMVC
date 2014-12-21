@@ -6,6 +6,8 @@
  * Date: 17/11/14
  * Time: 21:49
  */
+echo $this->breadcrumbs();
+
 ?>
 <form action="<?php echo Functions::pageLink($this->getController(), $this->getAction());?>" method="POST">
     <fieldset>

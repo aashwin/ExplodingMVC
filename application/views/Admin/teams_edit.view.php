@@ -7,6 +7,8 @@
  * Time: 21:49
  */
  $data=$this->getViewArray('TeamData');
+echo $this->breadcrumbs();
+
 ?>
 <form action="<?php echo Functions::pageLink($this->getController(), $this->getAction(), $data['teamId']);?>" method="POST" enctype="multipart/form-data">
     <fieldset>

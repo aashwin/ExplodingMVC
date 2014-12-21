@@ -9,6 +9,7 @@
 $tournamentsModel=$this->loadModel('tournaments');
 $addressModel=$this->loadModel('address');
 if($this->getViewArray('ajax')===false){
+    echo $this->breadcrumbs();
 
     ?>
     <script>var currentPage=<?php echo $this->getViewArray('currentPage');?>;</script>

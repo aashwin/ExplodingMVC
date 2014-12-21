@@ -6,5 +6,6 @@
  * Date: 17/11/14
  * Time: 20:08
  */
+echo $this->breadcrumbs();
 
 ?>

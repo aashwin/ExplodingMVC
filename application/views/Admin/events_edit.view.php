@@ -7,6 +7,7 @@
  * Time: 21:49
  */
  $data=$this->getViewArray('EventData');
+echo $this->breadcrumbs();
 ?>
 <form action="<?php echo Functions::pageLink($this->getController(), $this->getAction(), $data['eventId']);?>" method="POST">
     <fieldset>

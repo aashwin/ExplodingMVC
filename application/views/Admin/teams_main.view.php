@@ -7,8 +7,10 @@
  * Time: 21:20
  */
 if($this->getViewArray('ajax')===false){
+    echo $this->breadcrumbs();
 
-?>
+
+    ?>
     <script>var currentPage=<?php echo $this->getViewArray('currentPage');?>;</script>
 <nav>
     <ul>

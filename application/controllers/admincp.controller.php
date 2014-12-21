@@ -24,6 +24,7 @@ class admincpController extends BaseController {
         }
         $this->title('Admin Panel');
         $this->setTemplateLayout('admin_default');
+        $this->addCrumbs('Admin CP',Functions::pageLink($this->getController(), 'index'));
 
     }
 
@@ -34,31 +35,7 @@ class admincpController extends BaseController {
         $this->setTemplateLayout('admin_default');
         $this->loadView('Admin', 'index');
         $this->addViewArray('page', 'index');
-
-    }
-    public function sports($page=1,$perPage=10,$order='navOrder', $by='ASC',$ajax='no'){
-
-        if($page<0){
-            $page=1;
-        }
-        if($ajax=='ajax'){
-            $this->setTemplateLayout('');
-            $this->addViewArray('ajax', true);
-
-        }else{
-            $this->addViewArray('page', 'sports');
-            $this->addViewArray('ajax', false);
-            $this->addViewArray('currentPage', $page);
-            $this->addViewArray('order', $order);
-            $this->addViewArray('by', $by);
-        }
-        $this->addViewArray('perPage', $perPage);
-        $start=($page-1)*$perPage;
-        $this->addViewArray('SportsModel', $this->loadModel('sports'));
-
-        $this->addViewArray('GetSports', $this->getViewArray('SportsModel')->getSports($start, $perPage, $order, $by));
-
-        $this->loadView('Admin', 'sports_main');
+        $this->addCrumbs('Dashboard',Functions::pageLink($this->getController(), $this->getAction()));
 
     }
     public function teams($page=1,$perPage=10,$order='teamId', $by='ASC',$ajax='no'){
@@ -83,6 +60,7 @@ class admincpController extends BaseController {
         $this->addViewArray('SportsModel', $this->loadModel('sports'));
 
         $this->addViewArray('GetTeams', $this->getViewArray('TeamsModel')->getTeams($start, $perPage, $order, $by));
+        $this->addCrumbs('Teams',Functions::pageLink($this->getController(), $this->getAction()));
 
         $this->loadView('Admin', 'teams_main');
 
@@ -107,6 +85,7 @@ class admincpController extends BaseController {
         $this->addViewArray('TournamentsModel', $this->loadModel('tournaments'));
 
         $this->addViewArray('GetTournaments', $this->getViewArray('TournamentsModel')->getTournaments($start, $perPage, $order, $by));
+        $this->addCrumbs('Tournaments',Functions::pageLink($this->getController(), $this->getAction()));
 
         $this->loadView('Admin', 'tournaments_main');
 
@@ -130,6 +109,7 @@ class admincpController extends BaseController {
         $start=($page-1)*$perPage;
         $this->addViewArray('EventsModel', $this->loadModel('events'));
         $this->addViewArray('GetEvents', $this->getViewArray('EventsModel')->getEvents($start, $perPage, $order, $by));
+        $this->addCrumbs('Events',Functions::pageLink($this->getController(), $this->getAction()));
 
         $this->loadView('Admin', 'events_main');
 
@@ -138,25 +118,7 @@ class admincpController extends BaseController {
     /**
     -- Delete Pages
      **/
-    public function deleteSport($id, $ajax='no'){
-        $sportsModel=$this->loadModel('sports');
-        if($sportsModel->delete($id)!==false){
-            $message='#ID=' . $id . ' sport has been deleted from the sports database.';
-            $error=false;
-        }else{
-            $message='Cannot delete sport.';
-            $error=true;
-        }
-        if($ajax=='no'){
-            $_SESSION[($error?'Error':'Success').'Messages'][]=$message;
-            header('Location: ' . Functions::pageLink($this->getController(), 'sports'));
-        }else{
-            echo json_encode(array('return'=>($error?'error':'success'),'msg'=>$message));
-        }
 
-
-        exit;
-    }
     public function deleteTournament($id, $ajax='no'){
         $tournamentsModel=$this->loadModel('tournaments');
         if($tournamentsModel->delete($id)!==false){
@@ -218,26 +180,7 @@ class admincpController extends BaseController {
     /**
     -- Add Pages
      **/
-    public function addSport(){
-        $sportsModel=$this->loadModel('sports');
-        $this->addViewArray('page', 'sports');
 
-        if(isset($_POST['sportName'])){
-            $sportsModel->add($_POST['sportName'], $_POST['navOrder']);
-            if($sportsModel->numErrors()>0){
-                $_SESSION['ErrorMessages']=$sportsModel->getErrors();
-                $_SESSION['FormData']=$_POST;
-                header('Location: '.Functions::pageLink($this->getController(), 'addsport'));
-                exit;
-            }
-            $_SESSION['FormData']=array();
-            $_SESSION['SuccessMessages'][]=$_POST['sportName'].' has been added to the sports database.';
-            header('Location: '.Functions::pageLink($this->getController(), 'sports'));
-            exit;
-        }
-        $this->addViewArray('NextNavOrder', $sportsModel->nextNavOrder());
-        $this->loadView('Admin', 'sports_add');
-    }
     public function addTeam(){
         $teamsModel=$this->loadModel('teams');
         $this->addViewArray('page', 'teams');
@@ -275,6 +218,8 @@ class admincpController extends BaseController {
             header('Location: '.Functions::pageLink($this->getController(), 'teams'));
             exit;
         }
+        $this->addCrumbs('Teams', Functions::pageLink($this->getController(), 'teams'))
+            ->addCrumbs('Add Team',Functions::pageLink(Functions::pageLink($this->getController(), $this->getAction())));
         $this->loadView('Admin', 'teams_add');
     }
     public function addTournament(){
@@ -294,7 +239,9 @@ class admincpController extends BaseController {
             header('Location: '.Functions::pageLink($this->getController(), 'tournaments'));
             exit;
         }
-        $this->addViewArray('SportsModel', $this->loadModel('sports'));
+        $this->addCrumbs('Tournaments', Functions::pageLink($this->getController(), 'tournaments'))
+            ->addCrumbs('Add Tournament',Functions::pageLink($this->getController(), $this->getAction()));
+
         $this->loadView('Admin', 'tournaments_add');
     }
     public function addEvent(){
@@ -324,37 +271,15 @@ class admincpController extends BaseController {
             header('Location: '.Functions::pageLink($this->getController(), 'events'));
             exit;
         }
+        $this->addCrumbs('Events', Functions::pageLink($this->getController(), 'Events'))
+            ->addCrumbs('Add Event',Functions::pageLink($this->getController(), $this->getAction()));
 
         $this->loadView('Admin', 'events_add');
     }
     /**
     -- Edit Pages
      **/
-    public function editSport($id){
-        $sportsModel=$this->loadModel('sports');
-        $this->addViewArray('page', 'sports');
 
-        if(isset($_POST['sportName'])){
-            $sportsModel->update($id, $_POST['sportName'],$_POST['navOrder']);
-            if($sportsModel->numErrors()>0){
-                $_SESSION['ErrorMessages']=$sportsModel->getErrors();
-                header('Location: '.Functions::pageLink($this->getController(), 'editSport', $id));
-                exit;
-            }
-            $_SESSION['FormData']=array();
-            $_SESSION['SuccessMessages'][]=$_POST['sportName'].'[#ID='.$id.'] has been updated to the sports database.';
-            header('Location: '.Functions::pageLink($this->getController(), 'sports'));
-            exit;
-        }
-        $this->addViewArray('SportData', $sportsModel->getSport($id));
-        if($this->getViewArray('SportData')===false)
-        {
-            $_SESSION['ErrorMessages'][]='Sport does not exist!';
-            header('Location: '.Functions::pageLink($this->getController(), 'sports'));
-            exit;
-        }
-        $this->loadView('Admin', 'sports_edit');
-    }
     public function editTournament($id){
         $tournamentsModel=$this->loadModel('tournaments');
         $this->addViewArray('page', 'tournaments');
@@ -378,6 +303,9 @@ class admincpController extends BaseController {
             header('Location: '.Functions::pageLink($this->getController(), 'tournaments'));
             exit;
         }
+        $this->addCrumbs('Tournaments', Functions::pageLink($this->getController(), 'tournaments'))
+            ->addCrumbs('Edit Tournament',Functions::pageLink($this->getController(), $this->getAction(), $id));
+
         $this->loadView('Admin', 'tournaments_edit');
     }
     public function editEvent($id){
@@ -413,6 +341,9 @@ class admincpController extends BaseController {
             header('Location: '.Functions::pageLink($this->getController(), 'events'));
             exit;
         }
+        $this->addCrumbs('Events', Functions::pageLink($this->getController(), 'events'))
+            ->addCrumbs('Edit Event',Functions::pageLink($this->getController(), $this->getAction(), $id));
+
         $this->loadView('Admin', 'events_edit');
     }
     public function editTeam($id){
@@ -467,7 +398,18 @@ class admincpController extends BaseController {
             header('Location: '.Functions::pageLink($this->getController(), 'teams'));
             exit;
         }
+        $this->addCrumbs('Teams', Functions::pageLink($this->getController(), 'teams'))
+            ->addCrumbs('Edit Team',Functions::pageLink($this->getController(), $this->getAction(), $id));
+
         $this->loadView('Admin', 'teams_edit');
+    }
+    public function breadcrumbs(){
+        $str= '<ul id="breadcrumbs">';
+        foreach($this->getCrumbs() as $k=>$v){
+            $str.= '<li><a href="'.$v.'">'.$k.'</a></li>';
+        }
+        $str.= '</ul>';
+        return $str;
     }
 
 

@@ -7,6 +7,8 @@
  * Time: 21:49
  */
 $data=$this->getViewArray('TournamentData');
+echo $this->breadcrumbs();
+
 ?>
 <form action="<?php echo Functions::pageLink($this->getController(), $this->getAction(), $data['tournamentId']);?>" method="POST">
     <fieldset>
