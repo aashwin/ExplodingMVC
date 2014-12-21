@@ -18,7 +18,7 @@ if($this->getViewArray('ajax')===false){
 
     </ul>
 </nav>
-<table width="100%" data-sorturl="<?php echo Functions::pageLink($this->getController(),$this->getAction(),$this->getViewArray('currentPage'),$this->getViewArray('perPage'), '-order-','-by-');?>">
+<table width="100%" data-inlinesave="<?php echo Functions::pageLink($this->getController(),'editTeam', '-id-', '-field-');?>" data-sorturl="<?php echo Functions::pageLink($this->getController(),$this->getAction(),$this->getViewArray('currentPage'),$this->getViewArray('perPage'), '-order-','-by-');?>">
     <thead>
     <tr><th width="10%" data-order="teamId">ID</th><th width="50%" data-order="teamName">Team Name</th><th width="25%">Action</th></tr>
 
@@ -29,12 +29,12 @@ if($this->getViewArray('ajax')===false){
         $query=$this->getViewArray('GetTeams');
         if($query!==false){
             while($row=$query->fetch()){
-               echo '<tr>
+               echo '<tr data-fid="'.$row['teamId'].'">
                         <td>'.$row['teamId'].'</td>
-                        <td>'.$row['teamName'].'</td>
+                        <td class="inline_edit" data-field="teamName">'.$row['teamName'].'</td>
 
-                        <td><a href="'.Functions::pageLink($this->getController(),'editTeam', $row['teamId']).'" class="button">Edit</a>
-                        <a class="Delete button" data-name="'.addslashes($row['teamName']).'" data-id="'.($row['teamId']).'" href="'.Functions::pageLink($this->getController(),'DeleteTeam', $row['teamId']).'">Delete</a></td>
+                        <td><a href="'.Functions::pageLink($this->getController(),'editTeam', $row['teamId']).'" class="btn_pencil button"><span class="notMobile">Edit</span></a>
+                        <a class="Delete btn_delete button" data-name="'.addslashes($row['teamName']).'" data-id="'.($row['teamId']).'" href="'.Functions::pageLink($this->getController(),'DeleteTeam', $row['teamId']).'"><span class="notMobile">Delete</span></a></td>
                         </tr>';
             }
         }

@@ -6,11 +6,14 @@
 /*Other*/
 var overlayDiv;
 var msgCounter=0;
+var inline_editing=false;
+var inline_save_url;
 var admin_settings={
     deleteMessage:'Are you sure you want to delete this?'
 }
 $(document).ready(function(){
     overlayDiv=buildOverlay();
+    inline_save_url=$("table").first().data("inlinesave");
     $(".success, .error").each(function(){
         $(this).attr("id", 'cx'+msgCounter);
         var lastCounter=msgCounter;
@@ -29,13 +32,78 @@ $(document).ready(function(){
             $("#navigation").stop().animate({'left':0,'opacity':1}, 1000);
         }
     });
-    $(document).on("click",".Delete",function(e){
-        var id=$(this).data("id");
-        var name=$(this).data("name");
-        var deleteMessage=admin_settings.deleteMessage+'<br /> <strong>Name: </strong> '+name+' - <strong>ID: </strong> '+id;
-        return showConfirmation(deleteMessage, ajax_Delete, id);
-    });
+    if(inline_save_url!=undefined){
+        $(document).on("click",".Delete",function(e){
+            var id=$(this).data("id");
+            var name=$(this).data("name");
+            var deleteMessage=admin_settings.deleteMessage+'<br /> <strong>Name: </strong> '+name+' - <strong>ID: </strong> '+id;
+            return showConfirmation(deleteMessage, ajax_Delete, id);
+        });
+        $(document).on("click",".inline_edit",function(e){
+            if($(this).hasClass('inline_editing')){return false;}
+                var currentVal = $(this).html();
+            $(this).data("defaultVal",currentVal).html("").addClass("inline_editing");
+                $("<input />").appendTo($(this))
+                    .attr(
+                    {
+                        type: 'text',
+                        name: 'inline_' + $(this).data('field'),
+                        id: 'inline_editor'
 
+                    }).val(currentVal).focus().addClass("inline_editor");
+                var editor=$('input',this);
+                $('<a id="inline_cancel" class="save_btn red_btn" />')
+                    .html("Cancel")
+                    .appendTo("body")
+                    .css({
+                        top: editor.offset().top,
+                        left: editor.offset().left
+                    }).animate({left:editor.offset().left+editor.width()-5}, 1000);
+
+        }).on("blur", '.inline_editor', function(e){
+            editor = $(this);
+            if (editor.parent().data("defaultVal") != editor.val()){
+                $("#inline_cancel").html("Saving").addClass("yellow_btn").removeClass("red_btn");
+                $.post(
+                    inline_save_url
+                        .replace('-id-', parseInt(editor.closest('tr').data('fid')))
+                        .replace('-field-', editor.parent().data("field")),
+                    {'updateValue' : editor.val()},
+                    function(data){
+                        if(data.return=='success') {
+                            var cancel_button= $("#inline_cancel");
+                            cancel_button.html("Saved").addClass("green_btn").removeClass("yellow_btn");
+                            editor.parent().removeClass("inline_editing");
+                            editor.closest('td').addClass('success');
+                            cancel_button.animate(
+                                {left:editor.parent().offset().left, opacity:0}, 1000,
+                                function(){
+                                    cancel_button.remove();
+                                });
+                            editor.parent().html(editor.val());
+
+                        }else{
+                            editor.closest('td').addClass('error');
+                            $("#inline_cancel").html("Failed").addClass("red_btn").removeClass("yellow_btn");
+                        }
+                    },
+                    "JSON"
+                );
+            }else{
+                editor.parent().removeClass("inline_editing");
+                editor.parent().html(editor.val());
+                $("#inline_cancel").fadeOut(500,function(){$(this).remove();});
+
+            }
+        }).on("click", '#inline_cancel',function(){
+
+            var editor = $("#inline_editor");
+            editor.parent().removeClass("inline_editing");
+            editor.parent().html(editor.parent().data("defaultVal"));
+            $("#inline_cancel").fadeOut(500,function(){$(this).remove();});
+        });
+
+    }
 });
 function buildOverlay(){
 

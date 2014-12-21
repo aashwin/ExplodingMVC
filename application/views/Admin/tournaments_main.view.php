@@ -17,7 +17,7 @@ if($this->getViewArray('ajax')===false){
 
         </ul>
     </nav>
-    <table width="100%" data-sorturl="<?php echo Functions::pageLink($this->getController(),$this->getAction(),$this->getViewArray('currentPage'),$this->getViewArray('perPage'), '-order-','-by-');?>">
+    <table width="100%" data-inlinesave="<?php echo Functions::pageLink($this->getController(),'editTournament', '-id-', '-field-');?>" data-sorturl="<?php echo Functions::pageLink($this->getController(),$this->getAction(),$this->getViewArray('currentPage'),$this->getViewArray('perPage'), '-order-','-by-');?>">
     <thead>
     <tr><th width="10%" data-order="tournamentId">ID</th><th width="20%" data-order="tournamentName">Name</th><th width="15%" data-order="tournamentStart">Start</th><th width="15%" data-order="tournamentEnd">End</th><th width="30%">Action</th></tr>
 
@@ -29,13 +29,13 @@ $query=$this->getViewArray('GetTournaments');
 
 if($query!==false){
     while($row=$query->fetch()){
-        echo '<tr>
+        echo '<tr data-fid="'.$row['tournamentId'].'">
                         <td>'.$row['tournamentId'].'</td>
-                        <td>'.$row['tournamentName'].'</td>
+                        <td class="inline_edit" data-field="tournamentName">'.$row['tournamentName'].'</td>
                         <td>'.date('jS M y', strtotime($row['tournamentStart'])).'</td>
                         <td>'.date('jS M y', strtotime($row['tournamentEnd'])).'</td>
-                        <td><a href="'.Functions::pageLink($this->getController(),'editTournament', $row['tournamentId']).'" class="button">Edit</a>
-                        <a class="Delete button" data-name="'.addslashes($row['tournamentName']).'" data-id="'.($row['tournamentId']).'" href="'.Functions::pageLink($this->getController(),'DeleteTournament', $row['tournamentId']).'">Delete</a></td>
+                        <td><a href="'.Functions::pageLink($this->getController(),'editTournament', $row['tournamentId']).'" class="btn_pencil button"><span class="notMobile">Edit</span></a>
+                        <a class="Delete btn_delete button" data-name="'.addslashes($row['tournamentName']).'" data-id="'.($row['tournamentId']).'" href="'.Functions::pageLink($this->getController(),'DeleteTournament', $row['tournamentId']).'"><span class="notMobile">Delete</span></a></td>
                         </tr>';
     }
 }

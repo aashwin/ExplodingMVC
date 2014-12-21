@@ -280,21 +280,32 @@ class admincpController extends BaseController {
     -- Edit Pages
      **/
 
-    public function editTournament($id){
+    public function editTournament($id, $field='*'){
         $tournamentsModel=$this->loadModel('tournaments');
         $this->addViewArray('page', 'tournaments');
 
-        if(isset($_POST['tournamentName'])){
-            $tournamentsModel->update($id, $_POST['tournamentName'],$_POST['tournamentStart'],$_POST['tournamentEnd']);
-            if($tournamentsModel->numErrors()>0){
-                $_SESSION['ErrorMessages']=$tournamentsModel->getErrors();
-                header('Location: '.Functions::pageLink($this->getController(), 'editTournament', $id));
+        if(isset($_POST['tournamentName']) || $field!='*'){
+            if($field=='*') {
+                $tournamentsModel->update($id, $_POST['tournamentName'], $_POST['tournamentStart'], $_POST['tournamentEnd']);
+
+                if ($tournamentsModel->numErrors() > 0) {
+                    $_SESSION['ErrorMessages'] = $tournamentsModel->getErrors();
+                    header('Location: ' . Functions::pageLink($this->getController(), 'editTournament', $id));
+                    exit;
+                }
+                $_SESSION['FormData'] = array();
+                $_SESSION['SuccessMessages'][] = $_POST['tournamentName'] . '[#ID=' . $id . '] has been updated to the tournaments database.';
+                header('Location: ' . Functions::pageLink($this->getController(), 'tournaments'));
                 exit;
+            }else{ //If Inline Editor request
+                if($tournamentsModel->updateField($id, $field, $_POST['updateValue'])){
+                    echo json_encode(array('return'=>('success'),'msg'=>'Update Successful'));
+                    exit;
+                }else {
+                    echo json_encode(array('return'=>('error'),'msg'=>'Failed to update field!'));
+                    exit;
+                }
             }
-            $_SESSION['FormData']=array();
-            $_SESSION['SuccessMessages'][]=$_POST['tournamentName'].'[#ID='.$id.'] has been updated to the tournaments database.';
-            header('Location: '.Functions::pageLink($this->getController(), 'tournaments'));
-            exit;
         }
         $this->addViewArray('TournamentData', $tournamentsModel->getTournament($id));
         if($this->getViewArray('TournamentData')===false)
@@ -346,50 +357,61 @@ class admincpController extends BaseController {
 
         $this->loadView('Admin', 'events_edit');
     }
-    public function editTeam($id){
+    public function editTeam($id, $field='*'){
         $this->addViewArray('page', 'teams');
         $this->addViewArray('TeamsModel', $this->loadModel('teams'));
 
-        if(isset($_POST['teamName'])){
-            if($_FILES['teamFlag']['error']==0) {
-                if($_POST['flagFile']!='') {
-                    unlink(TEAM_FLAG_DIR . $_POST['flagFile']);
-                    unlink(TEAM_FLAG_DIR . 'originals/' . $_POST['flagFile']);
-                }
-                $File = new FileUpload(TEAM_FLAG_DIR);
-                $File->setMaxSize(0.1); //Max 100kb
-                $File->setBasicType('image'); //Images only.
-                $File->setMaxDimension(240, 240);
-                $File->setOptimize(true);
-                $File->keepOriginal(true, TEAM_FLAG_DIR.'originals/');
-                $File->setFile($_FILES['teamFlag']);
+        if(isset($_POST['teamName']) || $field!='*'){
+            if($field=='*'){
+                if($_FILES['teamFlag']['error']==0) {
+                    if($_POST['flagFile']!='') {
+                        unlink(TEAM_FLAG_DIR . $_POST['flagFile']);
+                        unlink(TEAM_FLAG_DIR . 'originals/' . $_POST['flagFile']);
+                    }
+                    $File = new FileUpload(TEAM_FLAG_DIR);
+                    $File->setMaxSize(0.1); //Max 100kb
+                    $File->setBasicType('image'); //Images only.
+                    $File->setMaxDimension(240, 240);
+                    $File->setOptimize(true);
+                    $File->keepOriginal(true, TEAM_FLAG_DIR.'originals/');
+                    $File->setFile($_FILES['teamFlag']);
 
-                $uploadFlag = $File->uploadFile();
-                if($uploadFlag['error']===false) {
-                    $teamFlag=$uploadFlag['filename'];
-                }else {
-                    $teamFlag = '';
-                }
-            }elseif($_POST['removeFlag']==1){
-                if($_POST['flagFile']!='') {
-                    unlink(TEAM_FLAG_DIR . $_POST['flagFile']);
-                    unlink(TEAM_FLAG_DIR . 'originals/' . $_POST['flagFile']);
-                }
+                    $uploadFlag = $File->uploadFile();
+                    if($uploadFlag['error']===false) {
+                        $teamFlag=$uploadFlag['filename'];
+                    }else {
+                        $teamFlag = '';
+                    }
+                }elseif($_POST['removeFlag']==1){
+                    if($_POST['flagFile']!='') {
+                        unlink(TEAM_FLAG_DIR . $_POST['flagFile']);
+                        unlink(TEAM_FLAG_DIR . 'originals/' . $_POST['flagFile']);
+                    }
                     $teamFlag='';
 
-            }else {
-                $teamFlag=$_POST['flagFile'];
-            }
-            $this->getViewArray('TeamsModel')->update($id, $_POST['teamName'], $teamFlag);
-            if($this->getViewArray('TeamsModel')->numErrors()>0){
-                $_SESSION['ErrorMessages']= $this->getViewArray('TeamsModel')->getErrors();
-                header('Location: '.Functions::pageLink($this->getController(), 'editTeam', $id));
+                }else {
+                    $teamFlag=$_POST['flagFile'];
+                }
+                $this->getViewArray('TeamsModel')->update($id, $_POST['teamName'], $teamFlag);
+                if($this->getViewArray('TeamsModel')->numErrors()>0){
+                    $_SESSION['ErrorMessages']= $this->getViewArray('TeamsModel')->getErrors();
+                    header('Location: '.Functions::pageLink($this->getController(), 'editTeam', $id));
+                    exit;
+                }
+                $_SESSION['FormData']=array();
+                $_SESSION['SuccessMessages'][]=$_POST['teamName'].'[#ID='.$id.'] has been updated to the teams database.';
+                header('Location: '.Functions::pageLink($this->getController(), 'teams'));
                 exit;
+            }else{ //If Inline Editor request
+                if($this->getViewArray('TeamsModel')->updateField($id, $field, $_POST['updateValue'])){
+                    echo json_encode(array('return'=>('success'),'msg'=>'Update Successful'));
+                    exit;
+                }else {
+                    echo json_encode(array('return'=>('error'),'msg'=>'Failed to update field!'));
+                    exit;
+                }
             }
-            $_SESSION['FormData']=array();
-            $_SESSION['SuccessMessages'][]=$_POST['teamName'].'[#ID='.$id.'] has been updated to the teams database.';
-            header('Location: '.Functions::pageLink($this->getController(), 'teams'));
-            exit;
+
         }
         $this->addViewArray('TeamData', $this->getViewArray('TeamsModel')->getTeam($id));
         if($this->getViewArray('TeamData')===false)

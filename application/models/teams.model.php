@@ -93,4 +93,30 @@ class teams extends Model {
         $this->addErrors('Could not update team to database');
         return false;
     }
+    public function updateField($id, $field,$val){
+        if($this->getTeam($id)===false)
+        {
+            $this->addErrors('Invalid Team ID');
+            return false;
+        }
+        $val=trim($val);
+        if($field=='teamName') {
+            if (empty($val))
+                return false;
+            if (strlen($val) > 40)
+                return false;
+        }
+        if($field!='teamName'){
+            return false;
+        }
+        $queryInsert=$this->getDB()->prepare("UPDATE teams SET $field=:val WHERE teamId=:id LIMIT 1");
+        $queryInsert->bindValue(':val',$val);
+        $queryInsert->bindValue(':id',$id);
+        $queryInsert->execute();
+        if($queryInsert->rowCount()>0){
+            return true;
+        }
+        $this->addErrors('Could not update team to database');
+        return false;
+    }
 } 

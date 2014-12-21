@@ -100,4 +100,30 @@ class tournaments extends Model {
         return false;
 
     }
+    public function updateField($id, $field,$val){
+        if($this->getTournament($id)===false)
+        {
+            $this->addErrors('Invalid Tournament ID');
+            return false;
+        }
+        $val=trim($val);
+        if($field=='tournamentName') {
+            if (empty($val))
+                return false;
+            if (strlen($val) > 50)
+                return false;
+        }
+        if($field!='tournamentName'){
+            return false;
+        }
+        $queryInsert=$this->getDB()->prepare("UPDATE tournaments SET $field=:val WHERE tournamentId=:id LIMIT 1");
+        $queryInsert->bindValue(':val',$val);
+        $queryInsert->bindValue(':id',$id);
+        $queryInsert->execute();
+        if($queryInsert->rowCount()>0){
+            return true;
+        }
+        $this->addErrors('Could not update tournaments to database');
+        return false;
+    }
 } 

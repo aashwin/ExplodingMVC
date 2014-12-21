@@ -38,8 +38,8 @@ if($query!==false){
                         <td>'.$tournamentsModel->getTournament($row['tournamentId'],'tournamentName').'</td>
                         <td>'.$addressModel->getAddress($row['addressId'],'groundName').'</td>
                         <td>'.date(DB_DATETIME_FORMAT, strtotime($row['startTime'])).'</td>
-                        <td><a href="'.Functions::pageLink($this->getController(),'editEvent', $row['eventId']).'" class="button">Edit</a>
-                        <a class="Delete button" data-name="'.addslashes($row['eventName']).'" data-id="'.($row['eventId']).'" href="'.Functions::pageLink($this->getController(),'DeleteEvent', $row['eventId']).'">Delete</a></td>
+                        <td><a href="'.Functions::pageLink($this->getController(),'editEvent', $row['eventId']).'" class="button btn_pencil"><span class="notMobile">Edit</span></a>
+                        <a class="Delete btn_delete button" data-name="'.addslashes($row['eventName']).'" data-id="'.($row['eventId']).'" href="'.Functions::pageLink($this->getController(),'DeleteEvent', $row['eventId']).'"><span class="notMobile">Delete</span></a></td>
                         </tr>';
     }
 }
