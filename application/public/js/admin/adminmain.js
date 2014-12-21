@@ -98,16 +98,12 @@ function addMessage(error, msg){
     },5000);
     ++msgCounter;
 }
-function pagination(id, contentId, itemsPerPage, totalItems, linkSample){
-
-    var totalPages=Math.ceil(parseInt(totalItems)/parseInt(itemsPerPage));
-
+function buildPagination(id,contentId, itemsPerPage, totalItems, linkSample){
     $id=$(id);
     $id.html("");
-    var link='';
+    var totalPages=Math.ceil(parseInt(totalItems)/parseInt(itemsPerPage));
     if(currentPage>1){
-        link=(linkSample.replace('-page-', currentPage-1));
-        $id.append(' <a href="'+link+'" data-page="'+(currentPage-1)+'" class="paginator_page button">&lt;&lt; Previous</a> ');
+        $id.append(' <a href="'+linkSample.replace('-page-', currentPage-1)+'" data-page="'+(currentPage-1)+'" class="paginator_page button">&lt;&lt; Previous</a> ');
     }
     for(var i=1;i<=totalPages;++i){
         $id.append(' <a href="'+(linkSample.replace('-page-', i))+'" data-page="'+i+'" class="notMobile paginator_page button">'+i+'</a> ');
@@ -119,7 +115,7 @@ function pagination(id, contentId, itemsPerPage, totalItems, linkSample){
         event.preventDefault();
         var pageToGo=$(this).data("page");
         if(pageToGo==currentPage){return false;}
-        
+
         $this=$(this);
         showLoading();
         $.ajax({
@@ -130,14 +126,17 @@ function pagination(id, contentId, itemsPerPage, totalItems, linkSample){
                 $(contentId).html(data);
                 history.pushState("contentLoaded", document.title, $this.attr("href"));
                 $("html, body").animate({ scrollTop: "0" },600);
-				currentPage=pageToGo;
+                currentPage=pageToGo;
                 hideLoading();
+               //
+               buildPagination(id,contentId, itemsPerPage, totalItems, linkSample);
             }
         });
-
-       pagination(id,contentId, itemsPerPage, totalItems, linkSample);
         return false;
     });
+}
+function pagination(id, contentId, itemsPerPage, totalItems, linkSample){
+    buildPagination(id,contentId, itemsPerPage, totalItems, linkSample);
 }
 function pageSort(s){
     $(s).each(function(){
