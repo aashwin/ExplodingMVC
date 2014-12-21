@@ -73,6 +73,11 @@ class Functions {
         return $ip;
 
     }
+    public static function getCurrentURL(){
+        return ( $_SERVER["HTTPS"] != 'on' ) ? 'http://'.$_SERVER["SERVER_NAME"] :  'https://'.$_SERVER["SERVER_NAME"]
+                 .( $_SERVER["SERVER_PORT"] !== 80 ) ? ":".$_SERVER["SERVER_PORT"] : ""
+                    .$_SERVER["REQUEST_URI"];
+    }
     public static function getTimeAsInt($months=0, $days=0, $hours=0, $minutes=0, $seconds=0){
         return ($seconds+($minutes*60)+($hours*3600)+($days*3600*24)+($months*3600*24*31));
     }

@@ -8,19 +8,18 @@
  */
 
 class admincpController extends BaseController {
-    public $userModel=null;
+    private $userModel=null;
     public function __construct(){
         parent::__construct();
         $this->userModel=$this->loadModel('user');
-        $this->userModel->login('aashwin','nontoxic');
-        $this->userModel->loginSession();
+
         if(!$this->userModel->isLoggedIn()) {
-            $this->loadView('ErrorPages', 'NoPermission');
-            return;
+           header("Location: ".Functions::pageLink('User', 'Login'));
+            exit;
         }
         if(!$this->userModel->isLoggedInAdmin()){
             $this->loadView('ErrorPages', 'NoPermission');
-            return;
+            exit;
         }
         $this->title('Admin Panel');
         $this->setTemplateLayout('admin_default');

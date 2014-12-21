@@ -1,0 +1,27 @@
+/**
+* Site URL
+**/
+Frontend: http://www.explodingweb.com/WAD/
+
+Admin CP: http://www.explodingweb.com/WAD/admincp/
+
+/**
+* Admin Login
+**/
+Username: x
+Password: x
+
+/**
+* 3rd Party products used
+**/
+Google Maps API: https://developers.google.com/maps/
+jQuery + jQuery UI (Javascript Framework): http://jquery.com
+Glyphicons (couple of icons used) : http://glyphicons.com
+DateTimePicker Plugin (Plugin for jQuery UI, adds support to Time instead of just date):  http://trentrichardson.com/examples/timepicker/
+HTML5Shiv: http://html5shiv.googlecode.com
+CSS3 Media Queries Support: http://css3-mediaqueries-js.googlecode.com
+
+/**
+* Other Details
+**/
+The PHP MVC Framework was built by me.

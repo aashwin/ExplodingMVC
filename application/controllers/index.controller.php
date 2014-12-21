@@ -15,4 +15,5 @@ class indexController extends BaseController
         $this->setTemplateLayout('default');
         $this->loadView('Index', 'Index');
     }
+
 }
