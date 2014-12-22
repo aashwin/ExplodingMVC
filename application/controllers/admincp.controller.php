@@ -6,7 +6,10 @@
  * Date: 17/11/14
  * Time: 19:26
  */
-
+//TODO: Add User
+//TODO: Edit User
+//TODO: FILTER RESULTS in TABLE
+//TODO:
 class admincpController extends BaseController {
     public $userModel=null;
     public function __construct(){
@@ -89,6 +92,31 @@ class admincpController extends BaseController {
         $this->loadView('Admin', 'tournaments_main');
 
     }
+    public function users($page=1,$perPage=10,$order='username', $by='ASC', $ajax='no'){
+        if($page<0){
+            $page=1;
+        }
+        if($ajax=='ajax'){
+            $this->setTemplateLayout('');
+            $this->addViewArray('ajax', true);
+
+        }else{
+            $this->addViewArray('page', 'users');
+            $this->addViewArray('ajax', false);
+            $this->addViewArray('currentPage', $page);
+            $this->addViewArray('order', $order);
+            $this->addViewArray('by', $by);
+        }
+        $this->addViewArray('perPage', $perPage);
+        $start=($page-1)*$perPage;
+        $this->addViewArray('UsersModel', $this->loadModel('users'));
+
+        $this->addViewArray('GetUsers', $this->getViewArray('UsersModel')->getUsers($start, $perPage, $order, $by));
+        $this->addCrumbs('Users',Functions::pageLink($this->getController(), $this->getAction()));
+
+        $this->loadView('Admin', 'users_main');
+
+    }
     public function events($page=1,$perPage=10,$order='eventName', $by='ASC', $ajax='no'){
         if($page<0){
             $page=1;
@@ -130,6 +158,25 @@ class admincpController extends BaseController {
         if($ajax=='no'){
             $_SESSION[($error?'Error':'Success').'Messages'][]=$message;
             header('Location: ' . Functions::pageLink($this->getController(), 'tournaments'));
+        }else{
+            echo json_encode(array('return'=>($error?'error':'success'),'msg'=>$message));
+        }
+
+
+        exit;
+    }
+    public function deleteUser($id, $ajax='no'){
+        $model=$this->loadModel('users');
+        if($model->delete($id)!==false){
+            $message='#ID=' . $id . ' user has been deleted from the users database.';
+            $error=false;
+        }else{
+            $message='Cannot delete user.';
+            $error=true;
+        }
+        if($ajax=='no'){
+            $_SESSION[($error?'Error':'Success').'Messages'][]=$message;
+            header('Location: ' . Functions::pageLink($this->getController(), 'users'));
         }else{
             echo json_encode(array('return'=>($error?'error':'success'),'msg'=>$message));
         }
