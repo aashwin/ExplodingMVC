@@ -52,3 +52,19 @@ font-size:11px;
     top: 0px;
     left: 0;
 }
+.grid_med_1,.grid_med_2,.grid_med_3,.grid_med_4, .grid_med_5, .grid_med_6, .grid_med_7, .grid_med_8, .grid_med_9, .grid_med_10, .grid_med_11, .grid_med_12{
+    display:inline-block;
+    position:relative;
+    min-height: 1px;
+    float:left;
+    padding:0 2px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.grid_med_12{
+    width:100%;
+}
+.grid_med_6{
+    width:50%;
+}

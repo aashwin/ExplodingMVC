@@ -6,20 +6,26 @@ $(document).ready(function(){
     placeholderSupport=document.createElement('input');
     placeholderSupport='placeholder' in placeholderSupport;
     if(placeholderSupport){
+        var acceptInputs='input[type=text],input[type=password],input[type=date]';
         $(".field").each(function(){
             var $label= $("label", $(this));
-            $label.animate({opacity:0, top:'6px'},500);
 
-            $("input", $(this)).keyup(function(){
-                if($(this).val()!=''){
-                    $label.animate({opacity:1, top:'-5px'},500);
-                }else{
-                    $label.animate({opacity:0, top:'6px'},500);
-
-                }
-            }).attr("placeholder", $label.html());
+            $(this).on('change keyup', 'input', function(){doLabelAnimate($(this),$label);});
+            if($(acceptInputs,this).attr("placeholder", $label.html()).val()!=''){
+                doLabelAnimate($(acceptInputs,this),$label);
+            }else{
+                $label.animate({opacity:0, top:'6px'},500);
+            }
 
         });
     }
 
 });
+function doLabelAnimate($this,$label){
+    if($this.val()!=''){
+        $label.animate({opacity:1, top:'-9px'},500);
+    }else{
+        $label.animate({opacity:0, top:'6px'},500);
+
+    }
+}

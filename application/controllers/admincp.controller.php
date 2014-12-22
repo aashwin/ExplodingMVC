@@ -14,7 +14,7 @@ class admincpController extends BaseController {
         $this->userModel=$this->loadModel('user');
 
         if(!$this->userModel->isLoggedIn()) {
-           header("Location: ".Functions::pageLink('User', 'Login'));
+           header("Location: ".Functions::pageLink('User', 'Login', 'false', 'nopermission'));
             exit;
         }
         if(!$this->userModel->isLoggedInAdmin()){

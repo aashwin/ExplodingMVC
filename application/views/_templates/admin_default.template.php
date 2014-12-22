@@ -21,7 +21,7 @@ $viewArray=$this->getViewArray();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<?php echo WWW_PUBLIC;?>/css/adminmain.css" rel="stylesheet" type="text/css">
     <link  href="<?php echo WWW_PUBLIC;?>/css/admin_animations.css"  rel="stylesheet" type="text/css">
-    <link href="<?php echo WWW_PUBLIC;?>/css/admin_medium.css" media="only screen and (max-width: 1000px)" rel="stylesheet" type="text/css">
+    <link href="<?php echo WWW_PUBLIC;?>/css/admin_medium.css" media="only screen and (min-width: 600px)" rel="stylesheet" type="text/css">
     <link href="<?php echo WWW_PUBLIC;?>/css/admin_mobile.css" media="only screen and (max-width: 599px)" rel="stylesheet" type="text/css">
     <link href="<?php echo WWW_PUBLIC;?>/css/jquery-ui.css" rel="stylesheet" type="text/css">
     <script>
@@ -71,6 +71,6 @@ $viewArray=$this->getViewArray();
         $this->getView($view, $page); ?>
     </section>
     <footer>Copyright <?php echo date('Y');?> &copy; Aashwin</footer>
-
+<script type="text/javascript" src="<?php echo WWW_PUBLIC;?>/js/all.js"></script>
 </body>
 </html>

@@ -29,11 +29,23 @@ td{
 .notMobile{
     display:none;
 }
-.HalfWidthInput{
-    width:100%;
-    display:inline-block;
-    margin-left:0px !important;
-}
+
 #container nav li a:hover, input[type='submit']:hover, .button:hover{
     border:none;
+}
+.grid_mob_1,.grid_mob_2,.grid_mob_3,.grid_mob_4, .grid_mob_5, .grid_mob_6, .grid_mob_7, .grid_mob_8, .grid_mob_9, .grid_mob_10, .grid_mob_11, .grid_mob_12{
+    display:inline-block;
+    position:relative;
+    min-height: 1px;
+    float:left;
+    padding:0 2px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.grid_mob_12{
+    width:100%;
+}
+.grid_mob_6{
+    width:50%;
 }

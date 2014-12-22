@@ -98,18 +98,20 @@ header nav .left{
     background:#f6f6f6;
 }
 fieldset{
-    border:1px solid #ddd;
+    border:1px solid #eee;
     padding:1%;
     border-radius:10px;
+
 }
 legend{
-    background:#ccc;
+    background:#eee;
     text-shadow:1px 1px #fff;
-    padding:10px 30px;
+    padding:5px 30px;
     border-radius:10px;
     color:#333;
+    margin-bottom:5px;
 }
-label{
+/*label{
     width:55%;
     display:inline-block;
     padding:10px 1%;
@@ -120,7 +122,7 @@ label{
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 
-}
+}*/
 .HalfWidthInput{
     width:49%;
     display:inline-block;
@@ -158,12 +160,12 @@ input[type='text'],input[type='button'],input[type='password'],input[type='file'
     padding: 10px 1% !important;
     outline:none;
     border:1px solid #ccc;
-    width:98%;
+    width:100%;
     border-radius:10px;
     margin-bottom:10px;
-    box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    -webkit-box-sizing:content-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     -webkit-appearance: none;
     appearance: none;
     -moz-appearance:none;
@@ -181,6 +183,28 @@ select{
     margin-left:10px;
     font-size:11px;
     color:#C00;
+    position:absolute;
+    top:-6px;
+    background:#fff;
+    right:10px;
+}
+.field{
+    position:relative;
+    display:inline-block;
+
+}
+
+.field label{
+    font-size: 12px;
+    font-style:italic;
+    position: absolute;
+    padding:3px;
+    top: -9px;
+    background:#fff;
+    left: 14px;
+    color: #555;
+    text-shadow:1px 1px #eee;
+
 }
 
 .error{
@@ -400,4 +424,10 @@ footer{width:100%;padding:10px 0;text-align: center;font-size:12px;}
     background-image: url('../images/admin/bin_delete.png');
     background-repeat: no-repeat;
     background-position: 5px center;
+}
+
+/*GRID*/
+
+.grid_desktop_12{
+    width:100%;
 }
