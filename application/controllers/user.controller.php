@@ -9,22 +9,25 @@
 
 class userController extends BaseController {
 
-    public function login($ajax=false)
+    public function login($ajax=false,$permission=false)
     {
         $user=$this->loadModel('user');
-        if($user->isLoggedIn()){
+        $this->addViewArray('permission', $permission);
+        if($permission=='nopermission'){
+            $user->logout();
+        }else if($user->isLoggedIn()){
             header("Location: ".Functions::pageLink());
             exit;
         }
         if(isset($_POST['username']) && isset($_POST['password'])){
             if($user->login($_POST['username'], $_POST['password'], $_POST['rememberMe'])){
-                if($ajax!==false){
+                if($ajax=='ajax'){
                     echo json_encode(array('return'=>'success','url'=>Functions::pageLink()));
                 }else{
                     header("Location: ".Functions::pageLink());
                 }
             }else{
-                if($ajax!==false){
+                if($ajax=='ajax'){
                     echo json_encode(array('return'=>'error','errors'=> $user->getErrors()));
                 }else{
                     header("Location: ".Functions::pageLink($this->getController(), $this->getAction()));
@@ -36,6 +39,11 @@ class userController extends BaseController {
         $this->title("Login");
         $this->loadView('Index', 'login');
     }
+    public function logout(){
+        $this->loadModel('user')->logout();
+        header("Location: ".Functions::pageLink());
+        exit;
+    }
     public function register()
     {
         $this->title("Register");
@@ -44,8 +52,8 @@ class userController extends BaseController {
     }
     public function noPermission()
     {
-        $this->title("No Permission to access this page!");
-        $this->setTemplateLayout('default');
-        $this->loadView('Index', 'nopermission');
+        $this->loadModel('user')->logout();
+        header("Location: ".Functions::pageLink($this->getController(), 'login'));
+        exit;
     }
 } 

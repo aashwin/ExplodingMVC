@@ -50,7 +50,7 @@ $viewArray=$this->getViewArray();
             </ul>
             <ul class="right">
                 <li><span>Hello <?php echo $this->userModel->loggedInUserData('username');?></span></li>
-                <li><a href="">Logout</a></li>
+                <li><a href="<?php echo Functions::pageLink('user', 'logout');?>">Logout</a></li>
             </ul>
         </nav>
     </header>

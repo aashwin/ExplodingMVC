@@ -32,24 +32,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="admincp.controller.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="admincp.controller.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/admincp.controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.15665796" vertical-offset="0" max-vertical-offset="5955">
-              <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+            <state vertical-scroll-proportion="-6.875" vertical-offset="45" max-vertical-offset="5955">
+              <caret line="20" column="76" selection-start-line="20" selection-start-column="76" selection-end-line="20" selection-end-column="76" />
               <folding>
-                <element signature="e#793#827#0#PHP" expanded="false" />
+                <element signature="e#830#864#0#PHP" expanded="false" />
                 <element signature="n#editEvent#0;n#admincpController#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.controller.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="user.controller.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/controllers/user.controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="750">
-              <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.45169714" vertical-offset="7" max-vertical-offset="870">
+              <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -58,8 +58,8 @@
       <file leaf-file-name="user.model.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/models/user.model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="4230">
-              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            <state vertical-scroll-proportion="-2.18" vertical-offset="26" max-vertical-offset="4230">
+              <caret line="15" column="26" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="26" />
               <folding>
                 <marker date="1419213932000" expanded="true" signature="7378:7651" placeholder="INSERT INTO ..." />
                 <marker date="1419213932000" expanded="true" signature="8320:8394" placeholder="SELECT userI..user_login..." />
@@ -89,10 +89,11 @@
       <file leaf-file-name="login.view.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/Index/login.view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.75" vertical-offset="405" max-vertical-offset="1410">
-              <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+            <state vertical-scroll-proportion="-1.25" vertical-offset="675" max-vertical-offset="1500">
+              <caret line="47" column="65" selection-start-line="47" selection-start-column="65" selection-end-line="47" selection-end-column="65" />
               <folding>
                 <element signature="e#6#116#0#PHP" expanded="true" />
+                <marker date="1419214516000" expanded="true" signature="2016:2161" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -113,8 +114,8 @@
       <file leaf-file-name="admin_default.template.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/_templates/admin_default.template.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-28.75" vertical-offset="75" max-vertical-offset="1230">
-              <caret line="51" column="59" selection-start-line="51" selection-start-column="50" selection-end-line="51" selection-end-column="59" />
+            <state vertical-scroll-proportion="-7.5" vertical-offset="600" max-vertical-offset="1230">
+              <caret line="52" column="80" selection-start-line="52" selection-start-column="80" selection-end-line="52" selection-end-column="80" />
               <folding />
             </state>
           </provider>
@@ -181,7 +182,6 @@
         <option value="$PROJECT_DIR$/application/models/sports.model.php" />
         <option value="$PROJECT_DIR$/application/public/css/admin_animations.css" />
         <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/application/views/_templates/admin_default.template.php" />
         <option value="$PROJECT_DIR$/application/public/js/admin/teams.js" />
         <option value="$PROJECT_DIR$/application/public/js/admin/tournaments.js" />
         <option value="$PROJECT_DIR$/application/public/js/admin/events.js" />
@@ -211,11 +211,12 @@
         <option value="$PROJECT_DIR$/system/modules/BaseController.class.php" />
         <option value="$PROJECT_DIR$/application/public/css/adminmain.css" />
         <option value="$PROJECT_DIR$/application/public/css/login.css" />
-        <option value="$PROJECT_DIR$/application/views/Index/login.view.php" />
         <option value="$PROJECT_DIR$/application/public/js/all.js" />
-        <option value="$PROJECT_DIR$/application/controllers/user.controller.php" />
+        <option value="$PROJECT_DIR$/application/views/_templates/admin_default.template.php" />
         <option value="$PROJECT_DIR$/application/models/user.model.php" />
+        <option value="$PROJECT_DIR$/application/views/Index/login.view.php" />
         <option value="$PROJECT_DIR$/application/controllers/admincp.controller.php" />
+        <option value="$PROJECT_DIR$/application/controllers/user.controller.php" />
       </list>
     </option>
   </component>
@@ -1030,17 +1031,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/public/js/admin/adminmain.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1134" max-vertical-offset="4260">
-          <caret line="72" column="52" selection-start-line="72" selection-start-column="52" selection-end-line="72" selection-end-column="52" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <marker date="1419194172000" expanded="false" signature="10137:10152" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/public/js/all.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
@@ -1056,16 +1046,6 @@
         <state vertical-scroll-proportion="-0.9583333" vertical-offset="322" max-vertical-offset="945">
           <caret line="29" column="29" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="29" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/Index/login.view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.75" vertical-offset="405" max-vertical-offset="1410">
-          <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
-          <folding>
-            <element signature="e#6#116#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1085,18 +1065,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/user.controller.php">
+    <entry file="file://$PROJECT_DIR$/system/modules/BaseController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="750">
-          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+        <state vertical-scroll-proportion="-3.5416667" vertical-offset="545" max-vertical-offset="1575">
+          <caret line="42" column="29" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="29" />
+          <folding>
+            <element signature="e#6#126#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/_templates/admin_default.template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5" vertical-offset="600" max-vertical-offset="1230">
+          <caret line="52" column="80" selection-start-line="52" selection-start-column="80" selection-end-line="52" selection-end-column="80" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/public/js/admin/adminmain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1134" max-vertical-offset="4260">
+          <caret line="72" column="52" selection-start-line="72" selection-start-column="52" selection-end-line="72" selection-end-column="52" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1419194172000" expanded="false" signature="10137:10152" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/Index/login.view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.25" vertical-offset="675" max-vertical-offset="1500">
+          <caret line="47" column="65" selection-start-line="47" selection-start-column="65" selection-end-line="47" selection-end-column="65" />
+          <folding>
+            <element signature="e#6#116#0#PHP" expanded="true" />
+            <marker date="1419214516000" expanded="true" signature="2016:2161" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/user.model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="4230">
-          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        <state vertical-scroll-proportion="-2.18" vertical-offset="26" max-vertical-offset="4230">
+          <caret line="15" column="26" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="26" />
           <folding>
             <marker date="1419213932000" expanded="true" signature="7378:7651" placeholder="INSERT INTO ..." />
             <marker date="1419213932000" expanded="true" signature="8320:8394" placeholder="SELECT userI..user_login..." />
@@ -1110,32 +1122,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/_templates/admin_default.template.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-28.75" vertical-offset="75" max-vertical-offset="1230">
-          <caret line="51" column="59" selection-start-line="51" selection-start-column="50" selection-end-line="51" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/system/modules/BaseController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.5416667" vertical-offset="545" max-vertical-offset="1575">
-          <caret line="42" column="29" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="29" />
-          <folding>
-            <element signature="e#6#126#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/admincp.controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15665796" vertical-offset="0" max-vertical-offset="5955">
-          <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+        <state vertical-scroll-proportion="-6.875" vertical-offset="45" max-vertical-offset="5955">
+          <caret line="20" column="76" selection-start-line="20" selection-start-column="76" selection-end-line="20" selection-end-column="76" />
           <folding>
-            <element signature="e#793#827#0#PHP" expanded="false" />
+            <element signature="e#830#864#0#PHP" expanded="false" />
             <element signature="n#editEvent#0;n#admincpController#0;n#!!top" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/user.controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45169714" vertical-offset="7" max-vertical-offset="870">
+          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>

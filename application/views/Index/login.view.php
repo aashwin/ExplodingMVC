@@ -43,6 +43,12 @@
                <input type="password" id="password"name="password" value="" />
            </div>
            <label for="rememberMe" class="rememberMe"><input type="checkbox" value="1" name="rememberMe" id="rememberMe" /> Remember?</label><input class="button" type="submit" id="LogMeIn" value="Login now" />
+           <?php
+           if($this->getViewArray("permission")=='nopermission'){
+            echo '<div class="errors">You don\'t have permission! </div>';
+           }
+
+           ?>
        </form>
     </div>
 <script type="text/javascript" src="<?php echo WWW_PUBLIC;?>/js/all.js"></script>

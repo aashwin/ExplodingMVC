@@ -18,7 +18,7 @@ class admincpController extends BaseController {
             exit;
         }
         if(!$this->userModel->isLoggedInAdmin()){
-            $this->loadView('ErrorPages', 'NoPermission');
+            header("Location: ".Functions::pageLink('User', 'Login', 'false', 'nopermission'));
             exit;
         }
         $this->title('Admin Panel');
