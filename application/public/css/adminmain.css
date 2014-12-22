@@ -163,7 +163,7 @@ input[type='text'],input[type='button'],input[type='password'],input[type='file'
     margin-bottom:10px;
     box-sizing: content-box;
     -moz-box-sizing: content-box;
-    -webkit-box-sizing::content-box;
+    -webkit-box-sizing:content-box;
     -webkit-appearance: none;
     appearance: none;
     -moz-appearance:none;

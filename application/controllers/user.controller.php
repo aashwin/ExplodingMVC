@@ -9,8 +9,30 @@
 
 class userController extends BaseController {
 
-    public function login($backUrl='')
+    public function login($ajax=false)
     {
+        $user=$this->loadModel('user');
+        if($user->isLoggedIn()){
+            header("Location: ".Functions::pageLink());
+            exit;
+        }
+        if(isset($_POST['username']) && isset($_POST['password'])){
+            if($user->login($_POST['username'], $_POST['password'], $_POST['rememberMe'])){
+                if($ajax!==false){
+                    echo json_encode(array('return'=>'success','url'=>Functions::pageLink()));
+                }else{
+                    header("Location: ".Functions::pageLink());
+                }
+            }else{
+                if($ajax!==false){
+                    echo json_encode(array('return'=>'error','errors'=> $user->getErrors()));
+                }else{
+                    header("Location: ".Functions::pageLink($this->getController(), $this->getAction()));
+
+                }
+            }
+            exit;
+        }
         $this->title("Login");
         $this->loadView('Index', 'login');
     }

@@ -9,6 +9,10 @@
 
 class user extends Model {
     private $userData=array();
+    public function __construct($db=null){
+        parent::__construct($db);
+        $this->loginSession();
+    }
     public function logout(){
         if(!$this->isLoggedIn()) return false;
         $this->userData=null;

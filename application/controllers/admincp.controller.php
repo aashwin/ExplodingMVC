@@ -8,7 +8,7 @@
  */
 
 class admincpController extends BaseController {
-    private $userModel=null;
+    public $userModel=null;
     public function __construct(){
         parent::__construct();
         $this->userModel=$this->loadModel('user');
