@@ -12,45 +12,8 @@ font-size:11px;
 table{
 font-size:11px;
 }
-.button{
+#container nav li a, input[type='submit'], .button{
     padding:10px 15px;
-}
-#navigation{
-    height:100%;
-    position:absolute;
-    top:45px;
-    left:-80%;
-    opacity:0;
-    width:80%;
-    border-right:1px solid #333;
-    background:#000;
-    z-index:9950;
-    text-align:center;
-}
-#navigation li{
-    width:100%;
-
-}
-
-#navigation li a{
-    border-bottom:1px solid #333;
-    width:96%;
-    padding-right:2%;
-    padding-left:2%;
-    text-align: center;
-    border-radius:0;
-}
-#navigation .left, #navigation .right{
-    width:100%;
-}
-.showMenu{
-    background: url("../images/menushow.png") no-repeat scroll center center #000;
-    display: block;
-    height: 45px;
-    width: 60px;
-    position: absolute;
-    top: 0px;
-    left: 0;
 }
 .grid_med_1,.grid_med_2,.grid_med_3,.grid_med_4, .grid_med_5, .grid_med_6, .grid_med_7, .grid_med_8, .grid_med_9, .grid_med_10, .grid_med_11, .grid_med_12{
     display:inline-block;
@@ -67,4 +30,10 @@ font-size:11px;
 }
 .grid_med_6{
     width:50%;
+}
+.btn_pencil{
+    background-image: none;
+}
+.btn_delete{
+    background-image: none;
 }

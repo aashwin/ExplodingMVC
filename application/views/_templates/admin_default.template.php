@@ -20,9 +20,11 @@ $viewArray=$this->getViewArray();
     <meta name="description" content="<?php echo $this->description();?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<?php echo WWW_PUBLIC;?>/css/adminmain.css" rel="stylesheet" type="text/css">
+
     <link  href="<?php echo WWW_PUBLIC;?>/css/admin_animations.css"  rel="stylesheet" type="text/css">
-    <link href="<?php echo WWW_PUBLIC;?>/css/admin_medium.css" media="only screen and (min-width: 600px)" rel="stylesheet" type="text/css">
     <link href="<?php echo WWW_PUBLIC;?>/css/admin_mobile.css" media="only screen and (max-width: 599px)" rel="stylesheet" type="text/css">
+    <link href="<?php echo WWW_PUBLIC;?>/css/admin_medium.css" media="only screen and (min-width: 600px)" rel="stylesheet" type="text/css">
+    <link href="<?php echo WWW_PUBLIC;?>/css/admin_desktop.css" media="only screen and (min-width: 1000px)" rel="stylesheet" type="text/css">
     <link href="<?php echo WWW_PUBLIC;?>/css/jquery-ui.css" rel="stylesheet" type="text/css">
     <script>
         var WWW_ROOT='<?php echo WWW_ROOT;?>';
