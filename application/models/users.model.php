@@ -8,7 +8,7 @@
  */
 
 class users extends Model {
-    public function getUsers($start=NULL, $limitby=NULL,$order='username', $by='ASC'){
+    public function getUsers($start=NULL, $limitby=NULL,$order='username', $by='ASC', $filterField='', $filterVal=''){
         $limit='';
         if($start!==NULL && $limitby!==NULL){
             $start=intval($start);
@@ -19,7 +19,16 @@ class users extends Model {
         if($by!='ASC' && $by!='DESC') return false;
         $orderAllowed=array("userId","username","userEmail",'userLevel');
         if(!in_array($order, $orderAllowed)) return false;
-        $query=$this->getDB()->prepare("SELECT * FROM user_login ORDER BY $order $by $limit");
+        if(!in_array($filterField, $orderAllowed) && $filterField!='') return false;
+        $where='';
+        if($filterField!='' && $filterVal!=''){
+            $where="WHERE $filterField LIKE :value";
+        }
+        $query=$this->getDB()->prepare("SELECT * FROM user_login $where ORDER BY $order $by $limit");
+
+        if($filterField!='' && $filterVal!=''){
+            $query->bindValue(':value', '%'.$filterVal.'%');
+        }
         if($query->execute()){
             return $query;
         }

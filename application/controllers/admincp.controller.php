@@ -110,8 +110,11 @@ class admincpController extends BaseController {
         $this->addViewArray('perPage', $perPage);
         $start=($page-1)*$perPage;
         $this->addViewArray('UsersModel', $this->loadModel('users'));
+        if(isset($_POST['field']) && isset($_POST['value']))
+            $this->addViewArray('GetUsers', $this->getViewArray('UsersModel')->getUsers($start, $perPage, $order, $by, $_POST['field'], $_POST['value']));
+        else
+            $this->addViewArray('GetUsers', $this->getViewArray('UsersModel')->getUsers($start, $perPage, $order, $by));
 
-        $this->addViewArray('GetUsers', $this->getViewArray('UsersModel')->getUsers($start, $perPage, $order, $by));
         $this->addCrumbs('Users',Functions::pageLink($this->getController(), $this->getAction()));
 
         $this->loadView('Admin', 'users_main');

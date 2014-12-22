@@ -8,6 +8,7 @@ var overlayDiv;
 var msgCounter=0;
 var inline_editing=false;
 var inline_save_url;
+var filter_timer;
 var admin_settings={
     deleteMessage:'Are you sure you want to delete this?'
 }
@@ -104,7 +105,32 @@ $(document).ready(function(){
         });
 
     }
+    $(".filter").on('change', 'select', function(){
+        doAjaxFilter($(this));
+    }).on('keyup', 'input', function(){
+        doAjaxFilter($(this));
+    });
 });
+function doAjaxFilter($this){
+    clearTimeout(filter_timer);
+    filter_timer=setTimeout(function(){
+
+            showLoading();
+        var name=$this.attr("name");
+
+        if($this.val()=='')
+            name = '';
+            $.post(
+                $(".filter").data("filter")+'/ajax/',
+                {'field':name, 'value':$this.val()},
+                function(data){
+                    $("#pagination-content").html(data);
+                    hideLoading();
+                },"html"
+            );
+
+    },900);
+}
 function buildOverlay(){
 
     if(!$('#ModularOverlay').length){

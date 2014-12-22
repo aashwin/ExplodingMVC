@@ -19,10 +19,21 @@ if($this->getViewArray('ajax')===false){
     </nav>
     <table width="100%" data-inlinesave="<?php echo Functions::pageLink($this->getController(),'editUser', '-id-', '-field-');?>" data-sorturl="<?php echo Functions::pageLink($this->getController(),$this->getAction(),$this->getViewArray('currentPage'),$this->getViewArray('perPage'), '-order-','-by-');?>">
     <thead>
-    <tr><th width="8%" data-order="userId">ID</th><th width="18%" data-order="username">Name</th><th width="9%" data-order="userLevel">is Admin</th><th width="35%" data-order="userEmail">Email</th><th width="30%">Action</th></tr>
-
+    <tr><th width="8%" data-order="userId">ID</th><th width="18%" data-order="username">Name</th><th width="9%" data-order="userLevel">Admin</th><th width="35%" data-order="userEmail">Email</th><th width="30%">Action</th></tr>
+    <tr class="filter" data-filter="<?php echo Functions::pageLink($this->getController(),$this->getAction(), $this->getViewArray('currentPage'), $this->getViewArray('perPage'), $this->getViewArray('order'), $this->getViewArray('by'));?>">
+        <td><input type="text" name="userId" placeholder="Filter ID" /></td>
+        <td><input type="text" name="username" placeholder="Filter Name" /></td>
+        <td><select name="userLevel"style="color:#bbb">
+                <option value="" selected>Any</option>
+                <option value="1"  >Yes</option>
+                <option value="0">No</option>
+        </select></td>
+        <td><input type="text" name="userEmail" placeholder="Filter Email" /></td>
+        <td></td>
+    </tr>
     </thead>
     <tbody id="pagination-content">
+
 <?php
 }
 $query=$this->getViewArray('GetUsers');

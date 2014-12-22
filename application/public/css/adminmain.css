@@ -419,5 +419,14 @@ footer{width:100%;padding:10px 0;text-align: center;font-size:12px;}
     background-repeat: no-repeat;
     background-position: 5px center;
 }
-
-/*GRID*/
+.filter td{
+    margin:0;
+    padding:5px;
+}
+.filter input,.filter select{
+    margin:0;
+    width:90%;
+    border-radius: 0;
+    text-align: center;
+    background-image:none;
+}
