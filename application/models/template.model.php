@@ -7,7 +7,7 @@
  * Time: 20:24
  */
 
-class template extends Model{
+class templateModel extends Model{
     public function menuModel(){
 
         $Query=$this->getDB()->query("SELECT sportId, sportName FROM sports ORDER BY navOrder ASC");

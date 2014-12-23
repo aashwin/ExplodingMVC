@@ -41,8 +41,8 @@ class BaseController {
         $this->loadView('ErrorPages', 'Exception');
     }
     public function loadModel($model){
-        require(APP_DIR.'/models/'.strtolower($model).'.model.php');
-
+        require_once(APP_DIR.'/models/'.strtolower($model).'.model.php');
+        $model=$model.'Model';
         return new $model($this->db);
     }
     public function getView($view, $page){

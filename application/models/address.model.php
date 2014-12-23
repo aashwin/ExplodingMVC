@@ -7,7 +7,7 @@
  * Time: 03:28
  */
 
-class address extends Model {
+class addressModel extends Model {
     public function getAddresses($start=NULL, $limitby=NULL,$order='addressId', $by='ASC'){
         $limit='';
         if($start!==NULL && $limitby!==NULL){

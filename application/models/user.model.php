@@ -7,7 +7,7 @@
  * Time: 12:28
  */
 
-class user extends Model {
+class userModel extends Model {
     private $userData=array();
     public function __construct($db=null){
         parent::__construct($db);
@@ -147,31 +147,8 @@ class user extends Model {
         $username=trim($username);
         $email=trim($email);
 
-        if(empty($username))
-            $this->addErrors('Username should not be empty');
-        if(strlen($username)>35)
-            $this->addErrors('Username should be less than 35 characters');
-        elseif(strlen($username)<=3)
-            $this->addErrors('Username should be more than 3 characters');
-        if(!preg_match('/^[a-z0-9_]+$/i', $username))
-            $this->addErrors('Invalid Username Format, please use only alphanumeric and underscores');
-        if(empty($email))
-            $this->addErrors('Email should not be empty');
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL))
-            $this->addErrors('Invalid Email, please try again');
-        if(empty($password))
-            $this->addErrors('Password should not be empty');
-        if(strlen($password)<=6)
-            $this->addErrors('Password is too short, have atleast 6 characters');
-        if($password!==$passwordRepeat)
-            $this->addErrors('Passwords don\'t match');
-        if($this->getDB()==NULL){
-            $this->addErrors('Unfortunately we are experiencing some issues, try again later');
-        }
-        if($this->checkUserExists($username, $email))
-            $this->addErrors('Username or Email already exists in the database');
 
-        if($this->numErrors()>0)
+        if(!$this->dataValidation($username, $password, $passwordRepeat, $email))
             return false;
 
         $password_hash = password_hash($password, PASSWORD_DEFAULT, array('cost' => HASH_COST));
@@ -278,6 +255,118 @@ $queryUser->execute(array(':id'=>$userId,':time'=>time()));
 
         $queryUser=$this->getDB()->prepare("UPDATE user_login SET userLoginToken=:token WHERE userId=:id LIMIT 1");
         $queryUser->execute(array(':id'=>$userId,':token'=>$token));
+    }
+    public function getUsers($start=NULL, $limitby=NULL,$order='username', $by='ASC', $filterField='', $filterVal=''){
+        $limit='';
+        if($start!==NULL && $limitby!==NULL){
+            $start=intval($start);
+            $limitby=intval($limitby);
+            $limit="LIMIT $start, $limitby";
+        }
+        $by=strtoupper($by);
+        if($by!='ASC' && $by!='DESC') return false;
+        $orderAllowed=array("userId","username","userEmail",'userLevel');
+        if(!in_array($order, $orderAllowed)) return false;
+        if(!in_array($filterField, $orderAllowed) && $filterField!='') return false;
+        $where='';
+        if($filterField!='' && $filterVal!=''){
+            $where="WHERE $filterField LIKE :value";
+        }
+        $query=$this->getDB()->prepare("SELECT * FROM user_login $where ORDER BY $order $by $limit");
+
+        if($filterField!='' && $filterVal!=''){
+            $query->bindValue(':value', '%'.$filterVal.'%');
+        }
+        if($query->execute()){
+            return $query;
+        }
+        return false;
+    }
+    public function getUser($id,$field='*'){
+        $query=$this->getDB()->prepare("SELECT $field FROM user_login WHERE userId=:id LIMIT 1");
+
+        if($query->execute(array(':id'=>$id))){
+
+            if($field=='*'){
+                return $query->fetch();
+            }
+            $fetch=$query->fetch();
+            return $fetch[$field];
+        }
+        return false;
+    }
+    public function dataValidation($username, $password, $passwordRepeat, $email, $update=false){
+
+        if(empty($username))
+            $this->addErrors('Username should not be empty');
+        if(strlen($username)>35)
+            $this->addErrors('Username should be less than 35 characters');
+        elseif(strlen($username)<=3)
+            $this->addErrors('Username should be more than 3 characters');
+        if(!preg_match('/^[a-z0-9_]+$/i', $username))
+            $this->addErrors('Invalid Username Format, please use only alphanumeric and underscores');
+        if(empty($email))
+            $this->addErrors('Email should not be empty');
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+            $this->addErrors('Invalid Email, please try again');
+        if(empty($password) && !$update)
+            $this->addErrors('Password should not be empty');
+        if(strlen($password)<=6 && !$update)
+            $this->addErrors('Password is too short, have atleast 6 characters');
+        if($password!==$passwordRepeat  && !$update)
+            $this->addErrors('Passwords don\'t match');
+        if($this->getDB()==NULL){
+            $this->addErrors('Unfortunately we are experiencing some issues, try again later');
+        }
+        if($this->checkUserExists($username, $email)  && !$update)
+            $this->addErrors('Username or Email already exists in the database');
+        if($this->numErrors()>0)
+            return false;
+        return true;
+
+    }
+    public function update($id, $username, $password, $email, $userLevel=0){
+        $username=trim($username);
+        $email=trim($email);
+        $userLevel=intval($userLevel);
+
+        if($this->getUser($id)===false)
+        {
+            $this->addErrors('Invalid User ID');
+            return false;
+        }
+
+        if(!$this->dataValidation($username, $password, $password, $email, true))
+            return false;
+        $updatePassword='';
+        $password_hash='';
+        if($password!=''){
+            $password_hash = password_hash($password, PASSWORD_DEFAULT, array('cost' => HASH_COST));
+            $updatePassword=', userPassword=:password';
+        }
+
+        $queryInsert=$this->getDB()->prepare("UPDATE user_login SET username=:name, userLevel=:level, userEmail=:email $updatePassword WHERE userId=:id LIMIT 1");
+        $queryInsert->bindValue(':name',$username);
+        $queryInsert->bindValue(':level',$userLevel);
+        $queryInsert->bindValue(':email',$email);
+        if($password!=''){
+             $queryInsert->bindValue(':password',$password_hash);
+        }
+        $queryInsert->bindValue(':id',$id, PDO::PARAM_INT);
+        $queryInsert->execute();
+        if($queryInsert->rowCount()>0){
+            return true;
+        }
+        $this->addErrors('No Data Updated!');
+        return false;
+    }
+    public function delete($id){
+        $query=$this->getDB()->prepare('DELETE FROM user_login WHERE userId=:id LIMIT 1');
+        if($query->execute(array(':id'=>$id))){
+            return true;
+        }
+        return false;
+
     }
 
 } 

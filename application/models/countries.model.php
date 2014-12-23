@@ -7,7 +7,7 @@
  * Time: 03:28
  */
 
-class countries extends Model {
+class countriesModel extends Model {
     public function getCountries($start=NULL, $limitby=NULL,$order='countryName', $by='ASC'){
         $limit='';
         if($start!==NULL && $limitby!==NULL){

@@ -7,7 +7,7 @@
  * Time: 03:28
  */
 
-class tournaments extends Model {
+class tournamentsModel extends Model {
     public function getTournaments($start=NULL, $limitby=NULL,$order='tournamentName', $by='ASC', $filterField='', $filterVal=''){
         $limit='';
         if($start!==NULL && $limitby!==NULL){

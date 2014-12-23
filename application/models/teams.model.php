@@ -7,7 +7,7 @@
  * Time: 22:05
  */
 
-class teams extends Model {
+class teamsModel extends Model {
 
     public function getTeam($id,$field='*'){
         $query=$this->getDB()->prepare("SELECT $field FROM teams WHERE teamId=:id LIMIT 1");

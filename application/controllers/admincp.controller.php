@@ -8,8 +8,6 @@
  */
 //TODO: Add User
 //TODO: Edit User
-//TODO: FILTER RESULTS in TABLE
-//TODO:
 class admincpController extends BaseController {
     public $userModel=null;
     public function __construct(){
@@ -112,7 +110,7 @@ class admincpController extends BaseController {
         }
         $this->addViewArray('perPage', $perPage);
         $start=($page-1)*$perPage;
-        $this->addViewArray('UsersModel', $this->loadModel('users'));
+        $this->addViewArray('UsersModel', $this->loadModel('user'));
         if(isset($_POST['field']) && isset($_POST['value']))
             $this->addViewArray('GetUsers', $this->getViewArray('UsersModel')->getUsers($start, $perPage, $order, $by, $_POST['field'], $_POST['value']));
         else
@@ -175,7 +173,7 @@ class admincpController extends BaseController {
         exit;
     }
     public function deleteUser($id, $ajax='no'){
-        $model=$this->loadModel('users');
+        $model=$this->loadModel('user');
         if($model->delete($id)!==false){
             $message='#ID=' . $id . ' user has been deleted from the users database.';
             $error=false;
@@ -478,6 +476,37 @@ class admincpController extends BaseController {
             ->addCrumbs('Edit Team',Functions::pageLink($this->getController(), $this->getAction(), $id));
 
         $this->loadView('Admin', 'teams_edit');
+    }
+    public function editUser($id){
+        $this->addViewArray('page', 'users');
+        $this->addViewArray('UserModel', $this->loadModel('user'));
+
+        if(isset($_POST['username']) ){
+
+            $this->getViewArray('UserModel')->update($id, $_POST['username'], $_POST['userPassword'], $_POST['userEmail'], $_POST['userLevel']);
+            if($this->getViewArray('UserModel')->numErrors()>0){
+                $_SESSION['ErrorMessages']= $this->getViewArray('UserModel')->getErrors();
+                header('Location: '.Functions::pageLink($this->getController(), 'editUser', $id));
+                exit;
+            }
+            $_SESSION['FormData']=array();
+            $_SESSION['SuccessMessages'][]=$_POST['username'].'[#ID='.$id.'] has been updated to the user_login database.';
+            header('Location: '.Functions::pageLink($this->getController(), 'users'));
+            exit;
+
+
+        }
+        $this->addViewArray('UserData', $this->getViewArray('UserModel')->getUser($id));
+        if($this->getViewArray('UserData')===false)
+        {
+            $_SESSION['ErrorMessages'][]='User does not exist!';
+            header('Location: '.Functions::pageLink($this->getController(), 'users'));
+            exit;
+        }
+        $this->addCrumbs('Users', Functions::pageLink($this->getController(), 'users'))
+            ->addCrumbs('Edit User',Functions::pageLink($this->getController(), $this->getAction(), $id));
+
+        $this->loadView('Admin', 'users_edit');
     }
     public function breadcrumbs(){
         $str= '<ul id="breadcrumbs">';

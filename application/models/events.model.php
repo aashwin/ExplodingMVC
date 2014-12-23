@@ -7,7 +7,7 @@
  * Time: 03:28
  */
 
-class events extends Model {
+class eventsModel extends Model {
     public function getEvents($start=NULL, $limitby=NULL,$order='eventName', $by='ASC', $filterField='', $filterVal=''){
         $limit='';
         if($start!==NULL && $limitby!==NULL){
