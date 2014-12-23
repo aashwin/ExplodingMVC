@@ -85,8 +85,10 @@ class admincpController extends BaseController {
         $this->addViewArray('perPage', $perPage);
         $start=($page-1)*$perPage;
         $this->addViewArray('TournamentsModel', $this->loadModel('tournaments'));
-
-        $this->addViewArray('GetTournaments', $this->getViewArray('TournamentsModel')->getTournaments($start, $perPage, $order, $by));
+        if(isset($_POST['field']) && isset($_POST['value']))
+            $this->addViewArray('GetTournaments', $this->getViewArray('TournamentsModel')->getTournaments($start, $perPage, $order, $by, $_POST['field'], $_POST['value']));
+        else
+            $this->addViewArray('GetTournaments', $this->getViewArray('TournamentsModel')->getTournaments($start, $perPage, $order, $by));
         $this->addCrumbs('Tournaments',Functions::pageLink($this->getController(), $this->getAction()));
 
         $this->loadView('Admin', 'tournaments_main');

@@ -22,7 +22,7 @@ class teams extends Model {
         }
         return false;
     }
-    public function getTeams($start=NULL, $limitby=NULL,$order='teamId', $by='ASC'){
+    public function getTeams($start=NULL, $limitby=NULL,$order='teamId', $by='ASC', $filterField='', $filterVal=''){
         $limit='';
         if($start!==NULL && $limitby!==NULL){
             $start=intval($start);
@@ -31,9 +31,17 @@ class teams extends Model {
         }
         $by=strtoupper($by);
         if($by!='ASC' && $by!='DESC') return false;
-        $orderAllowed=array("teamId","teamName","teamSport");
+        $orderAllowed=array("teamId","teamName");
         if(!in_array($order, $orderAllowed)) return false;
-        $query=$this->getDB()->prepare("SELECT * FROM teams ORDER BY $order $by $limit");
+        if(!in_array($filterField, $orderAllowed) && $filterField!='') return false;
+        $where='';
+        if($filterField!='' && $filterVal!=''){
+            $where="WHERE $filterField LIKE :value";
+        }
+        $query=$this->getDB()->prepare("SELECT * FROM teams $where ORDER BY $order $by $limit");
+        if($filterField!='' && $filterVal!=''){
+            $query->bindValue(':value', '%'.$filterVal.'%');
+        }
         if($query->execute()){
             return $query;
         }

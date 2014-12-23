@@ -8,7 +8,7 @@
  */
 
 class tournaments extends Model {
-    public function getTournaments($start=NULL, $limitby=NULL,$order='tournamentName', $by='ASC'){
+    public function getTournaments($start=NULL, $limitby=NULL,$order='tournamentName', $by='ASC', $filterField='', $filterVal=''){
         $limit='';
         if($start!==NULL && $limitby!==NULL){
             $start=intval($start);
@@ -19,7 +19,15 @@ class tournaments extends Model {
         if($by!='ASC' && $by!='DESC') return false;
         $orderAllowed=array("tournamentId","tournamentName",'tournamentStart','tournamentEnd');
         if(!in_array($order, $orderAllowed)) return false;
-        $query=$this->getDB()->prepare("SELECT * FROM tournaments ORDER BY $order $by $limit");
+        if(!in_array($filterField, $orderAllowed) && $filterField!='') return false;
+        $where='';
+        if($filterField!='' && $filterVal!=''){
+            $where="WHERE $filterField LIKE :value";
+        }
+        $query=$this->getDB()->prepare("SELECT * FROM tournaments $where ORDER BY $order $by $limit");
+        if($filterField!='' && $filterVal!=''){
+            $query->bindValue(':value', '%'.$filterVal.'%');
+        }
         if($query->execute()){
             return $query;
         }
