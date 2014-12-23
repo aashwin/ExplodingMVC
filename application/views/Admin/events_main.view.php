@@ -21,8 +21,34 @@ if($this->getViewArray('ajax')===false){
     </nav>
     <table width="100%" data-sorturl="<?php echo Functions::pageLink($this->getController(),$this->getAction(),$this->getViewArray('currentPage'),$this->getViewArray('perPage'), '-order-','-by-');?>">
     <thead>
-    <tr><th width="10%" data-order="eventId">ID</th><th width="20%" data-order="eventName">Name</th><th width="20%" data-order="tournamentId">Tournament</th><th width="15%" data-order="addressId">groundName</th><th width="15%" data-order="startTime">Start</th><th width="30%">Action</th></tr>
-
+    <tr><th width="10%" data-order="eventId">ID</th><th width="20%" data-order="eventName">Name</th><th width="20%" data-order="tournamentId">Tournament</th><th width="15%" data-order="addressId">Ground</th><th width="15%" data-order="startTime">Start</th><th width="30%">Action</th></tr>
+    <tr class="filter" data-filter="<?php echo Functions::pageLink($this->getController(),$this->getAction(), $this->getViewArray('currentPage'), $this->getViewArray('perPage'), $this->getViewArray('order'), $this->getViewArray('by'));?>">
+        <td><input type="text" name="eventId" placeholder="Filter ID" /></td>
+        <td><input type="text" name="eventName" placeholder="Filter Name" /></td>
+        <td><select name="tournamentId"style="color:#bbb">
+                <option value="" selected>Any</option>
+                <?php
+                $query=$tournamentsModel->getTournaments();
+                if($query!==false){
+                    while($row=$query->fetch()){
+                        echo '<option value="'.$row['tournamentId'].'">'.$row['tournamentName'].'</option>';
+                    }
+                }
+                ?>
+            </select></td>
+        <td><select name="addressId"style="color:#bbb">
+                <option value="" selected>Any</option>
+                <?php
+                $query=$addressModel->getAddresses();
+                if($query!==false){
+                    while($row=$query->fetch()){
+                        echo '<option value="'.$row['addressId'].'">'.$row['groundName'].'</option>';
+                    }
+                }
+                ?>
+            </select></td>
+        <td colspan="2"></td>
+    </tr>
     </thead>
     <tbody id="pagination-content">
 <?php

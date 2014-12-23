@@ -21,7 +21,11 @@ if($this->getViewArray('ajax')===false){
 <table width="100%" data-inlinesave="<?php echo Functions::pageLink($this->getController(),'editTeam', '-id-', '-field-');?>" data-sorturl="<?php echo Functions::pageLink($this->getController(),$this->getAction(),$this->getViewArray('currentPage'),$this->getViewArray('perPage'), '-order-','-by-');?>">
     <thead>
     <tr><th width="10%" data-order="teamId">ID</th><th width="50%" data-order="teamName">Team Name</th><th width="25%">Action</th></tr>
-
+    <tr class="filter" data-filter="<?php echo Functions::pageLink($this->getController(),$this->getAction(), $this->getViewArray('currentPage'), $this->getViewArray('perPage'), $this->getViewArray('order'), $this->getViewArray('by'));?>">
+        <td><input type="text" name="teamId" placeholder="Filter ID" /></td>
+        <td><input type="text" name="teamName" placeholder="Filter Name" /></td>
+        <td></td>
+    </tr>
     </thead>
     <tbody id="pagination-content">
 <?php

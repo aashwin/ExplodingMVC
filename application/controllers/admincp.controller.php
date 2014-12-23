@@ -59,9 +59,10 @@ class admincpController extends BaseController {
         $this->addViewArray('perPage', $perPage);
         $start=($page-1)*$perPage;
         $this->addViewArray('TeamsModel', $this->loadModel('teams'));
-        $this->addViewArray('SportsModel', $this->loadModel('sports'));
-
-        $this->addViewArray('GetTeams', $this->getViewArray('TeamsModel')->getTeams($start, $perPage, $order, $by));
+        if(isset($_POST['field']) && isset($_POST['value']))
+            $this->addViewArray('GetTeams', $this->getViewArray('TeamsModel')->getTeams($start, $perPage, $order, $by, $_POST['field'], $_POST['value']));
+        else
+            $this->addViewArray('GetTeams', $this->getViewArray('TeamsModel')->getTeams($start, $perPage, $order, $by));
         $this->addCrumbs('Teams',Functions::pageLink($this->getController(), $this->getAction()));
 
         $this->loadView('Admin', 'teams_main');
@@ -140,7 +141,10 @@ class admincpController extends BaseController {
         $this->addViewArray('perPage', $perPage);
         $start=($page-1)*$perPage;
         $this->addViewArray('EventsModel', $this->loadModel('events'));
-        $this->addViewArray('GetEvents', $this->getViewArray('EventsModel')->getEvents($start, $perPage, $order, $by));
+        if(isset($_POST['field']) && isset($_POST['value']))
+            $this->addViewArray('GetEvents', $this->getViewArray('EventsModel')->getEvents($start, $perPage, $order, $by,  $_POST['field'], $_POST['value']));
+        else
+            $this->addViewArray('GetEvents', $this->getViewArray('EventsModel')->getEvents($start, $perPage, $order, $by));
         $this->addCrumbs('Events',Functions::pageLink($this->getController(), $this->getAction()));
 
         $this->loadView('Admin', 'events_main');
@@ -235,7 +239,6 @@ class admincpController extends BaseController {
     public function addTeam(){
         $teamsModel=$this->loadModel('teams');
         $this->addViewArray('page', 'teams');
-        $this->addViewArray('SportsModel', $this->loadModel('sports'));
 
         if(isset($_POST['teamName'])){
 
