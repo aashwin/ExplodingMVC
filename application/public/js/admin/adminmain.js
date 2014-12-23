@@ -9,6 +9,14 @@ var msgCounter=0;
 var inline_editing=false;
 var inline_save_url;
 var filter_timer;
+var pagination_settings={
+    id:'',
+    contentId:'',
+    itemsPerPage:0,
+    totalItems:0,
+    unfilteredTotalItems:0,
+    linkSample:''
+};
 var admin_settings={
     deleteMessage:'Are you sure you want to delete this?'
 }
@@ -125,11 +133,34 @@ function doAjaxFilter($this){
                 {'field':name, 'value':$this.val()},
                 function(data){
                     $("#pagination-content").html(data);
+                    if(name!=''){
+                        pagination_settings.totalItems=1;
+
+                        buildPagination(name, $this.val());
+                    }else{
+                        pagination_settings.totalItems=pagination_settings.unfilteredTotalItems;
+
+                        buildPagination();
+                    }
                     hideLoading();
                 },"html"
             );
 
     },900);
+}
+function occurrences(string, subString, allowOverlapping){
+
+    string+=""; subString+="";
+    if(subString.length<=0) return string.length+1;
+
+    var n=0, pos=0;
+    var step=(allowOverlapping)?(1):(subString.length);
+
+    while(true){
+        pos=string.indexOf(subString,pos);
+        if(pos>=0){ n++; pos+=step; } else break;
+    }
+    return(n);
 }
 function buildOverlay(){
 
@@ -192,18 +223,18 @@ function addMessage(error, msg){
     },5000);
     ++msgCounter;
 }
-function buildPagination(id,contentId, itemsPerPage, totalItems, linkSample){
-    $id=$(id);
+function buildPagination(field, value){
+    $id=$(pagination_settings.id);
     $id.html("");
-    var totalPages=Math.ceil(parseInt(totalItems)/parseInt(itemsPerPage));
+    var totalPages=Math.ceil(parseInt(pagination_settings.totalItems)/parseInt(pagination_settings.itemsPerPage));
     if(currentPage>1){
-        $id.append(' <a href="'+linkSample.replace('-page-', currentPage-1)+'" data-page="'+(currentPage-1)+'" class="paginator_page button">&lt;&lt; Previous</a> ');
+        $id.append(' <a href="'+pagination_settings.linkSample.replace('-page-', currentPage-1)+'" data-page="'+(currentPage-1)+'" class="paginator_page button">&lt;&lt; Previous</a> ');
     }
     for(var i=1;i<=totalPages;++i){
-        $id.append(' <a href="'+(linkSample.replace('-page-', i))+'" data-page="'+i+'" class="notMobile paginator_page button">'+i+'</a> ');
+        $id.append(' <a href="'+(pagination_settings.linkSample.replace('-page-', i))+'" data-page="'+i+'" class="notMobile paginator_page button">'+i+'</a> ');
     }
     if(currentPage<totalPages){
-        $id.append(' <a href="'+(linkSample.replace('-page-', currentPage+1))+'" data-page="'+(currentPage+1)+'" class="paginator_page button">Next &gt;&gt;</a> ');
+        $id.append(' <a href="'+(pagination_settings.linkSample.replace('-page-', currentPage+1))+'" data-page="'+(currentPage+1)+'" class="paginator_page button">Next &gt;&gt;</a> ');
     }
     $(".paginator_page").click(function(event){
         event.preventDefault();
@@ -212,30 +243,48 @@ function buildPagination(id,contentId, itemsPerPage, totalItems, linkSample){
 
         $this=$(this);
         showLoading();
+        var $data={'field':'', 'value':''};
+
+        if(field!=undefined && value!=undefined && field!='undefined' && value!='undefined'){
+            $data.field=field;
+            $data.value=value;
+            if($data.value=='')
+                $data.field='';
+        }
         $.ajax({
-            type: 'GET',
+            type: 'POST',
             url: $this.attr("href")+'/ajax',
-            data: {},
+            data: $data,
             success: function(data){
                 $("html, body").animate({ scrollTop: "0px" },600);
                 history.pushState("contentLoaded", document.title, $this.attr("href"));
 
-                $("#table-div_"+contentId.replace("#",'').replace('.','')).slideUp(600, function(){
-                    $(contentId).html(data);
-                    $("#table-div_"+contentId.replace("#",'').replace('.','')).slideDown(400);
+                $("#table-div_"+pagination_settings.contentId.replace("#",'').replace('.','')).slideUp(600, function(){
+                    $(pagination_settings.contentId).html(data);
+                    $("#table-div_"+pagination_settings.contentId.replace("#",'').replace('.','')).slideDown(400);
                 });
                 currentPage=pageToGo;
                 hideLoading();
                //
-               buildPagination(id,contentId, itemsPerPage, totalItems, linkSample);
+                if(field!=undefined && value!=undefined && field!='undefined' && value!='undefined') {
+                    buildPagination(field, value);
+                }else{
+                    buildPagination();
+                }
             }
         });
         return false;
     });
 }
 function pagination(id, contentId, itemsPerPage, totalItems, linkSample){
+    pagination_settings.id=id;
+    pagination_settings.contentId=contentId;
+    pagination_settings.itemsPerPage=itemsPerPage;
+    pagination_settings.totalItems=totalItems;
+    pagination_settings.unfilteredTotalItems=totalItems;
+    pagination_settings.linkSample=linkSample;
     $(contentId).parent().wrap('<div id="table-div_'+contentId.replace("#",'').replace('.','')+'" />');
-    buildPagination(id,contentId, itemsPerPage, totalItems, linkSample);
+    buildPagination();
 }
 function pageSort(s){
     $(s).each(function(){
