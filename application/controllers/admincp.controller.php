@@ -6,8 +6,6 @@
  * Date: 17/11/14
  * Time: 19:26
  */
-//TODO: Add User
-//TODO: Edit User
 class admincpController extends BaseController {
     public $userModel=null;
     public function __construct(){
