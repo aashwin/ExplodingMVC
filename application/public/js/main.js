@@ -3,12 +3,14 @@
  */
 $(document).ready(function(){
 
-});
-$(".showMenu").click(function(){
-    if( $("#navigation").offset().left>=0) {
-        $("#navigation").stop().animate({'left':-$("#navigation").outerWidth(true),'opacity':0}, 1000);
-    }else{
-        $("#navigation").css("left",-$("#navigation").outerWidth(true));
-        $("#navigation").stop().animate({'left':0,'opacity':1}, 1000);
-    }
+    $("#showMenu").click(function(){
+        $("#overlay").fadeTo(300, 0.8);
+        $("#navigation").stop().animate({'left':0,'opacity':1}, 400);
+
+    });
+    $("#closeMenu").click(function(){
+        $("#overlay").fadeOut(300);
+        $("#navigation").stop().animate({'left':-301,'opacity':0}, 400);
+
+    });
 });
