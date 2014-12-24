@@ -53,11 +53,10 @@ class Model {
      * @param string $model Which model do you want to load
      * @return Object Loaded Object
      */
-    public function loadModel($model){
-        if(class_exists(strtolower($model))===false){
-            require(APP_DIR.'/models/'.strtolower($model).'.model.php');
-        }
 
+    public function loadModel($model){
+        require_once(APP_DIR.'/models/'.strtolower($model).'.model.php');
+        $model=$model.'Model';
         return new $model($this->db);
     }
 
