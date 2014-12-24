@@ -13,7 +13,7 @@ if($this->getViewArray('ajax')===false){
     <script>var currentPage=<?php echo $this->getViewArray('currentPage');?>;</script>
     <nav>
         <ul>
-            
+
         </ul>
     </nav>
     <table width="100%" data-inlinesave="<?php echo Functions::pageLink($this->getController(),'editUser', '-id-', '-field-');?>" data-sorturl="<?php echo Functions::pageLink($this->getController(),$this->getAction(),$this->getViewArray('currentPage'),$this->getViewArray('perPage'), '-order-','-by-');?>">
