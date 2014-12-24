@@ -48,6 +48,13 @@ class teamsModel extends Model {
         return false;
     }
     public function delete($id){
+        $img=$this->getTeam($id, 'teamFlag');
+        if($img!=''){
+            if(file_exists(TEAM_FLAG_DIR.$img)){
+                unlink(TEAM_FLAG_DIR.$img);
+                unlink(TEAM_FLAG_DIR.'originals/'.$img);
+            }
+        }
         $query=$this->getDB()->prepare('DELETE FROM teams WHERE teamId=:id LIMIT 1');
         if($query->execute(array(':id'=>$id))){
             return true;

@@ -13,6 +13,7 @@ class indexController extends BaseController
     {
         $this->title("Events Homepage");
         $this->setTemplateLayout('default');
+        $this->addViewArray('TournamentsModel',$this->loadModel('tournaments'));
         $this->loadView('Index', 'Index');
     }
 

@@ -19,10 +19,11 @@ if($this->getViewArray('ajax')===false){
     </nav>
     <table width="100%" data-inlinesave="<?php echo Functions::pageLink($this->getController(),'editTournament', '-id-', '-field-');?>" data-sorturl="<?php echo Functions::pageLink($this->getController(),$this->getAction(),$this->getViewArray('currentPage'),$this->getViewArray('perPage'), '-order-','-by-');?>">
     <thead>
-    <tr><th width="10%" data-order="tournamentId">ID</th><th width="20%" data-order="tournamentName">Name</th><th width="15%" data-order="tournamentStart">Start</th><th width="15%" data-order="tournamentEnd">End</th><th width="30%">Action</th></tr>
+    <tr><th width="10%" data-order="tournamentId">ID</th><th width="20%" data-order="tournamentName">Name</th><th width="10%" data-order="homepagePriority">Priority</th><th width="15%" data-order="tournamentStart">Start</th><th width="15%" data-order="tournamentEnd">End</th><th width="20%">Action</th></tr>
     <tr class="filter" data-filter="<?php echo Functions::pageLink($this->getController(),$this->getAction(), $this->getViewArray('currentPage'), $this->getViewArray('perPage'), $this->getViewArray('order'), $this->getViewArray('by'));?>">
         <td><input type="text" name="tournamentId" placeholder="Filter ID" /></td>
         <td><input type="text" name="tournamentName" placeholder="Filter Name" /></td>
+        <td><input type="text" name="homepagePriority" placeholder="Filter Priority" /></td>
         <td colspan="3"></td>
     </tr>
     </thead>
@@ -36,6 +37,7 @@ if($query!==false){
         echo '<tr data-fid="'.$row['tournamentId'].'">
                         <td>'.$row['tournamentId'].'</td>
                         <td class="inline_edit" data-field="tournamentName">'.$row['tournamentName'].'</td>
+                        <td class="inline_edit" data-field="homepagePriority">'.$row['homepagePriority'].'</td>
                         <td>'.date('jS M y', strtotime($row['tournamentStart'])).'</td>
                         <td>'.date('jS M y', strtotime($row['tournamentEnd'])).'</td>
                         <td><a href="'.Functions::pageLink($this->getController(),'editTournament', $row['tournamentId']).'" class="btn_pencil button"><span class="notMobile">Edit</span></a>

@@ -9,7 +9,7 @@
 echo $this->breadcrumbs();
 
 ?>
-<form action="<?php echo Functions::pageLink($this->getController(), $this->getAction());?>" method="POST">
+<form action="<?php echo Functions::pageLink($this->getController(), $this->getAction());?>" method="POST" enctype="multipart/form-data">
     <fieldset>
         <legend>Add New Tournament</legend>
         <div class="field grid_mob_12 grid_med_12">
@@ -24,6 +24,11 @@ echo $this->breadcrumbs();
         <div  class="field  grid_mob_12 grid_med_6">
             <label for="tournamentEnd">End Date</label>
             <input type="text" name="tournamentEnd" id="tournamentEnd"  placeholder=""<?php if(!empty($_SESSION['FormData'])){echo 'value="'.$_SESSION['FormData']['tournamentEnd'].'"';}?>>
+        </div>
+        <div class="field grid_mob_12 grid_med_12">
+
+            <label for="image">Tournament Image </label>
+            <input type="file" id="image" name="image" />
         </div>
         <input type="submit" value="Add Tournament">
     </fieldset>

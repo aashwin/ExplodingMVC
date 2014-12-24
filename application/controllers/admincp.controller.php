@@ -277,7 +277,25 @@ class admincpController extends BaseController {
         $this->addViewArray('page', 'tournaments');
 
         if(isset($_POST['tournamentName'])){
-            $tournamentsModel->add($_POST['tournamentName'],$_POST['tournamentStart'],$_POST['tournamentEnd']);
+            if(($_FILES['image']['error']==0)) {
+                $File = new FileUpload(TOURNAMENT_IMG_DIR);
+                $File->setMaxSize(0.2); //Max 200kb
+                $File->setBasicType('image'); //Images only.
+                $File->setMaxDimension(400, 400);
+                $File->setOptimize(true);
+                $File->keepOriginal(true, TOURNAMENT_IMG_DIR.'originals/');
+                $File->setFile($_FILES['image']);
+
+                $uploadImg = $File->uploadFile();
+            }else{
+                $uploadImg=array('error'=>false, 'filename'=>'');
+            }
+            if($uploadImg['error']===false){
+
+                $tournamentsModel->add($_POST['tournamentName'],$_POST['tournamentStart'],$_POST['tournamentEnd'], $uploadImg['filename']);
+            }else{
+                $tournamentsModel->addErrors('Upload Failed. Response: '.$uploadImg['type']);
+            }
             if($tournamentsModel->numErrors()>0){
                 $_SESSION['ErrorMessages']=$tournamentsModel->getErrors();
                 $_SESSION['FormData']=$_POST;
@@ -336,7 +354,36 @@ class admincpController extends BaseController {
 
         if(isset($_POST['tournamentName']) || $field!='*'){
             if($field=='*') {
-                $tournamentsModel->update($id, $_POST['tournamentName'], $_POST['tournamentStart'], $_POST['tournamentEnd']);
+                if($_FILES['image']['error']==0) {
+                    if($_POST['imageFile']!='') {
+                        unlink(TOURNAMENT_IMG_DIR . $_POST['imageFile']);
+                        unlink(TOURNAMENT_IMG_DIR . 'originals/' . $_POST['imageFile']);
+                    }
+                    $File = new FileUpload(TOURNAMENT_IMG_DIR);
+                    $File->setMaxSize(0.2); //Max 200kb
+                    $File->setBasicType('image'); //Images only.
+                    $File->setMaxDimension(400, 400);
+                    $File->setOptimize(true);
+                    $File->keepOriginal(true, TOURNAMENT_IMG_DIR.'originals/');
+                    $File->setFile($_FILES['image']);
+
+                    $uploadImg = $File->uploadFile();
+                    if($uploadImg['error']===false) {
+                        $uploadedImg=$uploadImg['filename'];
+                    }else {
+                        $uploadedImg = '';
+                    }
+                }elseif($_POST['removeImage']==1){
+                    if($_POST['imageFile']!='') {
+                        unlink(TOURNAMENT_IMG_DIR . $_POST['imageFile']);
+                        unlink(TOURNAMENT_IMG_DIR . 'originals/' . $_POST['imageFile']);
+                    }
+                    $uploadedImg='';
+
+                }else {
+                    $uploadedImg=$_POST['imageFile'];
+                }
+                $tournamentsModel->update($id, $_POST['tournamentName'], $_POST['tournamentStart'], $_POST['tournamentEnd'], $uploadedImg);
 
                 if ($tournamentsModel->numErrors() > 0) {
                     $_SESSION['ErrorMessages'] = $tournamentsModel->getErrors();

@@ -75,6 +75,30 @@ header {
 }
 .notMobile{display:none;}
 .clear{clear:both;}
+
+#container{
+    width:98%;
+    margin:10px 1%;
+}
+#container h1{
+    font-size:22px;
+    color:#ddd;
+    text-shadow:0px 0px 5px #000;
+}
+.box{
+    background:#000;
+    color:#fff;
+    margin:5px;
+    font-size:12px;
+    text-align:center;
+    -webkit-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+}
+.box img{
+    width:100%;
+    height:auto;
+}
 @media screen and (min-width: 650px) {
     .notMobile{display:inline-block !important;}
     #showMenu{display:none}
@@ -111,10 +135,16 @@ header {
     #navigation li:last-child a{
         background:none;
     }
+
 }
 @media screen and (min-width:800px){
     #navigation{
         margin-right:5%;
     }
     #logo{margin-left:5%}
+    #container{
+        width:90%;
+        margin:10px 5%;
+    }
+
 }

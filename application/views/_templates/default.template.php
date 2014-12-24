@@ -21,6 +21,7 @@ $templateModel=$this->loadModel('template');
     <meta name="apple-mobile-web-app-capable" content="yes"/>
 
     <link href="<?php echo WWW_PUBLIC;?>/css/main.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo WWW_PUBLIC;?>/css/grid.css" rel="stylesheet" type="text/css">
 
 
     <!--[if lt IE 9]>
@@ -48,7 +49,9 @@ $templateModel=$this->loadModel('template');
        </nav>
        <div class="clear"></div>
    </header>
-
+    <section id="container">
+        <?php $this->getView($view, $page); ?>
+    </section>
    <footer>
 
    </footer>
