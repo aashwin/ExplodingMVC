@@ -28,9 +28,11 @@ class Model {
      * @return mixed|string Returns all errors in Model as an Array, if $index is specified then returns String.
      */
     public function getErrors($index=NULL){
-        if($index==NULL) return $this->errors;
-        if($index>=0 && $index<count($this->errors));
-        return $this->errors[$index];
+        if($index===NULL)
+            return $this->errors;
+        if($index>=0 && $index<count($this->errors))
+            return $this->errors[$index];
+        return false;
     }
 
     /**
