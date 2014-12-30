@@ -123,6 +123,8 @@ echo $this->breadcrumbs();
                 </select>
             </div>
         </div>
+        <div class="clear"></div>
+
         <div id="locationOnMap"></div>
         <div class="field grid_mob_12 grid_med_12">
             <label for="startTime">Start Date/Time</label>

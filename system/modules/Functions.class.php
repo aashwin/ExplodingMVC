@@ -81,4 +81,19 @@ class Functions {
     public static function getTimeAsInt($months=0, $days=0, $hours=0, $minutes=0, $seconds=0){
         return ($seconds+($minutes*60)+($hours*3600)+($days*3600*24)+($months*3600*24*31));
     }
+    public static function timeTill($start, $format){
+        $seconds = $start - time();
+
+        $days = floor($seconds / 86400);
+        $seconds %= 86400;
+
+        $hours = floor($seconds / 3600);
+        $seconds %= 3600;
+
+        $minutes = floor($seconds / 60);
+        $seconds %= 60;
+
+
+        return str_replace(array('%d', '%h', '%m', '%s'), array($days, $hours, $minutes, $seconds), $format);
+    }
 } 

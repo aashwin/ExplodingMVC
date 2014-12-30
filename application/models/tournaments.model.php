@@ -151,10 +151,9 @@ class tournamentsModel extends Model {
         $this->addErrors('Could not update tournaments to database');
         return false;
     }
-    public function getHomeList($limitby=8){
-        $limit='LIMIT '.$limitby;
+    public function getSearchList(){
         $today=date(DB_DATE_FORMAT, time());
-        $query=$this->getDB()->prepare("SELECT tournamentName, tournamentId,image FROM tournaments WHERE tournamentEnd>=$today ORDER BY homepagePriority DESC, tournamentStart ASC $limit");
+        $query=$this->getDB()->prepare("SELECT tournamentName, tournamentId,image,tournamentStart, tournamentEnd FROM tournaments WHERE tournamentEnd>=$today ORDER BY homepagePriority DESC, tournamentStart ASC");
 
         if($query->execute()){
             return $query;

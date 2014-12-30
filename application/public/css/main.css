@@ -11,6 +11,32 @@ header {
     height:56px;
     width:100%;
 }
+a{color:#333;}
+a:hover{text-decoration:none;}
+.next_paginate{
+    background: #333;
+    padding: 10px;
+    display: block;
+    clear: both;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    border: 3px solid #222;
+
+}
+.loadingScroll{
+    background: #333;
+    padding: 10px;
+    display: block;
+    clear: both;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    border: 3px solid #222;
+
+}
 #logo{
     float:left;
     margin:7px 0px 7px 7px;
@@ -80,26 +106,232 @@ header {
     width:98%;
     margin:10px 1%;
 }
-#container h1{
-    font-size:22px;
-    color:#ddd;
-    text-shadow:0px 0px 5px #000;
+#content h1{
+    font-size:18px;
+    text-shadow:1px 1px 0px #bbb;
+    color:#000;
 }
-.box{
-    background:#000;
-    color:#fff;
-    margin:5px;
+#content{
+    background:#fff;
+    border-radius:15px;
+    padding:10px;
     font-size:12px;
-    text-align:center;
-    -webkit-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+    border:5px solid #212121;
+
 }
-.box img{
+#sidebar{
+    background:#222;
+    border-radius:15px;
+    border:5px solid #212121;
+    padding:10px;
+}
+#sidebar h3{
+    color:#ddd;
+}
+.field{
+    position:relative;
+    display:block;
+    margin-top:10px;
+
+}
+.errors{
+    background:#ff968e;
+    color:#3f0809;
+    padding:10px;
+    border-radius:10px;
+    border:1px solid;
+    margin:5px 0;
+}
+.field label{
+    font-size: 11px;
+    position: absolute;
+    top: -6px;
+    width:100%;
+    text-align: center;
+    color: #ccc;
+
+}
+#sidebar input, #sidebar select
+{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width:100%;
+    padding:10px 2%;
+    margin-top:8px;
+
+}
+.overlay{
+    width:100%;
+    position:fixed;
+    height:100%;
+    top:0;
+    left:0;
+    background:#000;
+
+    z-index:9999;
+    display:none;
+}
+#LoadingBox{
+    z-index:10000;
+    position:fixed;
+    top:50%;
+    left:50%;
+    width:100px;
+    height:100px;
+    margin-top:-60px;
+    display:none;
+    margin-left:-60px;
+    background:#fff;
+
+    padding:10px;
+    border-radius:10px;
+
+}
+input,select{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+input:focus{
+    outline:2px solid #044d93;
+}
+.image{
+    height:auto;
+}
+.image img{
     width:100%;
     height:auto;
 }
+.inner{
+    padding:5px;
+}
+table{
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+tr:hover {
+    background-color: #f5f5f5;
+
+}
+tr.success,td.success{
+    background-color: #dff0d8;
+    border:none;
+    border-radius:0;
+}
+tr.error,td.error{
+    border:none;
+    border-radius:0;
+    background-color: #f2dede;
+}
+thead th{
+    background:#ddd;
+    padding:10px;
+    font-size:12px;
+    color:#444;
+    text-shadow:1px 1px #fff;
+    position: relative;
+    height:20px;
+}
+td{text-align: center;padding:10px;border-bottom:1px solid #eee;}
+.fixture_box{
+    background:#efefef;
+    border:1px solid #eee;
+    border-radius:10px;
+    padding:10px;
+    margin:5px;
+}
+.white_gradient{
+    background: #ffffff;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlNWU1ZTUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top,  #ffffff 0%, #e5e5e5 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5));
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%);
+    background: -o-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%);
+    background: -ms-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%);
+    background: linear-gradient(to bottom,  #ffffff 0%,#e5e5e5 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 );
+
+}
+.red_grad{
+    background: #ff3019;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmMzAxOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjZjA0MDQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top,  #ff3019 0%, #cf0404 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff3019), color-stop(100%,#cf0404));
+    background: -webkit-linear-gradient(top,  #ff3019 0%,#cf0404 100%);
+    background: -o-linear-gradient(top,  #ff3019 0%,#cf0404 100%);
+    background: -ms-linear-gradient(top,  #ff3019 0%,#cf0404 100%);
+    background: linear-gradient(to bottom,  #ff3019 0%,#cf0404 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3019', endColorstr='#cf0404',GradientType=0 );
+
+}
+.fixture_box .title{
+    width: 100%;
+    background: none repeat scroll 0% 0% #fff;
+    padding: 5px 0;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+.fixture_img{
+    width:75%;
+    margin:0 auto;
+}
+.fixture_img img{
+    width:100%;
+    height:auto;
+    border-radius:10px;
+
+}
+.fixture_vs{
+    margin-top: 55px;
+}
+.maindetails{
+    border:1px solid #ccc;
+    border-radius:10px;
+    overflow:hidden;
+}
+.countdowneffect div{
+    background:#333;
+    padding:5px;
+    margin:5px;
+    color:#ccc;
+    border-radius:10px;
+    text-align:center;
+    text-shadow:1px 1px #000;
+}
+.countdown_style{
+    background:#222;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+}
 @media screen and (min-width: 650px) {
+    #content h1{
+        font-size:22px;
+
+    }
+    #content{
+
+        font-size:14px;
+
+
+    }
+    #sidebar{
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        border-left:none;
+    }
+    #content{
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        border-right:none;
+
+    }
     .notMobile{display:inline-block !important;}
     #showMenu{display:none}
     #logo{margin-left:1%;}
@@ -108,7 +340,7 @@ header {
         height: 100%;
        position:static;
         display:block;
-        opacity:1;
+        opacity:1 !important;
         width: 495px;
         background:none;
          border:none;
@@ -131,11 +363,31 @@ header {
     }
     #navigation li a:hover{
         color:#fff;
+        -webkit-animation: animateNavA 1s 1; /* Safari 4+ */
+        -moz-animation:    animateNavA 1s 1; /* Fx 5+ */
+        -o-animation:      animateNavA 1s 1; /* Opera 12+ */
+        animation:         animateNavA 1s 1; /* IE 10+, Fx 29+ */
     }
     #navigation li:last-child a{
         background:none;
     }
 
+    @keyframes animateNavA {
+        0%   { color:#ff8a00;}
+        100%   { color:#fff;}
+    }
+    @-webkit-keyframes animateNavA{
+        0%   { color:#ff8a00;}
+        100%   { color:#fff;}
+    }
+    @-moz-keyframes animateNavA{
+        0%   { color:#ff8a00;}
+        100%   { color:#fff;}
+    }
+    @-o-keyframes animateNavA{
+        0%   { color:#ff8a00;}
+        100%   { color:#fff;}
+    }
 }
 @media screen and (min-width:800px){
     #navigation{

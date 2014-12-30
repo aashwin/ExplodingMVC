@@ -25,3 +25,4 @@ CSS3 Media Queries Support: http://css3-mediaqueries-js.googlecode.com
 * Other Details
 **/
 The PHP MVC Framework was built by me.
+Scroll_Paginate JQuery Plugin was built by me, used for ajax scroll based pagination...

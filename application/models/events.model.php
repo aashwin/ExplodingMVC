@@ -8,7 +8,8 @@
  */
 
 class eventsModel extends Model {
-    public function getEvents($start=NULL, $limitby=NULL,$order='eventName', $by='ASC', $filterField='', $filterVal=''){
+
+    public function getEvents($start=NULL, $limitby=NULL,$order='eventName', $by='ASC', $filterField='', $filterVal='', $explictFilter=false, $count=false){
         $limit='';
         if($start!==NULL && $limitby!==NULL){
             $start=intval($start);
@@ -21,12 +22,22 @@ class eventsModel extends Model {
         if(!in_array($order, $orderAllowed)) return false;
         if(!in_array($filterField, $orderAllowed) && $filterField!='') return false;
         $where='';
-        if($filterField!='' && $filterVal!=''){
+        if($filterField!='' && $filterVal!='' && $explictFilter===false){
             $where="WHERE $filterField LIKE :value";
+        }else if($filterField!='' && $filterVal!='' && $explictFilter===true){
+            $where="WHERE $filterField = :value";
         }
-        $query=$this->getDB()->prepare("SELECT * FROM events $where ORDER BY $order $by $limit");
+        $orderby='';
+        if($order!=NULL && $by!=NULL){
+            $orderby="ORDER BY $order $by";
+        }
+
+        $query=$this->getDB()->prepare("SELECT ".($count?'count(eventId)':'*')." FROM events $where $orderby $limit");
+        if($filterField!='' && $filterVal!='' && $explictFilter===false){
+            $filterVal='%'.$filterVal.'%';
+        }
         if($filterField!='' && $filterVal!=''){
-            $query->bindValue(':value', '%'.$filterVal.'%');
+            $query->bindValue(':value', $filterVal);
         }
         if($query->execute()){
             return $query;
@@ -35,8 +46,11 @@ class eventsModel extends Model {
     }
     public function buildName($name, $teamOne, $teamTwo){
         $teamModel=$this->loadModel('teams');
-
-        return str_replace(array('[%team1%]','[%team2%]'), array($teamModel->getTeam($teamOne,'teamName'),$teamModel->getTeam($teamTwo,'teamName')), $name);
+        if(is_numeric($teamOne))
+            $teamOne=$teamModel->getTeam($teamOne,'teamName');
+        if(is_numeric($teamTwo))
+            $teamTwo=$teamModel->getTeam($teamTwo,'teamName');
+        return str_replace(array('[%team1%]','[%team2%]'), array($teamOne,$teamTwo), $name);
     }
     public function getEvent($id,$field='*'){
         $query=$this->getDB()->prepare("SELECT $field FROM events WHERE eventId=:id LIMIT 1");

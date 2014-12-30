@@ -122,7 +122,7 @@ echo $this->breadcrumbs();
                 </select>
             </div>
         </div>
-
+        <div class="clear"></div>
         <div id="locationOnMap" class="field grid_mob_12 grid_med_12"></div>
 
        <div class="field grid_mob_12 grid_med_12">

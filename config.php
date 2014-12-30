@@ -21,7 +21,10 @@ define('DEBUG_MODE',true);
 define('DB_DATE_FORMAT','Y-m-d');
 define('DB_DATETIME_FORMAT','Y-m-d H:i:s');
 define('DISPLAY_DATETIME','Y-m-d H:i');
+define('DISPLAY_DATE','jS M Y');
 
 define('TEAM_FLAG_DIR', APP_DIR.'/public/uploads/team_flags/');
 define('WWW_TEAM_FLAG', WWW_PUBLIC.'/uploads/team_flags/');
+define('TOURNAMENT_IMG_DIR', APP_DIR.'/public/uploads/tournaments/');
+define('WWW_TOURNAMENT_IMG', WWW_PUBLIC.'/uploads/tournaments/');
 ?>
