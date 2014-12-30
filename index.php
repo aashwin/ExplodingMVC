@@ -12,6 +12,7 @@ define("SCRIPT_START_TIME", microtime(true));
 (@__DIR__ == '__DIR__') && define('__DIR__', realpath(dirname(__FILE__)));
 
 include(__DIR__ . "/config.php");
+include(APP_DIR . '/config/routers.config.php');
 
 if(DEBUG_MODE){
     ini_set("display_errors", 1);

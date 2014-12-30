@@ -16,6 +16,7 @@ class Functions {
      * @return string A Valid URL for a particular page
      */
     public static function pageLink(){
+        global $_ROUTERS;
         $getArgs=func_get_args();
         $numArgs=func_num_args();
         if ($numArgs>0 ){
@@ -28,7 +29,19 @@ class Functions {
             $controller='index';
             $action='index';
         }
+        foreach($_ROUTERS as $v){
+            if(strtolower($v[1])==strtolower($controller).'/'.strtolower($action)){
 
+                unset($getArgs[0], $getArgs[1]);
+                if($numArgs-2!=count($v[2])){
+                    $getArgs[$numArgs-1]=0;
+                }
+                $getArgs=array_map('self::makeSlug', $getArgs);
+
+                $link=stripslashes(str_replace($v[2], $getArgs ,WWW_ROOT.'/'.$v[0] ));
+                return $link;
+            }
+        }
 
         if($controller=='index' && $action=='index'){
             return WWW_ROOT;

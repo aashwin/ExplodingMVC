@@ -48,8 +48,8 @@ $tournamentsModel=$this->loadModel('tournaments');
            <ul>
                <li id="closeMenu"><a href="#">Close</a></li>
                <li><a href="<?php echo Functions::pageLink('Index');?>">Home</a></li>
-               <li><a href="<?php echo Functions::pageLink('Index');?>">What's on?</a></li>
-               <li><a href="<?php echo Functions::pageLink('Index', 'All');?>">All Fixtures</a></li>
+               <li><a href="<?php echo Functions::pageLink('Index', 'allFixtures');?>">What's On</a></li>
+               <li><a href="<?php echo Functions::pageLink('Index', 'allTournaments');?>">Series</a></li>
                <li><a href="<?php echo Functions::pageLink('Index');?>">Teams</a></li>
                <li><a href="<?php echo Functions::pageLink('Index');?>">Contact Us</a></li>
            </ul>
@@ -58,28 +58,52 @@ $tournamentsModel=$this->loadModel('tournaments');
    </header>
     <section id="container">
 
-        <div class="grid_mob_12 grid_med_8 grid_lrg_9">
+        <div class="grid_mob_12 grid_med_8 grid_lrg_9 mob_right med_left">
             <div id="content">
                 <?php $this->getView($view, $page); ?>
             </div>
         </div>
-        <div class="grid_mob_12 grid_med_4 grid_lrg_3">
+        <div class="grid_mob_12 grid_med_4 grid_lrg_3 mob_left med_left">
             <div id="sidebar">
-                <h3>Find an Event</h3>
-                <form name="Search" action="<?php echo Functions::pageLink();?>" method="POST">
-                    <div class="field">
-                        <label for="tournamentField">Which Tournament?</label>
-                        <select name="tournamentField" id="tournamentField">
-                            <option value="0">Which Tournament?</option>
-                            <?php
-                            $q=$tournamentsModel->getSearchList();
-                            if($q!==false)
-                                while($r=$q->fetch())
-                                    echo '<option value="'.$r['tournamentId'].'">'.$r['tournamentName'].'</option>';
-                            ?>
-                        </select>
-                    </div>
-                </form>
+                <div class="sidebar_elem">
+                    <?php
+                    if(!$this->userModel->isLoggedIn()) {
+
+                        ?>
+                        <div class="grid_mob_6"><a href="<?php echo Functions::pageLink('User', 'Login'); ?>"
+                                                   class="login_btn">Login</a></div>
+                        <div class="grid_mob_6"><a href="<?php echo Functions::pageLink('User', 'register'); ?>"
+                                                   class="signup_btn">Signup</a></div>
+                        <div class="clear"></div>
+                    <?php
+                    }else {
+                        ?>
+                        <h3 class="grid_mob_9">Hello <?php echo $this->userModel->loggedInUserData('username');?>!</h3>
+
+                        <div class="grid_mob_3"><a href="<?php echo Functions::pageLink('User', 'logout'); ?>"
+                                                   class="logout_btn">Logout</a></div>
+                        <div class="clear"></div>
+                    <?php
+                    }
+                    ?>
+                </div>
+                <div class="sidebar_elem">
+                    <h3>Find an Event</h3>
+                    <form name="Search" action="<?php echo Functions::pageLink();?>" method="POST">
+                        <div class="field">
+                            <label for="tournamentField">Which Tournament?</label>
+                            <select name="tournamentField" id="tournamentField">
+                                <option value="0">Which Tournament?</option>
+                                <?php
+                                $q=$tournamentsModel->getSearchList();
+                                if($q!==false)
+                                    while($r=$q->fetch())
+                                        echo '<option value="'.$r['tournamentId'].'">'.$r['tournamentName'].'</option>';
+                                ?>
+                            </select>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="clear"></div>

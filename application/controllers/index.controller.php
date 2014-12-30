@@ -9,6 +9,11 @@
 
 class indexController extends BaseController
 {
+    public $userModel=null;
+    public function __construct(){
+        parent::__construct();
+        $this->userModel=$this->loadModel("user");
+    }
     public function index()
     {
         $this->title("Cricket Events");
@@ -40,19 +45,57 @@ class indexController extends BaseController
         $this->loadView('Index', 'events_tournament');
 
     }
-    public function EventsICal($id){
-        $tournaments=$this->loadModel('tournaments');
-        $this->addViewArray("addressModel", $this->loadModel('address'));
+    public function allFixtures( $page=1, $ajax='false'){
         $this->addViewArray("eventsModel", $this->loadModel('events'));
-        if($this->getViewArray('tournamentData')===false){
-            echo '<h1>Invalid Tournament!</h1>';
-            exit;
+        $this->addViewArray("ajax", $ajax);
+        $this->addViewArray("currentPage", intval($page));
+
+        $this->title('Cricket Fixtures');
+        if($ajax=='false'){
+            $this->setTemplateLayout('default');
         }
-        $data=$tournaments->getTournament($id);
+        if($page<1)
+            $page=1;
+        $perPage=6;
+        $this->addViewArray("perPage", $perPage);
+        $start=($page-1)*$perPage;
+        $this->addViewArray("totalItems", $this->getViewArray('eventsModel')->getEvents(NULL, NULL,'eventId', 'DESC', '','',false,true, "startTime>'".date(DB_DATETIME_FORMAT, time())."'")->fetchColumn());
+        $this->addViewArray('eventsData', $this->getViewArray('eventsModel')->getEvents($start, $perPage,'startTime', 'ASC', '','',true, false, "startTime>'".date(DB_DATETIME_FORMAT, time())."'"));
+        $this->loadView('Index', 'all_events');
+
+    }
+    public function allTournaments( ){
+        $this->addViewArray("tournamentsModel", $this->loadModel('tournaments'));
+
+
+        $this->title('Cricket Tournaments/Series');
+        $this->setTemplateLayout('default');
+        $this->addViewArray('tournamentsData', $this->getViewArray('tournamentsModel')->getSearchList());
+        $this->loadView('Index', 'all_tournaments');
+
+    }
+    public function EventsICal($id=0, $slug=''){
+        $this->addViewArray("eventsModel", $this->loadModel('events'));
+
+        if($id!=0){
+            $tournaments=$this->loadModel('tournaments');
+            $this->addViewArray("addressModel", $this->loadModel('address'));
+            if($this->getViewArray('tournamentData')===false){
+                echo '<h1>Invalid Tournament!</h1>';
+                exit;
+            }
+            $data=$tournaments->getTournament($id);
+            $filename=Functions::makeSlug($id.'-'.$data['tournamentName']);
+
+            $this->addViewArray('eventsData', $this->getViewArray('eventsModel')->getEvents(NULL, NULL,'startTime', 'ASC', 'tournamentId', $id,true, "startTime>'".date(DB_DATETIME_FORMAT, time())."'"));
+        }else{
+            $this->addViewArray('eventsData', $this->getViewArray('eventsModel')->getEvents(NULL, NULL,'startTime', 'ASC', '','', false, false, "startTime>'".date(DB_DATETIME_FORMAT, time())."'"));
+            $filename='all_cricket_fixtures';
+        }
         $this->addViewArray('eventsData', $this->getViewArray('eventsModel')->getEvents(NULL, NULL,'startTime', 'ASC', 'tournamentId', $id,true));
         define('DISPLAY_ICAL_DATE', 'Ymd\THis\Z');
         header('Content-type: text/calendar; charset=utf-8');
-        header('Content-Disposition: inline; filename='.Functions::makeSlug($id.'-'.$data['tournamentName']).'.ics');
+        header('Content-Disposition: inline; filename='.$filename.'.ics');
         $this->loadView('Index', 'events_ical');
 
     }

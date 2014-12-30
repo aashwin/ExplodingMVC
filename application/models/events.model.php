@@ -9,7 +9,7 @@
 
 class eventsModel extends Model {
 
-    public function getEvents($start=NULL, $limitby=NULL,$order='eventName', $by='ASC', $filterField='', $filterVal='', $explictFilter=false, $count=false){
+    public function getEvents($start=NULL, $limitby=NULL,$order='eventName', $by='ASC', $filterField='', $filterVal='', $explictFilter=false, $count=false, $additionalWhere=''){
         $limit='';
         if($start!==NULL && $limitby!==NULL){
             $start=intval($start);
@@ -27,12 +27,19 @@ class eventsModel extends Model {
         }else if($filterField!='' && $filterVal!='' && $explictFilter===true){
             $where="WHERE $filterField = :value";
         }
+        if($additionalWhere!=''){
+            if($where==''){
+                $where='WHERE ';
+            }else{
+                $where.=' AND ';
+            }
+            $where.=$additionalWhere;
+        }
         $orderby='';
         if($order!=NULL && $by!=NULL){
             $orderby="ORDER BY $order $by";
         }
-
-        $query=$this->getDB()->prepare("SELECT ".($count?'count(eventId)':'*')." FROM events $where $orderby $limit");
+        $query=$this->getDB()->prepare("SELECT ".($count?'count(eventId)':'*')." FROM events ".$where." $orderby $limit");
         if($filterField!='' && $filterVal!='' && $explictFilter===false){
             $filterVal='%'.$filterVal.'%';
         }

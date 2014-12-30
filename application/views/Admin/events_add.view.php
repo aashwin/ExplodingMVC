@@ -138,4 +138,5 @@ echo $this->breadcrumbs();
 <script type="text/javascript" src="<?php echo WWW_PUBLIC;?>/js/jquery-ui-timepicker.js"></script>
 <script type="text/javascript">
     var jsonLocations=<?php echo json_encode($locations);?>;
+    var API_KEY='<?php echo GOOGLE_MAPS_API_KEY;?>';
 </script><script type="text/javascript" src="<?php echo WWW_PUBLIC;?>/js/admin/events_modify.js"></script>

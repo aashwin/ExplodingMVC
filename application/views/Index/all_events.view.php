@@ -2,27 +2,23 @@
 /**
  * Created by Aashwin Mohan
  * Copyright 2014
- * File: events_tournament.view.php
- * Date: 27/12/14
- * Time: 23:05
+ * File: all_events.view.php
+ * Date: 30/12/14
+ * Time: 15:05
  */
-$data=$this->getViewArray('tournamentData');
+$data=$this->getViewArray('eventsData');
 if($this->getViewArray('currentPage')==1) {
     ?>
     <div class="white_gradient maindetails">
-        <div>
-            <img class="image grid_mob_3 grid_med_2"
-                 src="<?php echo WWW_TOURNAMENT_IMG;?>/<?php echo $data['image'];?>"/></div>
-        <div class="details grid_mob_9 grid_med_10">
+
+        <div class="details grid_mob_12">
             <div class="inner ">
-                <h1><?php echo $data['tournamentName'];?></h1>
+                <h1>Whats On?</h1>
 
                 <p>
                     <small>Total Events: <?php echo $this->getViewArray('totalItems');?></small> <br />
-                    <strong>Start on </strong> <?php echo date(DISPLAY_DATE, strtotime($data['tournamentStart']));?> <br />
 
-                    <strong>Ends on</strong> <?php echo date(DISPLAY_DATE, strtotime($data['tournamentEnd']));?> <br />
-                    <a href="<?php echo Functions::pageLink('Index','EventsICal',$data['tournamentId']);?>">Download the Calender (.ics)</a>
+                    <a href="<?php echo Functions::pageLink('Index','EventsICal');?>">Download the Calender (.ics)</a>
 
                 </p>
             </div>
@@ -30,9 +26,9 @@ if($this->getViewArray('currentPage')==1) {
         <div class="clear"></div>
 
     </div>
-    <div align="center">
-        <small><span class="notMobile">Click/</span>Tap an event to see more details :)</small>
-    </div>
+   <div align="center">
+       <small><span class="notMobile">Click/</span>Tap an event to see more details :)</small>
+   </div>
 <div id="scroll_pagination">
 <?php
 }
@@ -43,7 +39,7 @@ if($this->getViewArray('eventsData')!==false){
         $teamTwo=$teamModel->getTeam($r['teamTwo']);
         ?>
         <div class="grid_mob_12 grid_med_6">
-            <a href="<?php echo Functions::pageLink('Events', 'view', $r['eventId'],$this->getViewArray('eventsModel')->buildName($r['eventName'], $teamOne['teamName'],$teamTwo['teamName']));?>" class="fixture_box white_gradient">
+            <a href="<?php echo Functions::pageLink('Events', 'view', $r['eventId'], $this->getViewArray('eventsModel')->buildName($r['eventName'], $teamOne['teamName'],$teamTwo['teamName']));?>" class="fixture_box white_gradient">
                 <div class="grid_mob_12 ">
                     <div class="title" align="center"><?php echo $this->getViewArray('eventsModel')->buildName($r['eventName'], $teamOne['teamName'],$teamTwo['teamName']);?></div>
                 </div>
@@ -91,7 +87,7 @@ if($this->getViewArray('eventsData')!==false){
     <?php
 $totalPages=ceil($this->getViewArray('totalItems')/$this->getViewArray('perPage'));
 if($this->getViewArray('currentPage')<$totalPages){
-    echo '<a href="'.Functions::pageLink($this->getController(), $this->getAction(), $data['tournamentId'], $this->getViewArray('currentPage')+1).'" class="next_paginate">Load More Events</a>';
+    echo '<a href="'.Functions::pageLink($this->getController(), $this->getAction(), $this->getViewArray('currentPage')+1).'" class="next_paginate">Load More Events</a>';
 }
 ?>
 </div>
