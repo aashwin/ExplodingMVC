@@ -22,6 +22,13 @@ class userModel extends Model {
         setcookie('login_token', false, time() - Functions::getTimeAsInt(3), '/', WEB_DOMAIN);
         return true;
     }
+    public function loginAfterSignup($userData){
+        $this->updateLastLogin($userData['userId']);
+        $_SESSION['user_logged_in']=1;
+        $_SESSION['user_logged_id']=$userData['userId'];
+        $_SESSION['user_logged_name']=$userData['username'];
+        $this->setLoginToken($userData['userId']);
+    }
     /**
      * Login the user after verification
      * @param string $username Can either be username or email for login
@@ -43,7 +50,11 @@ class userModel extends Model {
         $userData = $this->getUserData($username);
         if ($userData === false){
             $this->addErrors('Username/Email does\'nt exist in database');
-             return false;
+            return false;
+        }
+        if ($userData['activation_key'] != NULL){
+            $this->addErrors('Please Activate your account');
+            return false;
         }
         //Check if user has attempted login 5 times (and failed).
         if($userData['userFailedLogins']>=5){
@@ -154,18 +165,18 @@ class userModel extends Model {
         $password_hash = password_hash($password, PASSWORD_DEFAULT, array('cost' => HASH_COST));
         $userIP=$userIp=Functions::getIP(true);
         $timeNow=time();
-
+        $generateCode=md5(uniqid(rand(), true));
         $queryInsert=$this->getDB()->prepare('INSERT INTO user_login
-                                              (username, userEmail, userPassword, userRegIP, userRegTime)
+                                              (username, userEmail, userPassword, userRegIP, userRegTime, activation_key)
                                               VALUES
-                                              (:username, :email, :password, :ip, :regTime)');
+                                              (:username, :email, :password, :ip, :regTime, :key)');
         $queryInsert->bindValue(':username',$username);
         $queryInsert->bindValue(':email',$email);
         $queryInsert->bindValue(':password',$password_hash);
         $queryInsert->bindValue(':ip',$userIP);
         $queryInsert->bindValue(':regTime',$timeNow);
+        $queryInsert->bindValue(':key',$generateCode);
         $queryInsert->execute();
-
         return $this->getDB()->lastInsertId();
 
 
@@ -205,7 +216,7 @@ class userModel extends Model {
      * @param int $userId ID of user to get details of
      * @return mixed FALSE on failure or ASSOC Array with User Details
      */
-    private function getUserDataFromID($userId){
+    public function getUserDataFromID($userId){
         $queryUser=$this->getDB()->prepare('SELECT * FROM user_login WHERE userId=:id LIMIT 1');
         $queryUser->bindValue(':id', $userId);
         $queryUser->execute();
@@ -233,7 +244,15 @@ class userModel extends Model {
     private function updateLastLogin($userId){
 
         $queryUser=$this->getDB()->prepare("UPDATE user_login SET userLastLogin=:time WHERE userId=:id LIMIT 1");
-$queryUser->execute(array(':id'=>$userId,':time'=>time()));
+        $queryUser->execute(array(':id'=>$userId,':time'=>time()));
+    }
+    /**
+     * @param int $userId The User ID for the user we are activating
+     */
+    public function activateAccount($userId){
+
+        $queryUser=$this->getDB()->prepare("UPDATE user_login SET activation_key=NULL WHERE userId=:id LIMIT 1");
+        $queryUser->execute(array(':id'=>$userId));
     }
     /**
      * @param int $userId The User ID for the user we are updating
@@ -309,6 +328,8 @@ $queryUser->execute(array(':id'=>$userId,':time'=>time()));
             $this->addErrors('Email should not be empty');
         if(!filter_var($email, FILTER_VALIDATE_EMAIL))
             $this->addErrors('Invalid Email, please try again');
+        if($this->checkUserExists($username, $email)  && !$update)
+            $this->addErrors('Username or Email already exists in the database');
         if(empty($password) && !$update)
             $this->addErrors('Password should not be empty');
         if(strlen($password)<=6 && !$update)
@@ -318,8 +339,8 @@ $queryUser->execute(array(':id'=>$userId,':time'=>time()));
         if($this->getDB()==NULL){
             $this->addErrors('Unfortunately we are experiencing some issues, try again later');
         }
-        if($this->checkUserExists($username, $email)  && !$update)
-            $this->addErrors('Username or Email already exists in the database');
+
+
         if($this->numErrors()>0)
             return false;
         return true;

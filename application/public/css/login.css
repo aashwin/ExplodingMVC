@@ -25,7 +25,7 @@ a:focus{
 }
 #LoginContainer{
     background:#fff;
-    position:fixed;
+    position:absolute;
     top:30%;
     left:50%;
     width:300px;
@@ -76,7 +76,7 @@ h1{
     border:1px solid #c00 !important;
 }
 
-input[name='username'],input[name='password']{
+input[type="password"],input[type="text"],input[type="email"]{
     padding:20px 10px;
     border-radius:10px;
     width:278px;
@@ -88,7 +88,11 @@ input[name='username']{
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     margin-top:5px;
-}input[name='password']{
+}input[name='email'],input[name='passwordagain']{
+     border-radius:0;
+     border-top:none;
+
+ }input[name='password']{
      border-top-left-radius: 0;
      border-top-right-radius: 0;
     border-top:none;

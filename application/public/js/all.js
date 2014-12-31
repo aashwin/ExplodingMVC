@@ -6,7 +6,7 @@ $(document).ready(function(){
     placeholderSupport=document.createElement('input');
     placeholderSupport='placeholder' in placeholderSupport;
     if(placeholderSupport){
-        var acceptInputs='input[type=text],input[type=password],input[type=date]';
+        var acceptInputs='input[type=text],input[type=password],input[type=date],input[type=email]';
         $(".field").each(function(){
             var $label= $("label", $(this));
 
