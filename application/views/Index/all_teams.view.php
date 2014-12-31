@@ -34,7 +34,7 @@ if($data!==false){
 
         ?>
         <div class="grid_mob_6 grid_med_3">
-            <a href="<?php echo Functions::pageLink("Index", "getTeam", $r['teamId'], $r['teamName']);?>" class="series_box">
+            <a href="<?php echo Functions::pageLink("teams", "view", $r['teamId'], $r['teamName']);?>" class="series_box">
                 <img src="<?php echo WWW_TEAM_FLAG.$r['teamFlag'];?>"  />
                 <div class="title"><?php echo $r['teamName'];?></div>
             </a>

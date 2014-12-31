@@ -21,7 +21,7 @@ class eventsController extends BaseController
         $this->addViewArray('teamsModel',$this->loadModel('teams'));
         $this->addViewArray("eventData", $this->getViewArray('eventsModel')->getEvent($id));
         if($this->getViewArray('eventData')===false){
-            echo '<h1>Invalid Event!</h1>';
+            header('Location: '.Functions::pageLink('Error','Error404'));
             exit;
         }
         $data=$this->getViewArray('eventData');

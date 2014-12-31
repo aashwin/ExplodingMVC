@@ -9,13 +9,19 @@
             autoLoadTimes: false,
             loadingText:'Loading More Content...',
             completeText:"That's All! Everything Loaded :)",
-            appendURL: ''
+            appendURL: '',
+            element: this
         }, options );
 
         init(this);
         $this=this;
+        checkScroll($this);
         $(window).bind('scroll.scroll_paginate',function (){
-           // console.log($this.data("scroll_waiting") +"+"+ $(window).scrollTop() +"+"+  ($this.outerHeight() -$this.offset().top));
+            checkScroll($this);
+        });
+        return this;
+        function checkScroll($this){
+            // console.log($this.data("scroll_waiting") +"+"+ $(window).scrollTop() +"+"+  ($this.outerHeight() -$this.offset().top));
             if ($this.data("scroll_waiting")==0 && $(window).scrollTop() + $(window).height() == $(document).height()) {
                 if($(opts.nextElement, $this).length==0){
                     finish();
@@ -29,12 +35,11 @@
                 }
                 loadNext($this, nextURL);
             }
-        });
-        return this;
+        }
         function finish(){
             $(window).unbind('scroll.scroll_paginate');
             $(".loadingScroll").remove();
-            $('<div class="completeScroll">'+opts.completeText+'</div>').appendTo($this);
+            $('<div class="completeScroll">'+opts.completeText+'</div>').appendTo(opts.element);
         }
         function init($this){
             if($(opts.nextElement, $this).length==0){

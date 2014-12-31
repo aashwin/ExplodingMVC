@@ -217,10 +217,10 @@ input:focus{
     padding:5px;
 }
 #locationOnMap{
-    height:300px;
+    height:268px;
     display:block;
     border:1px solid #000;
-    margin-top:10px;
+    margin-top:5px;
 }
 table{
     border-spacing: 0;
