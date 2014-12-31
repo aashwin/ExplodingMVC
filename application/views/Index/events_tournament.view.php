@@ -22,7 +22,7 @@ if($this->getViewArray('currentPage')==1) {
                     <strong>Start on </strong> <?php echo date(DISPLAY_DATE, strtotime($data['tournamentStart']));?> <br />
 
                     <strong>Ends on</strong> <?php echo date(DISPLAY_DATE, strtotime($data['tournamentEnd']));?> <br />
-                    <a href="<?php echo Functions::pageLink('Index','EventsICal',$data['tournamentId']);?>">Download the Calender (.ics)</a>
+                    <a href="<?php echo Functions::pageLink('ical','tournaments',$data['tournamentId']);?>">Download the Calender (.ics)</a>
 
                 </p>
             </div>

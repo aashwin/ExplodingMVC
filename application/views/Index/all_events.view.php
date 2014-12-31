@@ -18,7 +18,7 @@ if($this->getViewArray('currentPage')==1) {
                 <p>
                     <small>Total Events: <?php echo $this->getViewArray('totalItems');?></small> <br />
 
-                    <a href="<?php echo Functions::pageLink('Index','EventsICal');?>">Download the Calender (.ics)</a>
+                    <a href="<?php echo Functions::pageLink('ical','index');?>">Download the Calender (.ics)</a>
 
                 </p>
             </div>

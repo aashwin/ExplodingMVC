@@ -2,7 +2,7 @@
 /**
  * Created by Aashwin Mohan
  * Copyright 2014
- * File: events_ical.view.php
+ * File: file.view.php
  * Date: 29/12/14
  * Time: 23:05
  */?>
@@ -18,7 +18,7 @@ if($this->getViewArray('eventsData')!==false){
         $teamTwo=$teamModel->getTeam($r['teamTwo']);
         $address=$this->getViewArray('addressModel')->getAddress($r['addressId']);?>
 BEGIN:VEVENT<?php echo PHP_EOL;?>
-DESCRIPTION:Clash between <?php echo $teamOne['teamName'].' and '.$teamTwo['teamName'].'. For more details check: '.Functions::pageLink('Events', 'view', $r['eventId']).PHP_EOL;?>
+DESCRIPTION:Clash between <?php echo $teamOne['teamName'].' and '.$teamTwo['teamName'].'. For more details check: '.Functions::pageLink('Events', 'view', $r['eventId'],$this->getViewArray('eventsModel')->buildName($r['eventName'], $teamOne['teamName'],$teamTwo['teamName'])).PHP_EOL;?>
 SUMMARY:<?php echo $this->getViewArray('eventsModel')->buildName($r['eventName'], $teamOne['teamName'],$teamTwo['teamName']).PHP_EOL;?>
 UID:<?php echo $r['eventId'].PHP_EOL;?>
 URL:<?php echo Functions::pageLink('Events', 'view', $r['eventId'],$this->getViewArray('eventsModel')->buildName($r['eventName'], $teamOne['teamName'],$teamTwo['teamName'])).PHP_EOL;?>
