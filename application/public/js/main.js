@@ -3,6 +3,8 @@
  */
 var filter_timer;
 $(document).ready(function(){
+    var image=new Image();
+    image.src=WWW_PUBLIC+'/images/ajax.gif';
     overlayDiv=buildOverlay();
     $("#showMenu").click(function(){
         $("#overlay").fadeTo(300, 0.8);

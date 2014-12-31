@@ -104,7 +104,10 @@ if($this->getViewArray('currentPage')==1) {
 <script type="text/javascript" src="<?php echo WWW_PUBLIC;?>/js/scroll_paginate.jquery.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-        $("#scroll_pagination").scroll_paginate({appendURL:'/ajax'});
+        $("#scroll_pagination").scroll_paginate({
+            appendURL:'/ajax',
+            loadingText:'<img src="<?php echo WWW_PUBLIC;?>/images/ajax.gif" />'
+        });
     });
 </script>
 <?php }

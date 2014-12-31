@@ -22,7 +22,7 @@ class teamsModel extends Model {
         }
         return false;
     }
-    public function getTeams($start=NULL, $limitby=NULL,$order='teamId', $by='ASC', $filterField='', $filterVal=''){
+    public function getTeams($start=NULL, $limitby=NULL,$order='teamId', $by='ASC', $filterField='', $filterVal='', $explictFilter=false, $count=false, $additionalWhere=''){
         $limit='';
         if($start!==NULL && $limitby!==NULL){
             $start=intval($start);
@@ -35,12 +35,25 @@ class teamsModel extends Model {
         if(!in_array($order, $orderAllowed)) return false;
         if(!in_array($filterField, $orderAllowed) && $filterField!='') return false;
         $where='';
-        if($filterField!='' && $filterVal!=''){
+        if($filterField!='' && $filterVal!='' && $explictFilter===false){
             $where="WHERE $filterField LIKE :value";
+        }else if($filterField!='' && $filterVal!='' && $explictFilter===true){
+            $where="WHERE $filterField = :value";
         }
-        $query=$this->getDB()->prepare("SELECT * FROM teams $where ORDER BY $order $by $limit");
+        if($additionalWhere!=''){
+            if($where==''){
+                $where='WHERE ';
+            }else{
+                $where.=' AND ';
+            }
+            $where.=$additionalWhere;
+        }
+        $query=$this->getDB()->prepare("SELECT ".($count?'count(teamId)':'*')." FROM teams $where ORDER BY $order $by $limit");
+        if($filterField!='' && $filterVal!='' && $explictFilter===false){
+            $filterVal='%'.$filterVal.'%';
+        }
         if($filterField!='' && $filterVal!=''){
-            $query->bindValue(':value', '%'.$filterVal.'%');
+            $query->bindValue(':value', $filterVal);
         }
         if($query->execute()){
             return $query;

@@ -34,7 +34,7 @@
         function finish(){
             $(window).unbind('scroll.scroll_paginate');
             $(".loadingScroll").remove();
-            $('<div class="loadingScroll">'+opts.completeText+'</div>').appendTo($this);
+            $('<div class="completeScroll">'+opts.completeText+'</div>').appendTo($this);
         }
         function init($this){
             if($(opts.nextElement, $this).length==0){

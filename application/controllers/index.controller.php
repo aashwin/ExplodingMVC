@@ -45,6 +45,25 @@ class indexController extends BaseController
         $this->loadView('Index', 'events_tournament');
 
     }
+    public function allTeams($page=1, $ajax='false'){
+        $this->addViewArray("teamsModel", $this->loadModel('teams'));
+        $this->addViewArray("ajax", $ajax);
+        $this->addViewArray("currentPage", intval($page));
+
+        $this->title('Cricket Teams');
+        if($ajax=='false'){
+            $this->setTemplateLayout('default');
+        }
+        if($page<1)
+            $page=1;
+        $perPage=12;
+        $this->addViewArray("perPage", $perPage);
+        $start=($page-1)*$perPage;
+        $this->addViewArray("totalItems", $this->getViewArray('teamsModel')->getTeams(NULL, NULL,'teamId', 'DESC', '', '',false,true)->fetchColumn());
+        $this->addViewArray('teamsData', $this->getViewArray('teamsModel')->getTeams($start, $perPage,'teamName', 'ASC', '', '',false));
+        $this->loadView('Index', 'all_teams');
+
+    }
     public function allFixtures( $page=1, $ajax='false'){
         $this->addViewArray("eventsModel", $this->loadModel('events'));
         $this->addViewArray("ajax", $ajax);

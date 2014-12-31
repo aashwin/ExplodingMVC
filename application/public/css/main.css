@@ -26,15 +26,20 @@ a:hover{text-decoration:none;}
 
 }
 .loadingScroll{
-    background: #333;
-    padding: 10px;
+
     display: block;
     clear: both;
-    border-radius: 10px;
+   width:100%;
     text-align: center;
-    color: #fff;
-    text-decoration: none;
-    border: 3px solid #222;
+    padding:10px;
+}
+.completeScroll{
+    display: block;
+    clear: both;
+    width:100%;
+    text-align: center;
+    padding:10px;
+    font-weight:bold;
 
 }
 #logo{
