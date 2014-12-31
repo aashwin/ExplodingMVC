@@ -83,6 +83,9 @@ $tournamentsModel=$this->loadModel('tournaments');
                         <div class="grid_mob_3"><a href="<?php echo Functions::pageLink('User', 'logout'); ?>"
                                                    class="logout_btn">Logout</a></div>
                         <div class="clear"></div>
+                        <div class="grid_mob_3"><img src="<?php echo $this->userModel->loggedInUserData('profileImageUrl');?>" ></div>
+                        <div class="grid_mob_9">Last Logged In: <?php echo Functions::TimeAgo($this->userModel->loggedInUserData('userLastLogin'));?></div>
+                        <div class="clear"></div>
                     <?php
                     }
                     ?>

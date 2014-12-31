@@ -21,7 +21,8 @@ if($this->getViewArray('currentPage')==1) {
 
             <p>Events Involved: <?php echo $this->getViewArray('totalItems'); ?>
                 <br/>
-                <a href="<?php echo Functions::pageLink('ical','teams', $data['teamId']);?>">Download the Calender (.ics)</a>
+                <a href="<?php echo Functions::pageLink('ical','teams', $data['teamId']);?>" class="logout_btn" style="width:210px;float:right">Download Calender (.ics)</a>
+            <div class="clear"></div>
 
             </p>
         </div>
