@@ -14,6 +14,27 @@ class teamsController extends BaseController
         parent::__construct();
         $this->userModel=$this->loadModel("user");
     }
+    public function all($page=1, $order='teamName', $by='ASC', $ajax='false'){
+        $this->addViewArray("teamsModel", $this->loadModel('teams'));
+        $this->addViewArray("ajax", $ajax);
+        $this->addViewArray("currentPage", intval($page));
+
+        $this->title('Cricket Teams');
+        if($ajax=='false'){
+            $this->setTemplateLayout('default');
+        }
+        if($page<1)
+            $page=1;
+        $perPage=12;
+        $this->addViewArray("perPage", $perPage);
+        $start=($page-1)*$perPage;
+        $this->addViewArray("order", $order);
+        $this->addViewArray("orderBy", strtolower($by));
+        $this->addViewArray("totalItems", $this->getViewArray('teamsModel')->getTeams(NULL, NULL,'teamId', 'DESC', '', '',false,true)->fetchColumn());
+        $this->addViewArray('teamsData', $this->getViewArray('teamsModel')->getTeams($start, $perPage, $order, $by, '', '',false));
+        $this->loadView('Teams', 'all_teams');
+
+    }
     public function view($id, $slug,$page=1, $ajax='false')
     {
         $this->addViewArray('teamsModel',$this->loadModel('teams'));
