@@ -14,6 +14,25 @@ class eventsController extends BaseController
         parent::__construct();
         $this->userModel=$this->loadModel("user");
     }
+    public function all( $page=1, $ajax='false'){
+        $this->addViewArray("eventsModel", $this->loadModel('events'));
+        $this->addViewArray("ajax", $ajax);
+        $this->addViewArray("currentPage", intval($page));
+
+        $this->title('Cricket Fixtures');
+        if($ajax=='false'){
+            $this->setTemplateLayout('default');
+        }
+        if($page<1)
+            $page=1;
+        $perPage=6;
+        $this->addViewArray("perPage", $perPage);
+        $start=($page-1)*$perPage;
+        $this->addViewArray("totalItems", $this->getViewArray('eventsModel')->getEvents(NULL, NULL,'eventId', 'DESC', '','',false,true, "startTime>'".date(DB_DATETIME_FORMAT, time())."'")->fetchColumn());
+        $this->addViewArray('eventsData', $this->getViewArray('eventsModel')->getEvents($start, $perPage,'startTime', 'ASC', '','',true, false, "startTime>'".date(DB_DATETIME_FORMAT, time())."'"));
+        $this->loadView('Events', 'all_events');
+
+    }
     public function view($id, $slug)
     {
         $this->addViewArray('eventsModel',$this->loadModel('events'));
