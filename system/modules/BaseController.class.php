@@ -53,8 +53,8 @@ class BaseController {
             return $this->viewArray;
         return $this->viewArray[$k];
     }
-    public function loadView($view, $page){
-        if($this->template==''){
+    public function loadView($view, $page, $loadTemplate=true){
+        if($this->template=='' || !$loadTemplate){
             $this->getView($view, $page);
         }else{
 

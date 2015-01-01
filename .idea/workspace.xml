@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31b82888-89e2-4860-822c-1bb5aac56d5d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/events.model.php" afterPath="$PROJECT_DIR$/application/models/events.model.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/Events/event_box.view.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/modules/BaseController.class.php" afterPath="$PROJECT_DIR$/system/modules/BaseController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/Events/all_events.view.php" afterPath="$PROJECT_DIR$/application/views/Events/all_events.view.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/events.controller.php" afterPath="$PROJECT_DIR$/application/controllers/events.controller.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/Tournaments/events_tournament.view.php" afterPath="$PROJECT_DIR$/application/views/Tournaments/events_tournament.view.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/Events/events_view.view.php" afterPath="$PROJECT_DIR$/application/views/Events/events_view.view.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -124,8 +128,28 @@
       <file leaf-file-name="events_view.view.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/views/Events/events_view.view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44335938" vertical-offset="1078" max-vertical-offset="3030">
-              <caret line="87" column="54" selection-start-line="87" selection-start-column="54" selection-end-line="87" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.7910156" vertical-offset="120" max-vertical-offset="1860">
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="events.controller.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/events.controller.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.708333" vertical-offset="388" max-vertical-offset="900">
+              <caret line="57" column="20" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="event_box.view.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/Events/event_box.view.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="885">
+              <caret line="8" column="29" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -134,9 +158,23 @@
       <file leaf-file-name="all_events.view.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/Events/all_events.view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.125" vertical-offset="1005" max-vertical-offset="1830">
-              <caret line="88" column="14" selection-start-line="44" selection-start-column="7" selection-end-line="88" selection-end-column="14" />
-              <folding />
+            <state vertical-scroll-proportion="-7.0833335" vertical-offset="490" max-vertical-offset="1200">
+              <caret line="44" column="26" selection-start-line="44" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+              <folding>
+                <marker date="1420135320000" expanded="true" signature="3621:3728" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="events_tournament.view.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/Tournaments/events_tournament.view.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-26.875" vertical-offset="0" max-vertical-offset="1140">
+              <caret line="49" column="53" selection-start-line="46" selection-start-column="8" selection-end-line="49" selection-end-column="53" />
+              <folding>
+                <element signature="e#6#128#0#PHP" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -156,6 +194,18 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="BaseController.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/system/modules/BaseController.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.083333" vertical-offset="598" max-vertical-offset="1575">
+              <caret line="56" column="35" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
+              <folding>
+                <element signature="e#6#126#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -169,7 +219,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/public/css/grid.css" />
         <option value="$PROJECT_DIR$/application/views/Admin/tournaments_main.view.php" />
         <option value="$PROJECT_DIR$/application/views/Admin/tournaments_add.view.php" />
         <option value="$PROJECT_DIR$/application/controllers/admincp.controller.php" />
@@ -205,7 +254,6 @@
         <option value="$PROJECT_DIR$/application/controllers/user.controller.php" />
         <option value="$PROJECT_DIR$/application/views/Index/register_success.view.php" />
         <option value="$PROJECT_DIR$/system/modules/Functions.class.php" />
-        <option value="$PROJECT_DIR$/application/controllers/events.controller.php" />
         <option value="$PROJECT_DIR$/application/controllers/teams.controller.php" />
         <option value="$PROJECT_DIR$/application/views/Teams/all_teams.view.php" />
         <option value="$PROJECT_DIR$/application/views/Tournaments/all_tournaments.view.php" />
@@ -214,10 +262,13 @@
         <option value="$PROJECT_DIR$/application/controllers/tournaments.controller.php" />
         <option value="$PROJECT_DIR$/application/public/js/main.js" />
         <option value="$PROJECT_DIR$/siteInfo.txt" />
-        <option value="$PROJECT_DIR$/application/views/Tournaments/events_tournament.view.php" />
         <option value="$PROJECT_DIR$/application/public/css/main.css" />
-        <option value="$PROJECT_DIR$/application/views/Events/all_events.view.php" />
         <option value="$PROJECT_DIR$/application/models/events.model.php" />
+        <option value="$PROJECT_DIR$/application/controllers/events.controller.php" />
+        <option value="$PROJECT_DIR$/application/views/Events/event_box.view.php" />
+        <option value="$PROJECT_DIR$/system/modules/BaseController.class.php" />
+        <option value="$PROJECT_DIR$/application/views/Events/all_events.view.php" />
+        <option value="$PROJECT_DIR$/application/views/Tournaments/events_tournament.view.php" />
         <option value="$PROJECT_DIR$/application/views/Events/events_view.view.php" />
       </list>
     </option>
@@ -634,9 +685,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/application/views/Events" />
       <recent name="$PROJECT_DIR$/application/controllers" />
       <recent name="$PROJECT_DIR$/application/views" />
-      <recent name="$PROJECT_DIR$/application/views/Events" />
       <recent name="$PROJECT_DIR$/application/public/images" />
       <recent name="$PROJECT_DIR$/application/views/Index" />
     </key>
@@ -828,7 +879,13 @@
       <option name="project" value="LOCAL" />
       <updated>1420129248879</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added Similar Events to Events Listing">
+      <created>1420134565188</created>
+      <option name="number" value="00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1420134565188</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -939,7 +996,8 @@
     <MESSAGE value="Sort Option added" />
     <MESSAGE value="Added Tournaments Controller and moved actions to it" />
     <MESSAGE value="Tiny Updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tiny Updates" />
+    <MESSAGE value="Added Similar Events to Events Listing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Similar Events to Events Listing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -963,14 +1021,6 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/views/Index/index.view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.087890625" vertical-offset="0" max-vertical-offset="512">
-          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/_templates/admin_default.template.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37109375" vertical-offset="605" max-vertical-offset="1260">
@@ -1337,16 +1387,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/system/modules/BaseController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8743842" vertical-offset="50" max-vertical-offset="1575">
-          <caret line="27" column="9" selection-start-line="17" selection-start-column="7" selection-end-line="27" selection-end-column="9" />
-          <folding>
-            <element signature="e#6#126#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/models/address.model.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.41379312" vertical-offset="882" max-vertical-offset="1335">
@@ -1413,16 +1453,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/Tournaments/events_tournament.view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5605469" vertical-offset="208" max-vertical-offset="1770">
-          <caret line="39" column="326" selection-start-line="39" selection-start-column="326" selection-end-line="39" selection-end-column="326" />
-          <folding>
-            <element signature="e#6#128#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/tournaments.controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6152344" vertical-offset="390" max-vertical-offset="930">
@@ -1457,22 +1487,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/events.controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.734375" vertical-offset="29" max-vertical-offset="945">
-          <caret line="33" column="186" selection-start-line="33" selection-start-column="136" selection-end-line="33" selection-end-column="186" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/Events/all_events.view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.125" vertical-offset="1005" max-vertical-offset="1830">
-          <caret line="88" column="14" selection-start-line="44" selection-start-column="7" selection-end-line="88" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/models/events.model.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.75" vertical-offset="0" max-vertical-offset="2595">
@@ -1486,10 +1500,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/system/modules/BaseController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.083333" vertical-offset="598" max-vertical-offset="1575">
+          <caret line="56" column="35" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
+          <folding>
+            <element signature="e#6#126#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/Events/all_events.view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.0833335" vertical-offset="490" max-vertical-offset="1200">
+          <caret line="44" column="26" selection-start-line="44" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding>
+            <marker date="1420135320000" expanded="true" signature="3621:3728" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/events.controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.708333" vertical-offset="388" max-vertical-offset="900">
+          <caret line="57" column="20" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/Events/event_box.view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="885">
+          <caret line="8" column="29" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/Tournaments/events_tournament.view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-26.875" vertical-offset="0" max-vertical-offset="1140">
+          <caret line="49" column="53" selection-start-line="46" selection-start-column="8" selection-end-line="49" selection-end-column="53" />
+          <folding>
+            <element signature="e#6#128#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/Events/events_view.view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44335938" vertical-offset="1078" max-vertical-offset="3030">
-          <caret line="87" column="54" selection-start-line="87" selection-start-column="54" selection-end-line="87" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.7910156" vertical-offset="120" max-vertical-offset="1860">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding />
         </state>
       </provider>

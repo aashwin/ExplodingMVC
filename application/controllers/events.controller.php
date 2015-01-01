@@ -58,7 +58,4 @@ class eventsController extends BaseController
         $this->loadView('Events', 'events_view');
     }
 
-
-
-
 }
