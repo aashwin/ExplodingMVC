@@ -476,8 +476,13 @@ td{text-align: center;padding:10px;border-bottom:1px solid #eee;}
     background:#FF3F00;opacity:1;
 
 }
+.notMedium{
+    display:none;
+}
 @media screen and (min-width: 650px) {
-
+    .notMedium{
+        display:none;
+    }
     #content h1{
         font-size:22px;
 
@@ -585,6 +590,9 @@ td{text-align: center;padding:10px;border-bottom:1px solid #eee;}
     #container{
         width:90%;
         margin:10px 5%;
+    }
+    .notMedium{
+        display:inline-block;
     }
 
 }

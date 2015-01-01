@@ -33,7 +33,12 @@ if($this->getViewArray('currentPage')==1) {
     <div align="center">
         <small><span class="notMobile">Click/</span>Tap an event to see more details :)</small>
     </div>
-<div id="scroll_pagination">
+    <div align="center" class="sort_container">
+        Sort: <a href="<?php echo Functions::pageLink($this->getController(), $this->getAction(), $data['tournamentId'], $this->getViewArray('currentPage'), 'startTime', $this->getViewArray('orderBy'));?>" class="white_gradient sort_btn <?php echo ($this->getViewArray('order')=='startTime'?'sort_selected':'');?>">Start Date</a>
+        <a href="<?php echo Functions::pageLink($this->getController(), $this->getAction(), $data['tournamentId'],  $this->getViewArray('currentPage'), 'eventName', $this->getViewArray('orderBy'));?>" class="white_gradient sort_btn <?php echo ($this->getViewArray('order')=='eventName'?'sort_selected':'');?>">Event Name</a>
+        By: <a href="<?php echo Functions::pageLink($this->getController(), $this->getAction(), $data['tournamentId'],  $this->getViewArray('currentPage'), $this->getViewArray('order'), 'asc');?>" class="white_gradient sort_btn <?php echo ($this->getViewArray('orderBy')=='asc'?'sort_selected':'');?>">Asc<span class="notMedium">ending</span></a>
+        <a href="<?php echo Functions::pageLink($this->getController(), $this->getAction(), $data['tournamentId'],  $this->getViewArray('currentPage'), $this->getViewArray('order'), 'desc');?>" class="white_gradient sort_btn <?php echo ($this->getViewArray('orderBy')=='desc'?'sort_selected':'');?>">Desc<span class="notMedium">ending</span></a></div>
+    <div id="scroll_pagination">
 <?php
 }
 if($this->getViewArray('eventsData')!==false){
@@ -91,7 +96,7 @@ if($this->getViewArray('eventsData')!==false){
     <?php
 $totalPages=ceil($this->getViewArray('totalItems')/$this->getViewArray('perPage'));
 if($this->getViewArray('currentPage')<$totalPages){
-    echo '<a href="'.Functions::pageLink($this->getController(), $this->getAction(), $data['tournamentId'], $this->getViewArray('currentPage')+1).'" class="next_paginate">Load More Events</a>';
+    echo '<a href="'.Functions::pageLink($this->getController(), $this->getAction(), $data['tournamentId'], $this->getViewArray('currentPage')+1,$this->getViewArray('order'),$this->getViewArray('orderBy')).'" class="next_paginate">Load More Events</a>';
 }
 ?>
 </div>

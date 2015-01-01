@@ -26,3 +26,7 @@ CSS3 Media Queries Support: http://css3-mediaqueries-js.googlecode.com
 **/
 The PHP MVC Framework was built by me.
 Scroll_Paginate JQuery Plugin was built by me, used for ajax scroll based pagination...
+
+For Front End, the pagination works by scrolling for more content (Like Facebook).
+In the backend (Admin Panel), it has pagination buttons to navigate through pages.
+Backend Pagination/Sorting/Deleting/Filtering are Ajax.

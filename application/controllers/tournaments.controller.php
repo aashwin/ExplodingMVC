@@ -22,7 +22,7 @@ class tournamentsController extends BaseController
         $this->loadView('Tournaments', 'all_tournaments');
 
     }
-    public function view($id, $page=1, $ajax='false'){
+    public function view($id, $page=1, $order='startTime', $by='ASC', $ajax='false'){
         $tournaments=$this->loadModel('tournaments');
         $this->addViewArray("tournamentData", $tournaments->getTournament($id));
         $this->addViewArray("eventsModel", $this->loadModel('events'));
@@ -42,8 +42,12 @@ class tournamentsController extends BaseController
         $perPage=6;
         $this->addViewArray("perPage", $perPage);
         $start=($page-1)*$perPage;
+
+        $this->addViewArray("order", $order);
+        $this->addViewArray("orderBy", strtolower($by));
+
         $this->addViewArray("totalItems", $this->getViewArray('eventsModel')->getEvents(NULL, NULL,'eventId', 'DESC', 'tournamentId', $id,true,true)->fetchColumn());
-        $this->addViewArray('eventsData', $this->getViewArray('eventsModel')->getEvents($start, $perPage,'startTime', 'ASC', 'tournamentId', $id,true));
+        $this->addViewArray('eventsData', $this->getViewArray('eventsModel')->getEvents($start, $perPage,$order, $by, 'tournamentId', $id,true));
         $this->loadView('Tournaments', 'events_tournament');
 
     }

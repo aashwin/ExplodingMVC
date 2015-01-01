@@ -51,7 +51,6 @@ $tournamentsModel=$this->loadModel('tournaments');
                <li><a href="<?php echo Functions::pageLink('Events', 'all');?>">What's On</a></li>
                <li><a href="<?php echo Functions::pageLink('Tournaments', 'all');?>">Series</a></li>
                <li><a href="<?php echo Functions::pageLink('Teams', 'all');?>">Teams</a></li>
-               <li><a href="<?php echo Functions::pageLink('Index');?>">Contact Us</a></li>
            </ul>
        </nav>
        <div class="clear"></div>

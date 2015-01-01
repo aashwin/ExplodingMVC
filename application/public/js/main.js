@@ -66,10 +66,11 @@ $(document).ready(function(){
         if(val==0)
             return;
         showLoading();
-        $.get(WWW_ROOT+'/tournaments/view/'+val+'/1/ajax')
+        var url=WWW_ROOT+'/tournaments/view/'+val+'/1/startTime/asc/';
+        $.get(url+'ajax')
             .done(function(d) {
                 $("#content").html(d);
-                history.pushState("contentLoaded", document.title, WWW_ROOT+'/Index/getTournaments/'+val);
+                history.pushState("contentLoaded", document.title, url);
 
             })
             .fail(function(e) {
