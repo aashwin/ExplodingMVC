@@ -66,7 +66,7 @@ $(document).ready(function(){
         if(val==0)
             return;
         showLoading();
-        $.get(WWW_ROOT+'/Index/getTournaments/'+val+'/1/ajax')
+        $.get(WWW_ROOT+'/tournaments/view/'+val+'/1/ajax')
             .done(function(d) {
                 $("#content").html(d);
                 history.pushState("contentLoaded", document.title, WWW_ROOT+'/Index/getTournaments/'+val);

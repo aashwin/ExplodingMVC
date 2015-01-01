@@ -30,7 +30,7 @@ if($data!==false){
 
         ?>
         <div class="grid_mob_6 grid_med_3">
-            <a href="<?php echo Functions::pageLink("Index", "getTournaments", $r['tournamentId']);?>" class="series_box">
+            <a href="<?php echo Functions::pageLink("Tournaments", "view", $r['tournamentId']);?>" class="series_box">
                 <img src="<?php echo WWW_TOURNAMENT_IMG.$r['image'];?>"  />
                 <div class="title"><?php echo $r['tournamentName'];?></div>
             </a>
