@@ -18,7 +18,7 @@ class eventsModel extends Model {
         }
         $by=strtoupper($by);
         if($by!='ASC' && $by!='DESC') return false;
-        $orderAllowed=array("eventId","eventName","tournamentId","startTime","addressId");
+        $orderAllowed=array("eventId","eventName","tournamentId","startTime","addressId", 'rand()');
         if(!in_array($order, $orderAllowed)) return false;
         if(!in_array($filterField, $orderAllowed) && $filterField!='') return false;
         $where='';
@@ -161,4 +161,14 @@ class eventsModel extends Model {
         return false;
 
     }
+    public function similarEvents($thisId=0, $tournamentId=0, $limit=4){
+        $notThis='';
+        if($thisId!=0){
+            $notThis='eventId!='.$thisId.' AND ';
+        }
+        if($tournamentId==0)
+            return $this->getEvents(0,$limit, 'rand()', 'asc', '','',false, false, $notThis."startTime>'".date(DB_DATETIME_FORMAT, time())."'");
+
+        return $this->getEvents(0,$limit, 'rand()', 'asc', 'tournamentId',$tournamentId, true, false, $notThis."startTime>'".date(DB_DATETIME_FORMAT, time())."'");
+        }
 } 
