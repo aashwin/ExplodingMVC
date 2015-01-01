@@ -8,7 +8,7 @@ body{
 }
 header {
     background:#292929 url('../images/navbg.jpg') repeat-x;
-    height:56px;
+    height:44px;
     width:100%;
 }
 a{color:#333;}
@@ -108,8 +108,8 @@ a:hover{text-decoration:none;}
 .clear{clear:both;}
 
 #container{
-    width:98%;
-    margin:10px 1%;
+    width:100%;
+    margin:0;
 }
 #content h1{
     font-size:18px;
@@ -118,7 +118,7 @@ a:hover{text-decoration:none;}
 }
 #content{
     background:#fff;
-    border-radius:10px;
+    border-radius:0px;
     padding:0px;
     font-size:12px;
     border:2px solid #212121;
@@ -355,7 +355,7 @@ td{text-align: center;padding:10px;border-bottom:1px solid #eee;}
 }
 .maindetails{
     border:1px solid #ccc;
-    border-radius:10px;
+    border-radius:0px;
     overflow:hidden;
 }
 .countdowneffect div{
@@ -479,9 +479,54 @@ td{text-align: center;padding:10px;border-bottom:1px solid #eee;}
 .notMedium{
     display:none;
 }
+.rating_bar{
+    width:300px;
+    height:30px;
+    margin:0 auto;
+
+}
+.rating_bar img{float:left;}
+.addRadius{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.rate_sec{
+    width:100px;
+    height:30px;
+    background:#960000;
+    display:inline-block;
+    float:left;
+    position:relative;
+    overflow:hidden;
+
+}
+.rate_sec .rate_text{
+    position:absolute;
+    width:100%;
+    height:30px;
+    text-align: center;
+    top: 7px;
+    color:#fff;
+    text-shadow:1px 1px #000;
+    font-size:11px;
+}
+.rate_sec .likes{
+    background:#339e00;
+    height:30px;
+}
 @media screen and (min-width: 650px) {
+    header{
+        height:56px;
+    }
     .notMedium{
         display:none;
+    }
+    .maindetails{
+        border-radius:10px;
+    }
+    #container{
+        width:98%;
+        margin:10px 1%;
     }
     #content h1{
         font-size:22px;
@@ -490,7 +535,7 @@ td{text-align: center;padding:10px;border-bottom:1px solid #eee;}
     #content{
         padding:10px;
         border:5px solid #212121;
-
+        border-radius:10px;
         font-size:14px;
 
 

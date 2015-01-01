@@ -15,6 +15,9 @@ class userController extends BaseController {
     }
     public function login($ajax=false,$permission=false)
     {
+        if(!isset($_SESSION['lastURL']))
+             $_SESSION['lastURL']=isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+
         $this->addViewArray('permission', $permission);
         if($permission=='nopermission'){
             $this->userModel->logout();
@@ -24,10 +27,18 @@ class userController extends BaseController {
         }
         if(isset($_POST['username']) && isset($_POST['password'])){
             if($this->userModel->login($_POST['username'], $_POST['password'], $_POST['rememberMe'])){
-                if($ajax=='ajax'){
-                    echo json_encode(array('return'=>'success','url'=>Functions::pageLink()));
+
+                if(isset($_SESSION['lastURL']) && strpos($_SESSION['lastURL'], WWW_ROOT)===0){
+                    $url=$_SESSION['lastURL'];
+                    unset($_SESSION['lastURL']);
                 }else{
-                    header("Location: ".Functions::pageLink());
+                    $url=Functions::pageLink();
+                }
+
+                if($ajax=='ajax'){
+                    echo json_encode(array('return'=>'success','url'=>$url));
+                }else{
+                    header("Location: ".$url);
                 }
             }else{
                 if($ajax=='ajax'){

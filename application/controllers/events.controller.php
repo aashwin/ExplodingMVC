@@ -41,12 +41,15 @@ class eventsController extends BaseController
         $this->addViewArray('eventsModel',$this->loadModel('events'));
         $this->addViewArray('addressModel',$this->loadModel('address'));
         $this->addViewArray('teamsModel',$this->loadModel('teams'));
+        $this->addViewArray('eventRatingsModel',$this->loadModel('event_ratings'));
         $this->addViewArray("eventData", $this->getViewArray('eventsModel')->getEvent($id));
         if($this->getViewArray('eventData')===false){
             header('Location: '.Functions::pageLink('Error','Error404'));
             exit;
         }
         $data=$this->getViewArray('eventData');
+        $this->addViewArray("eventRating", $this->getViewArray('eventRatingsModel')->get($id));
+
         $this->addViewArray('TeamOne', $this->getViewArray('teamsModel')->getTeam($data['teamOne']));
         $this->addViewArray('TeamTwo', $this->getViewArray('teamsModel')->getTeam($data['teamTwo']));
         $this->addViewArray('GroundAddress', $this->getViewArray('addressModel')->getAddress($data['addressId']));
@@ -56,6 +59,24 @@ class eventsController extends BaseController
         $name=$this->getViewArray('eventsModel')->buildName($data['eventName'], $teamOne['teamName'], $teamTwo['teamName']);
         $this->title($name .' ['.date('M Y', strtotime($data['startTime'])).']');
         $this->loadView('Events', 'events_view');
+    }
+    public function rate(){
+        if(!$this->userModel->isLoggedIn()){
+            echo json_encode(array('error'=>true, 'type'=>'login'));
+            exit;
+        }
+        if(isset($_POST['id']) && isset($_POST['rate'])){
+            $ratings=$this->loadModel('event_ratings');
+            $newRate=$ratings->add($_POST['id'], $_POST['rate']);
+            if($newRate!==false){
+                echo json_encode(array('error'=>false, 'rating'=>$newRate));
+            }else{
+                echo json_encode(array('error'=>true, 'type'=>'fail'));
+            }
+            exit;
+        }
+        echo json_encode(array('error'=>true, 'type'=>'passthru'));
+        exit;
     }
 
 }

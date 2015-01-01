@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31b82888-89e2-4860-822c-1bb5aac56d5d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/Events/event_box.view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/modules/BaseController.class.php" afterPath="$PROJECT_DIR$/system/modules/BaseController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/Events/all_events.view.php" afterPath="$PROJECT_DIR$/application/views/Events/all_events.view.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/models/event_ratings.model.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/events.controller.php" afterPath="$PROJECT_DIR$/application/controllers/events.controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/Tournaments/events_tournament.view.php" afterPath="$PROJECT_DIR$/application/views/Tournaments/events_tournament.view.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/Events/events_view.view.php" afterPath="$PROJECT_DIR$/application/views/Events/events_view.view.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/public/css/main.css" afterPath="$PROJECT_DIR$/application/public/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/user.controller.php" afterPath="$PROJECT_DIR$/application/controllers/user.controller.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="WAD.iws" />
@@ -114,6 +113,24 @@
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
+        <option name="myItemId" value="event_ratings" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DbRootNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="MySQL - zadmin_wad@167.88.117.132" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="zadmin_wad" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
         <option name="myItemId" value="address" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
@@ -128,9 +145,26 @@
       <file leaf-file-name="events_view.view.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/views/Events/events_view.view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7910156" vertical-offset="120" max-vertical-offset="1860">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.43945312" vertical-offset="360" max-vertical-offset="2655">
+              <caret line="39" column="82" selection-start-line="39" selection-start-column="82" selection-end-line="39" selection-end-column="82" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/public/css/main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="7019" max-vertical-offset="9720">
+              <caret line="492" column="9" selection-start-line="492" selection-start-column="1" selection-end-line="492" selection-end-column="9" />
+              <folding>
+                <element signature="e#4651#5314#2" expanded="true" />
+                <element signature="e#5954#6617#2" expanded="true" />
+                <element signature="e#8636#9299#2" expanded="true" />
+                <element signature="e#10293#10956#2" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -138,69 +172,63 @@
       <file leaf-file-name="events.controller.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/events.controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.708333" vertical-offset="388" max-vertical-offset="900">
-              <caret line="57" column="20" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state vertical-scroll-proportion="-8.833333" vertical-offset="343" max-vertical-offset="1215">
+              <caret line="43" column="46" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="event_box.view.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/Events/event_box.view.php">
+      <file leaf-file-name="user.model.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/user.model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="885">
-              <caret line="8" column="29" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="all_events.view.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/Events/all_events.view.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.0833335" vertical-offset="490" max-vertical-offset="1200">
-              <caret line="44" column="26" selection-start-line="44" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+            <state vertical-scroll-proportion="-4.0833335" vertical-offset="1342" max-vertical-offset="6180">
+              <caret line="96" column="30" selection-start-line="96" selection-start-column="20" selection-end-line="96" selection-end-column="30" />
               <folding>
-                <marker date="1420135320000" expanded="true" signature="3621:3728" placeholder="..." />
+                <element signature="e#6#116#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="events_tournament.view.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/Tournaments/events_tournament.view.php">
+      <file leaf-file-name="event_ratings.model.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/event_ratings.model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-26.875" vertical-offset="0" max-vertical-offset="1140">
-              <caret line="49" column="53" selection-start-line="46" selection-start-column="8" selection-end-line="49" selection-end-column="53" />
+            <state vertical-scroll-proportion="-6.3333335" vertical-offset="298" max-vertical-offset="1050">
+              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding>
-                <element signature="e#6#128#0#PHP" expanded="false" />
+                <element signature="e#6#124#0#PHP" expanded="true" />
+                <marker date="1420145601000" expanded="true" signature="237:319" placeholder="SELECT :_fie..." />
+                <marker date="1420145601000" expanded="true" signature="629:724" placeholder="SELECT count..event_ratings..." />
+                <marker date="1420145601000" expanded="true" signature="1344:1458" placeholder="INSERT INTO ..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="events.model.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/models/events.model.php">
+      <file leaf-file-name="Functions.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/system/modules/Functions.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.75" vertical-offset="0" max-vertical-offset="2595">
-              <caret line="20" column="97" selection-start-line="20" selection-start-column="97" selection-end-line="20" selection-end-column="97" />
+            <state vertical-scroll-proportion="-10.333333" vertical-offset="892" max-vertical-offset="2175">
+              <caret line="76" column="32" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="32" />
               <folding>
-                <marker date="1420134263000" expanded="true" signature="2404:2455" placeholder="SELECT :_fie..." />
-                <marker date="1420134263000" expanded="true" signature="4702:4855" placeholder="INSERT INTO ..." />
-                <marker date="1420134263000" expanded="true" signature="5997:6160" placeholder="UPDATE event..." />
-                <marker date="1420134263000" expanded="true" signature="6889:6933" placeholder="DELETE FROM ..." />
+                <element signature="e#6#121#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BaseController.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/system/modules/BaseController.class.php">
+      <file leaf-file-name="teams.model.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/teams.model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.083333" vertical-offset="598" max-vertical-offset="1575">
-              <caret line="56" column="35" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
+            <state vertical-scroll-proportion="-8.458333" vertical-offset="1192" max-vertical-offset="2235">
+              <caret line="99" column="9" selection-start-line="93" selection-start-column="8" selection-end-line="99" selection-end-column="9" />
               <folding>
-                <element signature="e#6#126#0#PHP" expanded="true" />
+                <marker date="1420038824000" expanded="true" signature="238:287" placeholder="SELECT :_fie..." />
+                <marker date="1420038824000" expanded="true" signature="2448:2490" placeholder="DELETE FROM ..." />
+                <marker date="1420038824000" expanded="true" signature="3263:3321" placeholder="INSERT INTO ..." />
+                <marker date="1420038824000" expanded="true" signature="3964:4036" placeholder="UPDATE teams..." />
+                <marker date="1420038824000" expanded="true" signature="4891:4944" placeholder="UPDATE teams..." />
               </folding>
             </state>
           </provider>
@@ -219,7 +247,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/views/Admin/tournaments_main.view.php" />
         <option value="$PROJECT_DIR$/application/views/Admin/tournaments_add.view.php" />
         <option value="$PROJECT_DIR$/application/controllers/admincp.controller.php" />
         <option value="$PROJECT_DIR$/application/views/Admin/tournaments_edit.view.php" />
@@ -251,7 +278,6 @@
         <option value="$PROJECT_DIR$/application/models/user.model.php" />
         <option value="$PROJECT_DIR$/helper/cache/http-www-espncricinfo-com-icc-cricket-world-cup-2015-content-series-509587-html-template-fixtures" />
         <option value="$PROJECT_DIR$/helper/scrapper.php" />
-        <option value="$PROJECT_DIR$/application/controllers/user.controller.php" />
         <option value="$PROJECT_DIR$/application/views/Index/register_success.view.php" />
         <option value="$PROJECT_DIR$/system/modules/Functions.class.php" />
         <option value="$PROJECT_DIR$/application/controllers/teams.controller.php" />
@@ -262,13 +288,15 @@
         <option value="$PROJECT_DIR$/application/controllers/tournaments.controller.php" />
         <option value="$PROJECT_DIR$/application/public/js/main.js" />
         <option value="$PROJECT_DIR$/siteInfo.txt" />
-        <option value="$PROJECT_DIR$/application/public/css/main.css" />
         <option value="$PROJECT_DIR$/application/models/events.model.php" />
-        <option value="$PROJECT_DIR$/application/controllers/events.controller.php" />
         <option value="$PROJECT_DIR$/application/views/Events/event_box.view.php" />
         <option value="$PROJECT_DIR$/system/modules/BaseController.class.php" />
         <option value="$PROJECT_DIR$/application/views/Events/all_events.view.php" />
         <option value="$PROJECT_DIR$/application/views/Tournaments/events_tournament.view.php" />
+        <option value="$PROJECT_DIR$/application/controllers/user.controller.php" />
+        <option value="$PROJECT_DIR$/application/controllers/events.controller.php" />
+        <option value="$PROJECT_DIR$/application/public/css/main.css" />
+        <option value="$PROJECT_DIR$/application/models/event_ratings.model.php" />
         <option value="$PROJECT_DIR$/application/views/Events/events_view.view.php" />
       </list>
     </option>
@@ -590,6 +618,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -685,11 +735,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/application/models" />
       <recent name="$PROJECT_DIR$/application/views/Events" />
       <recent name="$PROJECT_DIR$/application/controllers" />
       <recent name="$PROJECT_DIR$/application/views" />
       <recent name="$PROJECT_DIR$/application/public/images" />
-      <recent name="$PROJECT_DIR$/application/views/Index" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/application/views/Tournaments" />
@@ -885,7 +935,13 @@
       <option name="project" value="LOCAL" />
       <updated>1420134565188</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="event box view added">
+      <created>1420135666084</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1420135666084</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -997,7 +1053,8 @@
     <MESSAGE value="Added Tournaments Controller and moved actions to it" />
     <MESSAGE value="Tiny Updates" />
     <MESSAGE value="Added Similar Events to Events Listing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Similar Events to Events Listing" />
+    <MESSAGE value="event box view added" />
+    <option name="LAST_COMMIT_MESSAGE" value="event box view added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1021,14 +1078,6 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/views/_templates/admin_default.template.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37109375" vertical-offset="605" max-vertical-offset="1260">
-          <caret line="53" column="89" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="89" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/admincp.controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17578125" vertical-offset="0" max-vertical-offset="7890">
@@ -1157,21 +1206,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/teams.model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-26.875" vertical-offset="45" max-vertical-offset="2235">
-          <caret line="52" column="42" selection-start-line="52" selection-start-column="42" selection-end-line="52" selection-end-column="42" />
-          <folding>
-            <marker date="1420038824000" expanded="true" signature="-1:-1" placeholder="SELECT :_fie..." />
-            <marker date="1420038824000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..teams..." />
-            <marker date="1420038824000" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
-            <marker date="1420038824000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1420038824000" expanded="true" signature="-1:-1" placeholder="UPDATE teams..." />
-            <marker date="1420038824000" expanded="true" signature="-1:-1" placeholder="UPDATE teams..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/public/js/all.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
@@ -1241,29 +1275,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/user.model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6699507" vertical-offset="3178" max-vertical-offset="6180">
-          <caret line="230" column="41" selection-start-line="230" selection-start-column="41" selection-end-line="230" selection-end-column="41" />
-          <folding>
-            <element signature="e#6#116#0#PHP" expanded="true" />
-            <marker date="1420047395000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1420047395000" expanded="true" signature="-1:-1" placeholder="SELECT userI..user_login..." />
-            <marker date="1420047395000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user_login..." />
-            <marker date="1420047395000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user_login..." />
-            <marker date="1420047395000" expanded="true" signature="-1:-1" placeholder="UPDATE user_..." />
-            <marker date="1420047395000" expanded="true" signature="-1:-1" placeholder="UPDATE user_..." />
-            <marker date="1420047395000" expanded="true" signature="-1:-1" placeholder="UPDATE user_..." />
-            <marker date="1420047395000" expanded="true" signature="-1:-1" placeholder="UPDATE user_..." />
-            <marker date="1420047395000" expanded="true" signature="-1:-1" placeholder="UPDATE user_..." />
-            <marker date="1420047395000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user_login..." />
-            <marker date="1420047395000" expanded="true" signature="-1:-1" placeholder="SELECT :_fie..." />
-            <marker date="1420047395000" expanded="true" signature="-1:-1" placeholder="UPDATE user_..." />
-            <marker date="1420047395000" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/config/database.config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40640393" vertical-offset="0" max-vertical-offset="406">
@@ -1277,24 +1288,6 @@
         <state vertical-scroll-proportion="0.10465116" vertical-offset="0" max-vertical-offset="22125">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/user.controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43103448" vertical-offset="935" max-vertical-offset="1470">
-          <caret line="80" column="127" selection-start-line="80" selection-start-column="127" selection-end-line="80" selection-end-column="127" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/system/modules/Functions.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44581282" vertical-offset="1769" max-vertical-offset="2175">
-          <caret line="130" column="58" selection-start-line="130" selection-start-column="58" selection-end-line="130" selection-end-column="58" />
-          <folding>
-            <element signature="e#6#121#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1424,19 +1417,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/public/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.83208954" vertical-offset="8464" max-vertical-offset="9045">
-          <caret line="594" column="29" selection-start-line="594" selection-start-column="29" selection-end-line="594" selection-end-column="29" />
-          <folding>
-            <element signature="e#4657#5320#2" expanded="true" />
-            <element signature="e#5960#6623#2" expanded="true" />
-            <element signature="e#8643#9306#2" expanded="true" />
-            <element signature="e#10300#10963#2" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/siteInfo.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8675373" vertical-offset="0" max-vertical-offset="570">
@@ -1492,10 +1472,10 @@
         <state vertical-scroll-proportion="-8.75" vertical-offset="0" max-vertical-offset="2595">
           <caret line="20" column="97" selection-start-line="20" selection-start-column="97" selection-end-line="20" selection-end-column="97" />
           <folding>
-            <marker date="1420134263000" expanded="true" signature="2404:2455" placeholder="SELECT :_fie..." />
-            <marker date="1420134263000" expanded="true" signature="4702:4855" placeholder="INSERT INTO ..." />
-            <marker date="1420134263000" expanded="true" signature="5997:6160" placeholder="UPDATE event..." />
-            <marker date="1420134263000" expanded="true" signature="6889:6933" placeholder="DELETE FROM ..." />
+            <marker date="1420134263000" expanded="true" signature="-1:-1" placeholder="SELECT :_fie..." />
+            <marker date="1420134263000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1420134263000" expanded="true" signature="-1:-1" placeholder="UPDATE event..." />
+            <marker date="1420134263000" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
           </folding>
         </state>
       </provider>
@@ -1515,16 +1495,8 @@
         <state vertical-scroll-proportion="-7.0833335" vertical-offset="490" max-vertical-offset="1200">
           <caret line="44" column="26" selection-start-line="44" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
           <folding>
-            <marker date="1420135320000" expanded="true" signature="3621:3728" placeholder="..." />
+            <marker date="1420135320000" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/events.controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.708333" vertical-offset="388" max-vertical-offset="900">
-          <caret line="57" column="20" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1546,11 +1518,89 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/user.controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33195877" vertical-offset="724" max-vertical-offset="1635">
+          <caret line="65" column="47" selection-start-line="65" selection-start-column="39" selection-end-line="65" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/teams.model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.458333" vertical-offset="1192" max-vertical-offset="2235">
+          <caret line="99" column="9" selection-start-line="93" selection-start-column="8" selection-end-line="99" selection-end-column="9" />
+          <folding>
+            <marker date="1420038824000" expanded="true" signature="238:287" placeholder="SELECT :_fie..." />
+            <marker date="1420038824000" expanded="true" signature="2448:2490" placeholder="DELETE FROM ..." />
+            <marker date="1420038824000" expanded="true" signature="3263:3321" placeholder="INSERT INTO ..." />
+            <marker date="1420038824000" expanded="true" signature="3964:4036" placeholder="UPDATE teams..." />
+            <marker date="1420038824000" expanded="true" signature="4891:4944" placeholder="UPDATE teams..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/system/modules/Functions.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.333333" vertical-offset="892" max-vertical-offset="2175">
+          <caret line="76" column="32" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="32" />
+          <folding>
+            <element signature="e#6#121#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/public/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="7019" max-vertical-offset="9720">
+          <caret line="492" column="9" selection-start-line="492" selection-start-column="1" selection-end-line="492" selection-end-column="9" />
+          <folding>
+            <element signature="e#4651#5314#2" expanded="true" />
+            <element signature="e#5954#6617#2" expanded="true" />
+            <element signature="e#8636#9299#2" expanded="true" />
+            <element signature="e#10293#10956#2" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/events.controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.833333" vertical-offset="343" max-vertical-offset="1215">
+          <caret line="43" column="46" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/user.model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.0833335" vertical-offset="1342" max-vertical-offset="6180">
+          <caret line="96" column="30" selection-start-line="96" selection-start-column="20" selection-end-line="96" selection-end-column="30" />
+          <folding>
+            <element signature="e#6#116#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/event_ratings.model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.3333335" vertical-offset="298" max-vertical-offset="1050">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#124#0#PHP" expanded="true" />
+            <marker date="1420145601000" expanded="true" signature="237:319" placeholder="SELECT :_fie..." />
+            <marker date="1420145601000" expanded="true" signature="629:724" placeholder="SELECT count..event_ratings..." />
+            <marker date="1420145601000" expanded="true" signature="1344:1458" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/Events/events_view.view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7910156" vertical-offset="120" max-vertical-offset="1860">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.43945312" vertical-offset="360" max-vertical-offset="2655">
+          <caret line="39" column="82" selection-start-line="39" selection-start-column="82" selection-end-line="39" selection-end-column="82" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

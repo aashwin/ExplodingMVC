@@ -10,6 +10,9 @@ $data=$this->getViewArray('eventData');
 $teamOne=$this->getViewArray('TeamOne');
 $teamTwo=$this->getViewArray('TeamTwo');
 $address=$this->getViewArray('GroundAddress');
+$rating=$this->getViewArray('eventRating');
+$ratedAlready=$this->getViewArray('eventRatingsModel')->alreadyRated($this->userModel->loggedInUserData('userId'), $data['eventId']);
+
     ?>
     <div class="white_gradient maindetails">
 
@@ -30,8 +33,27 @@ $address=$this->getViewArray('GroundAddress');
             </div>
         </div>
         <div class="clear"></div>
-
     </div>
+<?php
+
+?>
+<div class="rating_bar" <?php echo ($ratedAlready!=1?'':'style="width:100px"');?>>
+    <?php
+
+    if($ratedAlready!=1) {
+        ?><a href="#" class="like_btn"><img src="<?php echo WWW_PUBLIC;?>/images/like.png" width="100" height="30"/></a>
+    <?php
+    }
+    ?>
+    <div class="rate_sec <?php echo ($ratedAlready!=1?'':'addRadius');?>"><span class="rate_text"><?php echo round($rating,2);?>%</span><div class="likes" style="width:50%"></div></div>
+    <?php
+    if($ratedAlready!=1) {
+    ?>
+         <a href="#" class="dislike_btn"><img src="<?php echo WWW_PUBLIC;?>/images/dislike.png" width="100" height="30" /></a>
+    <?php
+    }
+    ?>
+</div>
 <?php
 $this->addViewArray('rData', $data);
 $this->addViewArray('teamOneData', $teamOne);
@@ -113,6 +135,37 @@ if($similarQ!==false) {
 
 
 
+    }
+    $(".like_btn").click(function(e){
+        e.preventDefault();
+        rateEvent(<?php echo $data['eventId'];?>,1);
+        return false;
+    });
+    $(".dislike_btn").click(function(e){
+        e.preventDefault();
+
+        rateEvent(<?php echo $data['eventId'];?>,0);
+        return false;
+    });
+    function rateEvent(id, rate){
+        $.post('<?php echo Functions::pageLink('Events', 'Rate');?>', { 'id': id, 'rate':rate  }, function( data ) {
+                if(data.error==true){
+                    if(data.type=='login'){
+                        $(".rate_text").html("Login to vote");
+                    }else{
+                        $(".rate_text").html("Error");
+                    }
+                }else{
+                    $(".rate_sec").addClass("addRadius");
+                    $(".like_btn, .dislike_btn").fadeOut(300, function(){
+                        $(".rating_bar").css({width:100});
+                        $(".rate_text").html(data.rating+"%");
+                        $(".likes").animate({width:data.rating}, 300);
+                    });
+
+
+                }
+        }, "json");
     }
 </script>
 <div class="clear"></div>
