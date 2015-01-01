@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31b82888-89e2-4860-822c-1bb5aac56d5d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/public/images/noprofile.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/helper/scrapper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/helper/simple_html_dom.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/application/views/Index/all_events.view.php" afterPath="$PROJECT_DIR$/application/views/Events/all_events.view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/modules/Functions.class.php" afterPath="$PROJECT_DIR$/system/modules/Functions.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.php" afterPath="$PROJECT_DIR$/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/_templates/default.template.php" afterPath="$PROJECT_DIR$/application/views/_templates/default.template.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/Events/all_events.view.php" afterPath="$PROJECT_DIR$/application/views/Events/all_events.view.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/events.controller.php" afterPath="$PROJECT_DIR$/application/controllers/events.controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/index.controller.php" afterPath="$PROJECT_DIR$/application/controllers/index.controller.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/public/css/main.css" afterPath="$PROJECT_DIR$/application/public/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/Index/register_success.view.php" afterPath="$PROJECT_DIR$/application/views/Index/register_success.view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/user.controller.php" afterPath="$PROJECT_DIR$/application/controllers/user.controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/user.model.php" afterPath="$PROJECT_DIR$/application/models/user.model.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="WAD.iws" />
@@ -135,8 +125,8 @@
       <file leaf-file-name="events.controller.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/events.controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.541667" vertical-offset="89" max-vertical-offset="900">
-              <caret line="32" column="46" selection-start-line="32" selection-start-column="46" selection-end-line="32" selection-end-column="46" />
+            <state vertical-scroll-proportion="-17.541666" vertical-offset="14" max-vertical-offset="945">
+              <caret line="35" column="48" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -145,9 +135,33 @@
       <file leaf-file-name="all_events.view.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/views/Events/all_events.view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.52734375" vertical-offset="60" max-vertical-offset="1740">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.44329897" vertical-offset="340" max-vertical-offset="1830">
+              <caret line="37" column="162" selection-start-line="37" selection-start-column="162" selection-end-line="37" selection-end-column="162" />
+              <folding>
+                <marker date="1420127823000" expanded="true" signature="2569:2601" placeholder="..." />
+                <marker date="1420127823000" expanded="true" signature="2886:2939" placeholder="..." />
+                <marker date="1420127823000" expanded="true" signature="3161:3247" placeholder="..." />
+                <marker date="1420127823000" expanded="true" signature="3420:3511" placeholder="..." />
+                <marker date="1420127823000" expanded="true" signature="3759:3850" placeholder="..." />
+                <marker date="1420127823000" expanded="true" signature="4008:4078" placeholder="..." />
+                <marker date="1420127823000" expanded="true" signature="4305:4406" placeholder="..." />
+                <marker date="1420127823000" expanded="true" signature="6034:6141" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/public/css/main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="4342" max-vertical-offset="8925">
+              <caret line="312" column="4" selection-start-line="312" selection-start-column="4" selection-end-line="312" selection-end-column="4" />
+              <folding>
+                <element signature="e#4657#5320#2" expanded="true" />
+                <element signature="e#5960#6623#2" expanded="true" />
+                <element signature="e#8643#9306#2" expanded="true" />
+                <element signature="e#10300#10963#2" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -221,7 +235,6 @@
         <option value="$PROJECT_DIR$/application/views/Index/all_events.view.php" />
         <option value="$PROJECT_DIR$/config.php" />
         <option value="$PROJECT_DIR$/application/models/user.model.php" />
-        <option value="$PROJECT_DIR$/application/public/css/main.css" />
         <option value="$PROJECT_DIR$/helper/cache/http-www-espncricinfo-com-icc-cricket-world-cup-2015-content-series-509587-html-template-fixtures" />
         <option value="$PROJECT_DIR$/helper/scrapper.php" />
         <option value="$PROJECT_DIR$/application/controllers/user.controller.php" />
@@ -229,7 +242,9 @@
         <option value="$PROJECT_DIR$/system/modules/Functions.class.php" />
         <option value="$PROJECT_DIR$/application/controllers/index.controller.php" />
         <option value="$PROJECT_DIR$/application/views/_templates/default.template.php" />
+        <option value="$PROJECT_DIR$/application/public/css/main.css" />
         <option value="$PROJECT_DIR$/application/controllers/events.controller.php" />
+        <option value="$PROJECT_DIR$/application/views/Events/all_events.view.php" />
       </list>
     </option>
   </component>
@@ -381,6 +396,10 @@
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Teams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -401,6 +420,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Index" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -461,6 +498,32 @@
               <option name="myItemId" value="application" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -495,6 +558,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -697,7 +774,19 @@
       <option name="project" value="LOCAL" />
       <updated>1420047093820</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Updated Mail Function + Added Profile pic Support + Added Scrapper">
+      <created>1420126708240</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1420126708240</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Moved All Events to Events Controller">
+      <created>1420126734359</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1420126734359</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -803,7 +892,9 @@
     <MESSAGE value="Added Team View and made change to scroll paginate so it will check if new content needs to loaded even before scroll." />
     <MESSAGE value="Update iCal Files, moved it to a new controller (icalController)&#10;Updated routers to reflect new ical changes&#10;Updated Links to new iCal Controller.&#10;Added ical support for teams" />
     <MESSAGE value="TimeAgo Function added to Function Class. Updated Style for download calender link" />
-    <option name="LAST_COMMIT_MESSAGE" value="TimeAgo Function added to Function Class. Updated Style for download calender link" />
+    <MESSAGE value="Updated Mail Function + Added Profile pic Support + Added Scrapper" />
+    <MESSAGE value="Moved All Events to Events Controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved All Events to Events Controller" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1158,19 +1249,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/public/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="7.968831" vertical-offset="3847" max-vertical-offset="8535">
-          <caret line="461" column="0" selection-start-line="461" selection-start-column="0" selection-end-line="461" selection-end-column="0" />
-          <folding>
-            <element signature="e#4658#5321#2" expanded="true" />
-            <element signature="e#5961#6624#2" expanded="true" />
-            <element signature="e#8142#8805#2" expanded="true" />
-            <element signature="e#9799#10462#2" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/Index/events_tournament.view.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.70197046" vertical-offset="0" max-vertical-offset="1695">
@@ -1344,19 +1422,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/public/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4342" max-vertical-offset="8925">
+          <caret line="312" column="4" selection-start-line="312" selection-start-column="4" selection-end-line="312" selection-end-column="4" />
+          <folding>
+            <element signature="e#4657#5320#2" expanded="true" />
+            <element signature="e#5960#6623#2" expanded="true" />
+            <element signature="e#8643#9306#2" expanded="true" />
+            <element signature="e#10300#10963#2" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/events.controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.541667" vertical-offset="89" max-vertical-offset="900">
-          <caret line="32" column="46" selection-start-line="32" selection-start-column="46" selection-end-line="32" selection-end-column="46" />
+        <state vertical-scroll-proportion="-17.541666" vertical-offset="14" max-vertical-offset="945">
+          <caret line="35" column="48" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/Events/all_events.view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52734375" vertical-offset="60" max-vertical-offset="1740">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.44329897" vertical-offset="340" max-vertical-offset="1830">
+          <caret line="37" column="162" selection-start-line="37" selection-start-column="162" selection-end-line="37" selection-end-column="162" />
+          <folding>
+            <marker date="1420127823000" expanded="true" signature="2569:2601" placeholder="..." />
+            <marker date="1420127823000" expanded="true" signature="2886:2939" placeholder="..." />
+            <marker date="1420127823000" expanded="true" signature="3161:3247" placeholder="..." />
+            <marker date="1420127823000" expanded="true" signature="3420:3511" placeholder="..." />
+            <marker date="1420127823000" expanded="true" signature="3759:3850" placeholder="..." />
+            <marker date="1420127823000" expanded="true" signature="4008:4078" placeholder="..." />
+            <marker date="1420127823000" expanded="true" signature="4305:4406" placeholder="..." />
+            <marker date="1420127823000" expanded="true" signature="6034:6141" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

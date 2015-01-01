@@ -14,7 +14,7 @@ class eventsController extends BaseController
         parent::__construct();
         $this->userModel=$this->loadModel("user");
     }
-    public function all( $page=1, $ajax='false'){
+    public function all( $page=1, $order='startTime', $by='ASC', $ajax='false'){
         $this->addViewArray("eventsModel", $this->loadModel('events'));
         $this->addViewArray("ajax", $ajax);
         $this->addViewArray("currentPage", intval($page));
@@ -28,8 +28,11 @@ class eventsController extends BaseController
         $perPage=6;
         $this->addViewArray("perPage", $perPage);
         $start=($page-1)*$perPage;
+        $this->addViewArray("order", $order);
+        $this->addViewArray("orderBy", strtolower($by));
+
         $this->addViewArray("totalItems", $this->getViewArray('eventsModel')->getEvents(NULL, NULL,'eventId', 'DESC', '','',false,true, "startTime>'".date(DB_DATETIME_FORMAT, time())."'")->fetchColumn());
-        $this->addViewArray('eventsData', $this->getViewArray('eventsModel')->getEvents($start, $perPage,'startTime', 'ASC', '','',true, false, "startTime>'".date(DB_DATETIME_FORMAT, time())."'"));
+        $this->addViewArray('eventsData', $this->getViewArray('eventsModel')->getEvents($start, $perPage, $order, $by, '','',true, false, "startTime>'".date(DB_DATETIME_FORMAT, time())."'"));
         $this->loadView('Events', 'all_events');
 
     }
