@@ -10,3 +10,6 @@
 ?>
 <h1>Thank you for signing up :)</h1>
 We have signed you up to our website, but to confirm your registeration please check you email and follow the instructions provided!
+<br />
+<br />
+<?php echo $this->getViewArray('mailSent');?>

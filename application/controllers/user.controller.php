@@ -74,16 +74,12 @@ class userController extends BaseController {
             if($create!==false){
                 $userInfo=$this->userModel->getUserDataFromID($create);
 
-                $headers = "From: aashwin@hotmail.co.uk\r\n";
-                $headers .= "Reply-To: aashwin@hotmail.co.uk\r\n";
-                $headers .= "MIME-Version: 1.0\r\n";
-                $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-                $message = '<html><body>';
-                $message.='<h1>Thank you for signing up</h1>';
+                $message='<h1>Thank you for signing up</h1>';
                 $message.='To complete your registration follow this link: <a href="'.Functions::pageLink('user','activate', $create, $userInfo['activation_key']).'">'.Functions::pageLink('user','activate',$create, $userInfo['activation_key']).'</a>';
                 $message.="<br />Thank you once again :)";
-                $message .='</body></html>';
-                mail($_POST['email'], 'Your registration at Cricket Events', $message, $headers);
+                if(!Functions::HTMLmail('aashwin@hotmail.co.uk', $_POST['email'], 'Your registration at Cricket Events', $message)){
+                    $this->addViewArray('mailSent', "There was a issue sending your email, please contact an administration.");
+                }
                 $this->title("Thank you for signing up");
                 $this->setTemplateLayout('default');
                 $this->loadView('Index', 'Register_Success');

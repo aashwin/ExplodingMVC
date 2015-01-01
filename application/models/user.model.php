@@ -208,8 +208,15 @@ class userModel extends Model {
         $queryUser->bindValue(':username', $username);
         $queryUser->bindValue(':email', $username);
         $queryUser->execute();
-        if($queryUser->rowCount()>0)
-            return $queryUser->fetch();
+        if($queryUser->rowCount()>0) {
+            $fetched=$queryUser->fetch();
+            if($fetched['profileImage']!=NULL) {
+                $fetched['profileImageUrl'] = WWW_PROFILE_IMG . $fetched['profileImage'];
+            }else{
+                $fetched['profileImageUrl'] = WWW_PUBLIC.'/images/noprofile.jpg';
+            }
+            return $fetched;
+        }
         return false;
     }
     /**
@@ -220,8 +227,15 @@ class userModel extends Model {
         $queryUser=$this->getDB()->prepare('SELECT * FROM user_login WHERE userId=:id LIMIT 1');
         $queryUser->bindValue(':id', $userId);
         $queryUser->execute();
-        if($queryUser->rowCount()>0)
-            return $queryUser->fetch();
+        if($queryUser->rowCount()>0) {
+            $fetched=$queryUser->fetch();
+            if($fetched['profileImage']!=NULL) {
+                $fetched['profileImageUrl'] = WWW_PROFILE_IMG . $fetched['profileImage'];
+            }else{
+                $fetched['profileImageUrl'] = WWW_PUBLIC.'/images/noprofile.jpg';
+            }
+            return $fetched;
+        }
         return false;
     }
     /**

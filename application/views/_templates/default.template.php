@@ -48,7 +48,7 @@ $tournamentsModel=$this->loadModel('tournaments');
            <ul>
                <li id="closeMenu"><a href="#">Close</a></li>
                <li><a href="<?php echo Functions::pageLink('Index');?>">Home</a></li>
-               <li><a href="<?php echo Functions::pageLink('Index', 'allFixtures');?>">What's On</a></li>
+               <li><a href="<?php echo Functions::pageLink('Events', 'all');?>">What's On</a></li>
                <li><a href="<?php echo Functions::pageLink('Index', 'allTournaments');?>">Series</a></li>
                <li><a href="<?php echo Functions::pageLink('Index', 'allTeams');?>">Teams</a></li>
                <li><a href="<?php echo Functions::pageLink('Index');?>">Contact Us</a></li>
@@ -78,13 +78,16 @@ $tournamentsModel=$this->loadModel('tournaments');
                     <?php
                     }else {
                         ?>
-                        <h3 class="grid_mob_9">Hello <?php echo $this->userModel->loggedInUserData('username');?>!</h3>
 
-                        <div class="grid_mob_3"><a href="<?php echo Functions::pageLink('User', 'logout'); ?>"
-                                                   class="logout_btn">Logout</a></div>
-                        <div class="clear"></div>
-                        <div class="grid_mob_3"><img src="<?php echo $this->userModel->loggedInUserData('profileImageUrl');?>" ></div>
-                        <div class="grid_mob_9">Last Logged In: <?php echo Functions::TimeAgo($this->userModel->loggedInUserData('userLastLogin'));?></div>
+                        <div class="grid_mob_4 grid_med_2 grid_lrg_4"><img class="profile_img" src="<?php echo $this->userModel->loggedInUserData('profileImageUrl');?>" ></div>
+                        <div class="grid_mob_8 grid_med_10 grid_lrg_8">
+                            <div class="profileinfo">
+                                <h3>Hello <?php echo $this->userModel->loggedInUserData('username');?>!</h3>
+                                Last Login: <?php echo Functions::TimeAgo($this->userModel->loggedInUserData('userLastLogin'));?> <br />
+                                <a href="<?php echo Functions::pageLink('User', 'logout'); ?>"
+                                   class="logout_btn" style="margin-top:5px;">Logout</a>
+                            </div>
+                        </div>
                         <div class="clear"></div>
                     <?php
                     }

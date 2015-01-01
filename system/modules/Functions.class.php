@@ -128,4 +128,13 @@ class Functions {
 
 
     }
+    public static function HTMLmail($from, $to, $subject, $message, $replyTo=''){
+        $headers = "From: ".$from."\r\n";
+        $headers .= "Reply-To: ".($replyTo==''?$from:$replyTo)."\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+        $message='<html><body>'.$message;
+        $message .='</body></html>';
+       return mail($to, $subject, $message, $headers);
+    }
 }

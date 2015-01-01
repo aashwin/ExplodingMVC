@@ -27,6 +27,7 @@ define('TEAM_FLAG_DIR', APP_DIR.'/public/uploads/team_flags/');
 define('WWW_TEAM_FLAG', WWW_PUBLIC.'/uploads/team_flags/');
 define('TOURNAMENT_IMG_DIR', APP_DIR.'/public/uploads/tournaments/');
 define('WWW_TOURNAMENT_IMG', WWW_PUBLIC.'/uploads/tournaments/');
+define('WWW_PROFILE_IMG', WWW_PUBLIC.'/uploads/profile/');
 
 define('GOOGLE_MAPS_API_KEY', 'AIzaSyCAGSNhf6PGc5_NrmwGOyYirJeh71l8-0k');
 ?>
