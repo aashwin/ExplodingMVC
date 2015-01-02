@@ -180,6 +180,14 @@ a:hover{text-decoration:none;}
     width:100%;
     padding:2%;
 }
+footer{
+    width:100%;
+    color: #666;
+    font-size: 12px;
+    text-align: center;
+    padding:10px 0;
+    text-shadow:1px 1px #000;
+}
 #sidebar input, #sidebar select
 {
     -webkit-appearance: none;

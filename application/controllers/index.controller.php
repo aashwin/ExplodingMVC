@@ -16,6 +16,11 @@ class indexController extends BaseController
     }
     public function index()
     {
+        $this->addViewArray('eventsModel', $this->loadModel('events'));
+        $likedEvents=$this->getViewArray('eventsModel')->likedEvents($this->userModel->loggedInUserData('userId'), 2);
+        $upcomingData=$this->getViewArray('eventsModel')->getEvents(0, 8,'startTime', 'ASC', '', '', false, false, $additionalWhere="startTime>'".date(DB_DATETIME_FORMAT)."'");
+        $this->addViewArray('upcomingData', $upcomingData);
+        $this->addViewArray('likedData', $likedEvents);
         $this->title("Cricket Events");
         $this->setTemplateLayout('default');
         $this->loadView('Index', 'Index');

@@ -85,7 +85,9 @@ $tournamentsModel=$this->loadModel('tournaments');
                         <div class="grid_mob_8 grid_med_10 grid_lrg_8">
                             <div class="profileinfo">
                                 <h3>Hello <?php echo $this->userModel->loggedInUserData('username');?>!</h3>
-                                Last Login: <?php echo Functions::TimeAgo($this->userModel->loggedInUserData('userLastLogin'));?> <br />
+                                <div class="notMedium">Last Login: <?php echo Functions::TimeAgo($this->userModel->loggedInUserData('userLastLogin'));?> <br />
+                                </div><a href="<?php echo Functions::pageLink('User', 'editProfile'); ?>"
+                                   class="logout_btn" style="margin-top:5px;">Edit Profile</a>
                                 <a href="<?php echo Functions::pageLink('User', 'logout'); ?>"
                                    class="logout_btn" style="margin-top:5px;">Logout</a>
                             </div>
@@ -101,7 +103,7 @@ $tournamentsModel=$this->loadModel('tournaments');
         <div class="clear"></div>
     </section>
    <footer>
-
+            Copyright <?php echo date('Y');?> &copy; Aashwin Mohan (Sheffield Hallam University, b3014526).
    </footer>
     <script type="text/javascript" src="<?php echo WWW_PUBLIC;?>/js/main.js"></script>
     <script type="text/javascript" src="<?php echo WWW_PUBLIC;?>/js/all.js"></script>

@@ -30,3 +30,5 @@ Scroll_Paginate JQuery Plugin was built by me, used for ajax scroll based pagina
 For Front End, the pagination works by scrolling for more content (Like Facebook).
 In the backend (Admin Panel), it has pagination buttons to navigate through pages.
 Backend Pagination/Sorting/Deleting/Filtering are Ajax.
+
+I have implemented mail() function for user verification after login but this won't send out any emails because i haven't setup a SMTP server in my PHP.ini so it won't send out any emails.

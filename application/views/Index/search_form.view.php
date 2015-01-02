@@ -20,7 +20,7 @@
     <div class=" grid_mob_6 grid_med_3">
         <div class="field searchfield">
 
-            <label for="q">Where</label>
+            <label for="q">Ground/Postcode/Country</label>
             <input type="text" name="where" id="where" value="<?php echo htmlentities(strip_tags($_POST['where']));?>">
         </div>
     </div>

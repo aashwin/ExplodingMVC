@@ -6,6 +6,10 @@
  * Date: 26/10/14
  * Time: 14:17
  */
+
+//TODO: Profile Updates
+//TODO: Browser Testing
+
 session_start();
 define("SCRIPT_START_TIME", microtime(true));
 //Define __DIR__ if magic_constant __DIR__ is not set (Supported only from PHP 5.3)

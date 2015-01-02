@@ -171,6 +171,18 @@ class eventsModel extends Model {
 
         return $this->getEvents(0,$limit, 'rand()', 'asc', 'tournamentId',$tournamentId, true, false, $notThis."startTime>'".date(DB_DATETIME_FORMAT, time())."'");
     }
+    public function likedEvents($user, $limit=2){
+        $query=$this->getDB()->prepare("SELECT eventName, events.eventId, teamOne, teamTwo, startTime  FROM events
+                  INNER JOIN event_ratings ON event_ratings.eventId=events.eventId AND event_ratings.ratingUser='$user' AND event_ratings.rating=1
+                   ORDER BY rand() ASC LIMIT $limit");
+
+        if($query->execute()){
+            if($query->rowCount()==0)
+                return false;
+            return $query;
+        }
+        return false;
+    }
     public function search($q, $where, $from, $to){
 
         $ConditionArray = array();
@@ -189,7 +201,7 @@ class eventsModel extends Model {
         if($where!='') {
             $extraJoins='INNER JOIN address as loc ON loc.addressId=events.addressId
                   INNER JOIN countries as country ON country.countryId=loc.countryId';
-            $ConditionArray[] = 'CONCAT(loc.groundName, loc.addressLine1, loc.addressLine2, country.countryName) LIKE :loc';
+            $ConditionArray[] = 'CONCAT(loc.groundName, loc.addressLine1, loc.addressLine2, loc.postCode, country.countryName) LIKE :loc';
         }
         if(count($ConditionArray)<1)
             return false;
@@ -211,7 +223,8 @@ class eventsModel extends Model {
             $query->bindValue(':loc', '%'.$where.'%');
         }
         if($query->execute()){
-            return $query;
+            if($query->rowCount()==0)
+                return false;
         }
         return false;
     }
