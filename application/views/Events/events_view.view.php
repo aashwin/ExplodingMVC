@@ -69,7 +69,7 @@ $this->loadView('Events', 'event_box',false);
 <div class="clear"></div>
 <?php
 $similarQ=$this->getViewArray('eventsModel')->similarEvents($data['eventId'], $data['tournamentId'],4);
-if($similarQ!==false) {
+if($similarQ!==false && $similarQ->rowCount()>0) {
     ?>
     <div align="center"><h1>Similar Matches</h1></div>
 
