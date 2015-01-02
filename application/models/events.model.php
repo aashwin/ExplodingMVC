@@ -177,9 +177,7 @@ class eventsModel extends Model {
                    ORDER BY rand() ASC LIMIT $limit");
 
         if($query->execute()){
-            if($query->rowCount()==0)
-                return false;
-            return $query;
+                       return $query;
         }
         return false;
     }
@@ -225,6 +223,7 @@ class eventsModel extends Model {
         if($query->execute()){
             if($query->rowCount()==0)
                 return false;
+            return $query;
         }
         return false;
     }

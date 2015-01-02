@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31b82888-89e2-4860-822c-1bb5aac56d5d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/_templates/admin_default.template.php" afterPath="$PROJECT_DIR$/application/views/_templates/admin_default.template.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/public/css/admin_medium.css" afterPath="$PROJECT_DIR$/application/public/css/admin_medium.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/public/css/adminmain.css" afterPath="$PROJECT_DIR$/application/public/css/adminmain.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/events.model.php" afterPath="$PROJECT_DIR$/application/models/events.model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/Admin/index.view.php" afterPath="$PROJECT_DIR$/application/views/Admin/index.view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/public/css/main.css" afterPath="$PROJECT_DIR$/application/public/css/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/Index/search_form.view.php" afterPath="$PROJECT_DIR$/application/views/Index/search_form.view.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -980,7 +975,13 @@
       <option name="project" value="LOCAL" />
       <updated>1420216910150</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Added Dashboard for admin">
+      <created>1420218780371</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1420218780371</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1005,10 +1006,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="801" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18155198" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17423134" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17423134" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329429" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329429" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14020029" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1097,7 +1098,8 @@
     <MESSAGE value="Search Setup" />
     <MESSAGE value="Homepage" />
     <MESSAGE value="Fixture Box Height Bug Fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixture Box Height Bug Fixed" />
+    <MESSAGE value="Added Dashboard for admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Dashboard for admin" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
