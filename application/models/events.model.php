@@ -170,5 +170,49 @@ class eventsModel extends Model {
             return $this->getEvents(0,$limit, 'rand()', 'asc', '','',false, false, $notThis."startTime>'".date(DB_DATETIME_FORMAT, time())."'");
 
         return $this->getEvents(0,$limit, 'rand()', 'asc', 'tournamentId',$tournamentId, true, false, $notThis."startTime>'".date(DB_DATETIME_FORMAT, time())."'");
+    }
+    public function search($q, $where, $from, $to){
+
+        $ConditionArray = array();
+        if($q!='') {
+            $ConditionArray[] = "replace(replace(eventName, '[%team2%]', away.teamName), '[%team1%]', home.teamName) LIKE :q";
         }
+        if($from!='') {
+            $from=date(DB_DATETIME_FORMAT, strtotime($from));
+            $ConditionArray[] = 'startTime>=:from';
+        }
+        if($to!='') {
+            $to=date(DB_DATETIME_FORMAT, strtotime($to));
+            $ConditionArray[] = 'startTime<=:to';
+        }
+        $extraJoins='';
+        if($where!='') {
+            $extraJoins='INNER JOIN address as loc ON loc.addressId=events.addressId
+                  INNER JOIN countries as country ON country.countryId=loc.countryId';
+            $ConditionArray[] = 'CONCAT(loc.groundName, loc.addressLine1, loc.addressLine2, country.countryName) LIKE :loc';
+        }
+        if(count($ConditionArray)<1)
+            return false;
+        $query=$this->getDB()->prepare("SELECT eventName, eventId, teamOne, teamTwo, startTime  FROM events
+                  INNER JOIN teams as home ON home.teamId=events.teamOne
+                  INNER JOIN teams as away ON away.teamId=events.teamTwo
+                  $extraJoins
+                  WHERE (".implode(' AND ', $ConditionArray).") ORDER BY eventId ASC LIMIT 10");
+        if($q!=''){
+            $query->bindValue(':q', '%'.$q.'%');
+        }
+        if($from!=''){
+            $query->bindValue(':from', $from);
+        }
+        if($to!=''){
+            $query->bindValue(':to', $to);
+        }
+        if($where!=''){
+            $query->bindValue(':loc', '%'.$where.'%');
+        }
+        if($query->execute()){
+            return $query;
+        }
+        return false;
+    }
 } 

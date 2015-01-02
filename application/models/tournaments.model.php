@@ -160,4 +160,32 @@ class tournamentsModel extends Model {
         }
         return false;
     }
+    public function search($q, $from, $to){
+
+        if($q=='')
+            return false;
+        $ConditionArray = array();
+        $ConditionArray[]='tournamentName LIKE :q';
+
+        if($from!='') {
+            $from=date(DB_DATE_FORMAT, strtotime($from));
+            $ConditionArray[] = 'tournamentStart>=:from';
+        }
+        if($to!='') {
+            $to=date(DB_DATE_FORMAT, strtotime($to));
+            $ConditionArray[] = 'tournamentEnd<=:to';
+        }
+        $query=$this->getDB()->prepare("SELECT tournamentName, tournamentId,image,tournamentStart, tournamentEnd FROM tournaments WHERE (".implode(' AND ', $ConditionArray).") ORDER BY tournamentStart ASC LIMIT 10");
+        $query->bindValue(':q', '%'.$q.'%');
+        if($from!=''){
+            $query->bindValue(':from', $from);
+        }
+        if($to!=''){
+            $query->bindValue(':to', $to);
+        }
+        if($query->execute()){
+            return $query;
+        }
+        return false;
+    }
 } 

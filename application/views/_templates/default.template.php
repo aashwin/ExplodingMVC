@@ -24,6 +24,7 @@ $tournamentsModel=$this->loadModel('tournaments');
 
     <link href="<?php echo WWW_PUBLIC;?>/css/main.css" rel="stylesheet" type="text/css">
     <link href="<?php echo WWW_PUBLIC;?>/css/grid.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo WWW_PUBLIC;?>/css/jquery-ui.css" rel="stylesheet" type="text/css">
     <script type="text/javascript">
         var WWW_PUBLIC='<?php echo WWW_PUBLIC;?>';
         var WWW_ROOT='<?php echo WWW_ROOT;?>';
@@ -34,6 +35,8 @@ $tournamentsModel=$this->loadModel('tournaments');
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
     <![endif]-->
     <script type="text/javascript" src="<?php echo WWW_PUBLIC;?>/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="<?php echo WWW_PUBLIC;?>/js/jquery-ui.min.js"></script>
+
 
 </head>
 
@@ -92,23 +95,7 @@ $tournamentsModel=$this->loadModel('tournaments');
                     }
                     ?>
                 </div>
-                <div class="sidebar_elem">
-                    <h3>Find an Event</h3>
-                    <form name="Search" action="<?php echo Functions::pageLink();?>" method="POST">
-                        <div class="field">
-                            <label for="tournamentField">Which Tournament?</label>
-                            <select name="tournamentField" id="tournamentField">
-                                <option value="0">Which Tournament?</option>
-                                <?php
-                                $q=$tournamentsModel->getSearchList();
-                                if($q!==false)
-                                    while($r=$q->fetch())
-                                        echo '<option value="'.$r['tournamentId'].'">'.$r['tournamentName'].'</option>';
-                                ?>
-                            </select>
-                        </div>
-                    </form>
-                </div>
+
             </div>
         </div>
         <div class="clear"></div>

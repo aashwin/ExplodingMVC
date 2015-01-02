@@ -119,7 +119,7 @@ a:hover{text-decoration:none;}
 #content{
     background:#fff;
     border-radius:0px;
-    padding:0px;
+    padding:10px 3px;
     font-size:12px;
     border:2px solid #212121;
 }
@@ -144,6 +144,18 @@ a:hover{text-decoration:none;}
     margin-top:10px;
 
 }
+.searchbutton{
+    width: 100%;
+    padding: 5px;
+    background: linear-gradient(to bottom, #A90329 0%, #8F0222 44%, #6D0019 100%) repeat scroll 0% 0% transparent;
+    border-radius: 10px;
+    border: 1px solid #6d0019;
+    color: #fff;
+    float: right;
+}
+.searchfield{
+    padding:0 4px;
+}
 .errors{
     background:#ff968e;
     color:#3f0809;
@@ -156,10 +168,17 @@ a:hover{text-decoration:none;}
     font-size: 11px;
     position: absolute;
     top: -6px;
-    width:100%;
-    text-align: center;
-    color: #ccc;
 
+    left:6px;
+    color: #000;
+    background:#fff;
+    border-radius:5px;
+    padding:0 5px;
+
+}
+.field input[type='text'],.field input[type='date']{
+    width:100%;
+    padding:2%;
 }
 #sidebar input, #sidebar select
 {
@@ -170,6 +189,12 @@ a:hover{text-decoration:none;}
     padding:10px 2%;
     margin-top:8px;
 
+}
+#sidebar label{
+    width:100%;
+    background:none;
+    color:#ccc;
+    text-align: center;
 }
 .overlay{
     width:100%;
@@ -203,9 +228,7 @@ input,select{
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-input:focus{
-    outline:2px solid #044d93;
-}
+
 .image{
     height:auto;
 }
@@ -515,6 +538,12 @@ td{text-align: center;padding:10px;border-bottom:1px solid #eee;}
     height:30px;
 }
 @media screen and (min-width: 650px) {
+    .searchbutton{
+        width:50%;
+    }
+    .searchfield{
+        padding:3px;
+    }
     header{
         height:56px;
     }
@@ -548,10 +577,7 @@ td{text-align: center;padding:10px;border-bottom:1px solid #eee;}
     .sidebar_elem{
         margin-left:5px;
     }
-    #content{
 
-
-    }
     .notMobile{display:inline-block !important;}
     #showMenu{display:none}
     #logo{margin-left:1%;}
