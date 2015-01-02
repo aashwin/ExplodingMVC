@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31b82888-89e2-4860-822c-1bb5aac56d5d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/_templates/default.template.php" afterPath="$PROJECT_DIR$/application/views/_templates/default.template.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/events.model.php" afterPath="$PROJECT_DIR$/application/models/events.model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/index.controller.php" afterPath="$PROJECT_DIR$/application/controllers/index.controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/Index/index.view.php" afterPath="$PROJECT_DIR$/application/views/Index/index.view.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/Events/event_box.view.php" afterPath="$PROJECT_DIR$/application/views/Events/event_box.view.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/public/css/main.css" afterPath="$PROJECT_DIR$/application/public/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/Index/search_form.view.php" afterPath="$PROJECT_DIR$/application/views/Index/search_form.view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/siteInfo.txt" afterPath="$PROJECT_DIR$/siteInfo.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="WAD.iws" />
@@ -162,25 +156,7 @@
     <favorites_list name="WAD" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="events.model.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/models/events.model.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7480469" vertical-offset="2872" max-vertical-offset="3450">
-              <caret line="223" column="9" selection-start-line="223" selection-start-column="9" selection-end-line="223" selection-end-column="9" />
-              <folding>
-                <marker date="1420216206000" expanded="true" signature="2404:2455" placeholder="SELECT :_fie..." />
-                <marker date="1420216206000" expanded="true" signature="4702:4855" placeholder="INSERT INTO ..." />
-                <marker date="1420216206000" expanded="true" signature="5997:6160" placeholder="UPDATE event..." />
-                <marker date="1420216206000" expanded="true" signature="6889:6933" placeholder="DELETE FROM ..." />
-                <marker date="1420216206000" expanded="true" signature="7662:7929" placeholder="SELECT event..events..." />
-                <marker date="1420216206000" expanded="true" signature="9111:9448" placeholder="SELECT event..events..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -226,7 +202,6 @@
         <option value="$PROJECT_DIR$/application/views/Tournaments/all_tournaments.view.php" />
         <option value="$PROJECT_DIR$/application/controllers/tournaments.controller.php" />
         <option value="$PROJECT_DIR$/application/public/js/main.js" />
-        <option value="$PROJECT_DIR$/application/views/Events/event_box.view.php" />
         <option value="$PROJECT_DIR$/system/modules/BaseController.class.php" />
         <option value="$PROJECT_DIR$/application/views/Events/all_events.view.php" />
         <option value="$PROJECT_DIR$/application/views/Tournaments/events_tournament.view.php" />
@@ -237,13 +212,14 @@
         <option value="$PROJECT_DIR$/siteInfo.txt" />
         <option value="$PROJECT_DIR$/application/models/tournaments.model.php" />
         <option value="$PROJECT_DIR$/application/views/Index/search.view.php" />
-        <option value="$PROJECT_DIR$/application/public/css/main.css" />
         <option value="$PROJECT_DIR$/application/controllers/index.controller.php" />
         <option value="$PROJECT_DIR$/application/views/Index/index.view.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/application/views/Index/search_form.view.php" />
         <option value="$PROJECT_DIR$/application/views/_templates/default.template.php" />
         <option value="$PROJECT_DIR$/application/models/events.model.php" />
+        <option value="$PROJECT_DIR$/application/views/Events/event_box.view.php" />
+        <option value="$PROJECT_DIR$/application/public/css/main.css" />
       </list>
     </option>
   </component>
@@ -925,7 +901,13 @@
       <option name="project" value="LOCAL" />
       <updated>1420213378389</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Homepage">
+      <created>1420216267568</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1420216267568</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -950,7 +932,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="801" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18155198" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17423134" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -966,7 +948,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18155198" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19456366" sideWeight="0.49822694" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19456366" sideWeight="0.49822694" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329429" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329429" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1040,7 +1022,8 @@
     <MESSAGE value="event box view added" />
     <MESSAGE value="Rating added." />
     <MESSAGE value="Search Setup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Search Setup" />
+    <MESSAGE value="Homepage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Homepage" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1366,14 +1349,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/Events/event_box.view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="885">
-          <caret line="8" column="29" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/Tournaments/events_tournament.view.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-26.875" vertical-offset="0" max-vertical-offset="1140">
@@ -1506,19 +1481,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/public/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6455224" vertical-offset="2474" max-vertical-offset="10230">
-          <caret line="188" column="28" selection-start-line="188" selection-start-column="28" selection-end-line="188" selection-end-column="28" />
-          <folding>
-            <element signature="e#5262#5925#2" expanded="true" />
-            <element signature="e#6565#7228#2" expanded="true" />
-            <element signature="e#9247#9910#2" expanded="true" />
-            <element signature="e#10904#11567#2" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/models/user.model.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5175258" vertical-offset="1279" max-vertical-offset="6180">
@@ -1590,15 +1552,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/events.model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7480469" vertical-offset="2872" max-vertical-offset="3450">
+        <state vertical-scroll-proportion="2.2421875" vertical-offset="2107" max-vertical-offset="3450">
           <caret line="223" column="9" selection-start-line="223" selection-start-column="9" selection-end-line="223" selection-end-column="9" />
           <folding>
-            <marker date="1420216206000" expanded="true" signature="2404:2455" placeholder="SELECT :_fie..." />
-            <marker date="1420216206000" expanded="true" signature="4702:4855" placeholder="INSERT INTO ..." />
-            <marker date="1420216206000" expanded="true" signature="5997:6160" placeholder="UPDATE event..." />
-            <marker date="1420216206000" expanded="true" signature="6889:6933" placeholder="DELETE FROM ..." />
-            <marker date="1420216206000" expanded="true" signature="7662:7929" placeholder="SELECT event..events..." />
-            <marker date="1420216206000" expanded="true" signature="9111:9448" placeholder="SELECT event..events..." />
+            <marker date="1420216206000" expanded="true" signature="-1:-1" placeholder="SELECT :_fie..." />
+            <marker date="1420216206000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1420216206000" expanded="true" signature="-1:-1" placeholder="UPDATE event..." />
+            <marker date="1420216206000" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+            <marker date="1420216206000" expanded="true" signature="-1:-1" placeholder="SELECT event..events..." />
+            <marker date="1420216206000" expanded="true" signature="-1:-1" placeholder="SELECT event..events..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/Events/event_box.view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.52734375" vertical-offset="30" max-vertical-offset="885">
+          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/public/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.83208954" vertical-offset="9784" max-vertical-offset="10380">
+          <caret line="682" column="34" selection-start-line="682" selection-start-column="34" selection-end-line="682" selection-end-column="34" />
+          <folding>
+            <element signature="e#5262#5925#2" expanded="true" />
+            <element signature="e#6565#7228#2" expanded="true" />
+            <element signature="e#9247#9910#2" expanded="true" />
+            <element signature="e#10904#11567#2" expanded="true" />
           </folding>
         </state>
       </provider>

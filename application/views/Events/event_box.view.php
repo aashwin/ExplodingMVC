@@ -17,7 +17,7 @@ $teamTwo=$this->getViewArray('teamTwoData');
                 </div>
                 <div class="grid_mob_5" align="center">
                     <div class="fixture_img" ><img src="<?php echo WWW_TEAM_FLAG.$teamOne['teamFlag'];?>"></div>
-                    <?php echo $teamOne['teamName'];?>
+                    <span class="teamName"><?php echo $teamOne['teamName'];?></span>
                 </div>
                 <div class="grid_mob_2 fixture_vs" align="center"><strong>vs</strong></div>
                 <div class="grid_mob_5" align="center">

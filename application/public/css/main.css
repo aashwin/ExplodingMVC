@@ -660,8 +660,13 @@ td{text-align: center;padding:10px;border-bottom:1px solid #eee;}
         0%   { background:#000;opacity:0.8}
         100%   { background:#FF3F00;opacity:1}
     }
+    .fixture_box{
+        height:220px;
+    }
 }
+
 @media screen and (min-width:800px){
+
     #navigation{
         margin-right:5%;
     }
@@ -674,4 +679,9 @@ td{text-align: center;padding:10px;border-bottom:1px solid #eee;}
         display:inline-block;
     }
 
+}
+@media screen and (min-width: 1175px) {
+    .fixture_box{
+        height:auto;
+    }
 }
