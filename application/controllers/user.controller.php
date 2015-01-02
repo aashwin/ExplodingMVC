@@ -101,6 +101,49 @@ class userController extends BaseController {
         $this->setTemplateLayout('');
         $this->loadView('Index', 'Register');
     }
+    public function editProfile()
+    {
+        if(!$this->userModel->isLoggedIn()){
+            header("Location: ".Functions::pageLink());
+            exit;
+        }
+        if(isset($_POST['updateUser'])) {
+            if (isset($_FILES['profileImage'])) {
+                if ($_FILES['profileImage']['error'] == 0) {
+                    $currentImage = $this->userModel->loggedInUserData('profileImage');
+                    if ($currentImage != '') {
+                        unlink(PROFILE_IMG_DIR . $currentImage);
+                        unlink(PROFILE_IMG_DIR . 'originals/' . $currentImage);
+                    }
+                    $File = new FileUpload(PROFILE_IMG_DIR);
+                    $File->setMaxSize(0.2); //Max 200kb
+                    $File->setBasicType('image'); //Images only.
+                    $File->setMaxDimension(400, 400);
+                    $File->setOptimize(true);
+                    $File->keepOriginal(true, PROFILE_IMG_DIR . 'originals/');
+                    $File->setFile($_FILES['profileImage']);
+
+                    $uploadImg = $File->uploadFile();
+                    if ($uploadImg['error'] === false) {
+                        $uploadedImg = $uploadImg['filename'];
+                    } else {
+                        $uploadedImg = $this->userModel->loggedInUserData('profileImage');
+                    }
+                } else {
+                    $uploadedImg = $this->userModel->loggedInUserData('profileImage');
+                }
+
+            }else{
+                $uploadedImg = $this->userModel->loggedInUserData('profileImage');
+
+            }
+            $this->userModel->updatePassAndImage($this->userModel->loggedInUserData("userId"), $_POST['userPassword'], $uploadedImg);
+            $this->addViewArray("Success", 'Your profile has been updated :)');
+        }
+        $this->title("Edit Profile");
+        $this->setTemplateLayout('default');
+        $this->loadView('Index', 'edit_profile');
+    }
     public function noPermission()
     {
         $this->userModel->logout();

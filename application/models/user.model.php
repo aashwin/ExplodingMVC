@@ -360,6 +360,23 @@ class userModel extends Model {
         return true;
 
     }
+    public function updatePassAndImage($id, $password,$img){
+        if($password!=''){
+            $password_hash = password_hash($password, PASSWORD_DEFAULT, array('cost' => HASH_COST));
+            $updatePassword=', userPassword=:password';
+        }
+        $queryInsert=$this->getDB()->prepare("UPDATE user_login SET profileImage=:image $updatePassword WHERE userId=:id LIMIT 1");
+        $queryInsert->bindValue(':image',$img);
+
+        if($password!=''){
+            $queryInsert->bindValue(':password',$password_hash);
+        }
+        $queryInsert->bindValue(':id',$id, PDO::PARAM_INT);
+        $queryInsert->execute();
+        if($queryInsert->rowCount()>0){
+            return true;
+        }
+    }
     public function update($id, $username, $password, $email, $userLevel=0){
         $username=trim($username);
         $email=trim($email);
