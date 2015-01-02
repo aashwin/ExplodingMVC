@@ -28,14 +28,19 @@ a:focus{
 header {
     height:36px;
     background:url('../images/admin/navbg.jpg') repeat-x;
-    width:90%;
-    padding:9px 5% 0;
+    width:98%;
+    padding:9px 1% 0;
     overflow:hidden;
 }
 img {
     border: 0;outline:0;
 }
-
+.quickmenu{
+    padding:25px 0!important;
+    width:98%;
+    text-align: center;
+    margin:1%;
+}
 header nav ul{list-style:none}
 header nav li{
     display:inline-block;
@@ -47,7 +52,7 @@ header nav li{
 header nav li span{
     display:block;
 
-    padding:8px 30px 10px;
+    padding:8px 24px 10px;
 }
 header nav li a{
     display:block;
@@ -74,11 +79,11 @@ header nav li a.red{
 }
 header nav .right{
     float:left;
-    width:25%;
+    width:23%;
 }
 header nav .left{
     float:left;
-    width:75%;
+    width:77%;
 }
 #container{
     padding-right: 15px;

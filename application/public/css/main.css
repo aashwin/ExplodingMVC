@@ -332,7 +332,6 @@ td{text-align: center;padding:10px;border-bottom:1px solid #eee;}
     border: 1px solid #ccc;
     text-decoration: none;
     text-shadow: 1px 1px 1px #fff;
-    margin:0 2px;
 }
 .sort_selected{
     background:#222;
@@ -544,6 +543,11 @@ td{text-align: center;padding:10px;border-bottom:1px solid #eee;}
 .rate_sec .likes{
     background:#339e00;
     height:30px;
+}
+::-webkit-datetime-edit-year-field:not([aria-valuenow]),
+::-webkit-datetime-edit-month-field:not([aria-valuenow]),
+::-webkit-datetime-edit-day-field:not([aria-valuenow]) {
+    color: transparent;
 }
 @media screen and (min-width: 650px) {
     .searchbutton{

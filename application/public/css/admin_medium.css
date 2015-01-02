@@ -31,6 +31,12 @@ font-size:11px;
 .grid_med_6{
     width:50%;
 }
+.grid_med_3{
+    width:25%;
+}
+.grid_med_4{
+    width:33%;
+}
 .btn_pencil{
     background-image: none;
 }

@@ -44,7 +44,6 @@ $viewArray=$this->getViewArray();
         <a href="#" class="showMenu"></a>
         <nav id="navigation">
             <ul class="left">
-                <li><a href="<?php echo Functions::pageLink($this->getController());?>" <?php echo ($viewArray['page']=='index')?'class="active"':''; ?>>Dashboard</a></li>
                 <li><a href="<?php echo Functions::pageLink($this->getController(),'tournaments');?>" <?php echo ($viewArray['page']=='tournaments')?'class="active"':''; ?>>Tournaments</a></li>
                 <li><a href="<?php echo Functions::pageLink($this->getController(),'events');?>" <?php echo ($viewArray['page']=='events')?'class="active"':''; ?>>Events</a></li>
                 <li><a href="<?php echo Functions::pageLink($this->getController(),'teams');?>" <?php echo ($viewArray['page']=='teams')?'class="active"':''; ?>>Teams</a></li>
